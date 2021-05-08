@@ -14,34 +14,29 @@ function M.bootstrap()
 end
 
 function M.setup() 
-	return require'packer'.startup(
-		function (use)
-			use 'wbthomason/packer.nvim'
-			use 'siduck76/nvim-base16.lua'
-			use 'norcalli/nvim-colorizer.lua'
+	return require'packer'.startup(function (use)
+		use "tpope/vim-sensible"
 
-			use 'nvim-treesitter/nvim-treesitter'
-    	    use 'neovim/nvim-lspconfig'
-	        use 'hrsh7th/nvim-compe'
+		use 'wbthomason/packer.nvim'
+		use 'siduck76/nvim-base16.lua'
+		use 'norcalli/nvim-colorizer.lua'
 
-			use 'lewis6991/gitsigns.nvim'
-    	    use 'akinsho/nvim-bufferline.lua'
-	        use 'glepnir/galaxyline.nvim'
+		use 'nvim-treesitter/nvim-treesitter'
+		use 'neovim/nvim-lspconfig'
+		use 'hrsh7th/nvim-compe'
 
-			use 'kyazdani42/nvim-tree.lua'
-			use 'nvim-telescope/telescope.nvim'
-	        use 'nvim-telescope/telescope-media-files.nvim'
+		use 'lewis6991/gitsigns.nvim'
+		use 'akinsho/nvim-bufferline.lua'
+		use 'glepnir/galaxyline.nvim'
 
-	        use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+		use 'kyazdani42/nvim-tree.lua'
+		use 'nvim-telescope/telescope.nvim'
+		use 'nvim-telescope/telescope-media-files.nvim'
 
-	        use {'tweekmonster/startuptime.vim', opt = true}
-		end,
-		{
-			display = {
-				border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
-			}
-	    }
-	)
+		use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+
+		use {'tweekmonster/startuptime.vim', opt = true}
+	end)
 end
 
 return M

@@ -14,7 +14,7 @@ function M.bootstrap()
 end
 
 function M.setup() 
-	return require'packer'.setup(
+	return require'packer'.startup(
 		function (use)
 			use 'wbthomason/packer.nvim'
 			use 'siduck76/nvim-base16.lua'

@@ -6,7 +6,6 @@ o.shiftwidth = o.tabstop
 g.mapleader = ' '
 g.maplocalleader = ','
 
-require'plugins'.bootstrap()
 require'plugins'.setup()
 
 require'colors'

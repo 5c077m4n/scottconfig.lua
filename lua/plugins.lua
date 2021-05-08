@@ -1,6 +1,6 @@
 local M = {}
 
-function M.bootstrap()
+local function bootstrap()
 	local fn = vim.fn
 	local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
@@ -13,7 +13,9 @@ function M.bootstrap()
 	end
 end
 
-function M.setup() 
+function M.setup()
+	bootstrap()
+
 	return require'packer'.startup(function (use)
 		use "tpope/vim-sensible"
 

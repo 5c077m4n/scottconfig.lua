@@ -1,6 +1,7 @@
 local M = {}
 
 function M.bootstrap()
+	local fn = vim.fn
 	local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
@@ -13,7 +14,7 @@ function M.bootstrap()
 end
 
 function M.setup() 
-	return require('packer').setup(
+	return require'packer'.setup(
 		function (use)
 			use 'wbthomason/packer.nvim'
 			use 'siduck76/nvim-base16.lua'

@@ -4,6 +4,7 @@ local g = vim.g
 o.tabstop = 4
 o.shiftwidth = o.tabstop
 o.termguicolors = true
+o.completeopt = "menuone,noselect"
 g.mapleader = ' '
 g.maplocalleader = ','
 

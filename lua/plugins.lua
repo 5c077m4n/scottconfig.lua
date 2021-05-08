@@ -16,29 +16,36 @@ end
 function M.setup()
 	bootstrap()
 
-	return require'packer'.startup(function (use)
-		use "tpope/vim-sensible"
-
-		use 'wbthomason/packer.nvim'
-		use 'siduck76/nvim-base16.lua'
-		use 'norcalli/nvim-colorizer.lua'
-
-		use 'nvim-treesitter/nvim-treesitter'
-		use 'neovim/nvim-lspconfig'
-		use 'hrsh7th/nvim-compe'
-
-		use 'lewis6991/gitsigns.nvim'
-		use 'akinsho/nvim-bufferline.lua'
-		use 'glepnir/galaxyline.nvim'
-
-		use 'kyazdani42/nvim-tree.lua'
-		use 'nvim-telescope/telescope.nvim'
-		use 'nvim-telescope/telescope-media-files.nvim'
-
-		use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
-
-		use {'tweekmonster/startuptime.vim', opt = true}
-	end)
+	return require'packer'.startup(
+		function (use)
+			use "tpope/vim-sensible"
+	
+			use 'wbthomason/packer.nvim'
+			use 'siduck76/nvim-base16.lua'
+			use 'norcalli/nvim-colorizer.lua'
+	
+			use 'nvim-treesitter/nvim-treesitter'
+			use 'neovim/nvim-lspconfig'
+			use 'hrsh7th/nvim-compe'
+	
+			use 'lewis6991/gitsigns.nvim'
+			use 'akinsho/nvim-bufferline.lua'
+			use 'glepnir/galaxyline.nvim'
+	
+			use 'kyazdani42/nvim-tree.lua'
+			use 'nvim-telescope/telescope.nvim'
+			use 'nvim-telescope/telescope-media-files.nvim'
+	
+			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+	
+			use {'tweekmonster/startuptime.vim', opt = true}
+		end,
+		{
+			display = {
+				open_fn = require'packer.util'.float,
+			}
+		}
+	)
 end
 
 return M

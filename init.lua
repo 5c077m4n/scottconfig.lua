@@ -26,6 +26,16 @@ local utils = require'utils'
 
 g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 
+-- Theme
+vim.cmd([[
+try
+	colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+	colorscheme default
+	set background=dark
+endtry
+]])
+
 -- Trigger autoread when changing buffers inside while inside vim
 vim.cmd([[
 augroup autoread_on_buffer_change

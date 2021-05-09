@@ -22,9 +22,10 @@ function M.initPackages()
 
 	require'treesitter'
 	require'mappings'
-	require'plugins.configs.lspconfig'
 	require'plugins.configs.compe'
 	require'plugins.configs.nvim-tree'
+	require'plugins.configs.floaterm'
+	require'plugins.configs.lspconfig'
 end
 
 function M.setup()

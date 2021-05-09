@@ -151,7 +151,7 @@ nvim_lsp.rust_analyzer.setup {
 	cmd = {'rust-analyzer'},
 	on_attach=on_attach,
     filetypes = {'rust'},
-    root_dir = lspconfig.util.root_pattern('Cargo.toml', 'rust-project.json'),
+    root_dir = nvim_lsp.util.root_pattern('Cargo.toml', 'rust-project.json'),
     settings = {
     	['rust-analyzer'] = {}
     }

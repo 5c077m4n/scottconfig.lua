@@ -8,7 +8,7 @@ local cmd = vim.cmd
 cmd [[
 augroup autoread_on_buffer_change
 	autocmd!
-	autocmd BufEnter * :checktime
+	autocmd FocusGained,BufEnter * :checktime
 augroup END
 ]]
 

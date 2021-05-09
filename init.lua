@@ -12,6 +12,7 @@ g.maplocalleader = ','
 
 require'plugins'.setup()
 
+require'vimpeccable'
 require'bufferline'
 require'galaxyline'
 

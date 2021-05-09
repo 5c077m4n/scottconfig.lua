@@ -43,6 +43,7 @@ function M.setup()
 		{
 			display = {
 				open_fn = require'packer.util'.float,
+				border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
 			}
 		}
 	)

@@ -43,7 +43,7 @@ function M.setup()
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
-			use 'neovim/nvim-lspconfig'
+			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'hrsh7th/nvim-compe'
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
@@ -57,7 +57,7 @@ function M.setup()
         	use 'rafamadriz/friendly-snippets'
 			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'
-			use {'glepnir/galaxyline.nvim', branch = 'main'}
+			use {'glepnir/galaxyline.nvim', branch = 'main', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	
 			use {'wbthomason/packer.nvim', opt = true}

@@ -18,12 +18,6 @@ g.maplocalleader = ','
 
 require'plugins'.setup()
 
-require'lsp/typescript'
-require'lsp/html'
-require'lsp/css'
-require'lsp/rust'
-require'lsp/lua'
-
 require'colors'
 require'treesitter'
 require'mappings'

@@ -42,14 +42,18 @@ function M.setup()
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
+			use 'neovim/nvim-lsp'
 			use 'neovim/nvim-lspconfig'
 			use 'hrsh7th/nvim-compe'
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
+			use 'sharkdp/bat'
+			use 'sharkdp/fd'
+			use 'BurntSushi/ripgrep'
 			use {
 				'nvim-telescope/telescope.nvim',
-				requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'sharkdp/bat'}, {'sharkdp/fd'}, {'BurntSushi/ripgrep'}}
+				requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 			}
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use 'hrsh7th/vim-vsnip'

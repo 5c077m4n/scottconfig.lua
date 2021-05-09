@@ -15,15 +15,16 @@ end
 
 function M.initPackages()
 	require'vimp'
-	require'bufferline'
+	require'bufferline'.setup()
 	require'galaxyline'
 	require'colorizer'.setup()
 	require'gitsigns'.setup()
 
 	require'treesitter'
 	require'mappings'
-	require'plugins.configs.lsp'
+	require'plugins.configs.lspconfig'
 	require'plugins.configs.compe'
+	require'plugins.configs.nvim-tree'
 end
 
 function M.setup()
@@ -35,22 +36,20 @@ function M.setup()
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
-	
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
-	
 			use 'nvim-treesitter/nvim-treesitter'
 			use 'neovim/nvim-lspconfig'
 			use 'hrsh7th/nvim-compe'
-	
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'glepnir/galaxyline.nvim'
-	
 			use 'kyazdani42/nvim-tree.lua'
 			use 'nvim-telescope/telescope.nvim'
 			use 'nvim-telescope/telescope-media-files.nvim'
-	
+			use 'hrsh7th/vim-vsnip'
+        	use 'rafamadriz/friendly-snippets'
+			use 'voldikss/vim-floaterm'
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 	
 			use {'wbthomason/packer.nvim', opt = true}

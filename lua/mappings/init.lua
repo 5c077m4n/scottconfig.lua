@@ -21,4 +21,10 @@ vimp.vnoremap('<C-c>', '"+y')
 
 vimp.nnoremap('J', 'mzJ`z')
 
+-- Unsets the last search pattern register by hitting return
+vimp.nnoremap('<CR>', ':noh<CR>')
+
+-- Switch CWD to the directory of the open buffer
+vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
+
 require'mappings.nvim-tree'

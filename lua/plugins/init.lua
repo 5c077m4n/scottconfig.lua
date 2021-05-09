@@ -21,12 +21,13 @@ function M.initPackages()
 	require'gitsigns'.setup()
 
 	require'treesitter'
-	require'mappings'
 	require'plugins.configs.compe'
 	require'plugins.configs.nvim-tree'
 	require'plugins.configs.floaterm'
 	require'plugins.configs.lspconfig'
 	require'plugins.configs.telescope'
+
+	require'mappings'
 end
 
 function M.setup()

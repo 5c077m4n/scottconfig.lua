@@ -10,17 +10,13 @@ vim.o.history = 5000
 o.tabstop = 4
 o.shiftwidth = o.tabstop
 o.termguicolors = true
-o.completeopt = "menuone,noselect"
+o.completeopt = 'menuone,noselect'
 o.number = true
 o.relativenumber = true
 g.mapleader = ' '
 g.maplocalleader = ','
 
 require'plugins'.setup()
-
-require'vimp'
-require'bufferline'
-require'galaxyline'
 
 require'lsp/typescript'
 require'lsp/html'

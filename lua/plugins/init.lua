@@ -13,10 +13,14 @@ local function bootstrap()
 	end
 end
 
+local function initPackages()
+	require'setup'
+end
+
 function M.setup()
 	bootstrap()
 
-	return require'packer'.startup(
+	require'packer'.startup(
 		function (use)
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
@@ -48,6 +52,8 @@ function M.setup()
 			}
 		}
 	)
+
+	initPackages()
 end
 
 return M

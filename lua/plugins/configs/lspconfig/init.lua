@@ -1,0 +1,5 @@
+require'plugins.configs.lspconfig.html'
+require'plugins.configs.lspconfip.css'
+require'plugins.configs.lspconfip.ts'
+require'plugins.configs.lspconfip.rust'
+require'plugins.configs.lspconfip.lua'

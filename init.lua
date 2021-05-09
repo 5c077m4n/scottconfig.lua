@@ -18,12 +18,6 @@ g.mapleader = ' '
 require'plugins'.setup()
 require'plugins'.initPackages()
 
-require'colors'
-require'treesitter'
-require'mappings'
-
-local utils = require'utils'
-
 g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 
 -- Theme

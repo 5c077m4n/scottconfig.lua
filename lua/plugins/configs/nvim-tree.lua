@@ -1,3 +1,5 @@
+local g = vim.g
+
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0

@@ -3,6 +3,9 @@ local utils = require'utils'
 local o = vim.o
 local g = vim.g
 
+g.mapleader = ' '
+g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
+
 -- Configure backspace so it acts as it should act
 o.backspace = 'eol,start,indent'
 
@@ -47,11 +50,3 @@ o.magic = true
 o.showmatch = true
 -- How many tenths of a second to blink when matching brackets
 o.mat = 2
--- No sound on errors
-o.noerrorbells = true
-o.novisualbell = true
--- Add a bit extra margin to the left
-o.foldcolumn = 1
-
-g.mapleader = ' '
-g.python3_host_prog = utils.trim(vim.fn.system('which python3'))

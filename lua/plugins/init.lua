@@ -26,6 +26,7 @@ function M.initPackages()
 	require'plugins.configs.nvim-tree'
 	require'plugins.configs.floaterm'
 	require'plugins.configs.lspconfig'
+	require'plugins.configs.telescope'
 end
 
 function M.setup()
@@ -45,7 +46,10 @@ function M.setup()
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
-			use 'nvim-telescope/telescope.nvim'
+			use {
+				'nvim-telescope/telescope.nvim',
+				requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'sharkdp/bat'}, {'sharkdp/fd'}, {'BurntSushi/ripgrep'}}
+			}
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use 'hrsh7th/vim-vsnip'
         	use 'rafamadriz/friendly-snippets'

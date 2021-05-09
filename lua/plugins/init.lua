@@ -32,8 +32,8 @@ function M.setup()
 		function (use)
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
+			use 'nvim-lua/plenary.nvim'
 	
-			use {'wbthomason/packer.nvim', opt = true}
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 	
@@ -51,6 +51,7 @@ function M.setup()
 	
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 	
+			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,
 		{

@@ -1,5 +1,5 @@
-vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.vim<CR>]])
-vimp.nnoremap('<leader>2', [[:source ~/.config/nvim/init.vim<CR>]])
+vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
+vimp.nnoremap('<leader>2', [[:luafile ~/.config/nvim/init.lua<CR>]])
 
 vimp.nnoremap('<C-h>', '<C-w>h')
 vimp.nnoremap('<C-j>', '<C-w>j')

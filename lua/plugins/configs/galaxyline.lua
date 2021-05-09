@@ -143,7 +143,7 @@ gls.right[7] = {
 gls.right[8] = {
     Tabstop = {
         provider = function()
-            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return 'Spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth') .. ' '
         end,
         condition = condition.hide_in_width,
         separator = ' ',

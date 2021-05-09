@@ -120,7 +120,6 @@ nvim_lsp.diagnosticls.setup {
 	}
 }
 
-
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path..'/bin/'..utils.system_name()..'/lua-language-server'
 

@@ -1,1 +1,1 @@
-vimp.nnoremap('<leader>r', ':Ranger<CR>')
+vimp.nnoremap('<leader>rr', ':Ranger<CR>')

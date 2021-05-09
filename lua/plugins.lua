@@ -18,7 +18,8 @@ function M.setup()
 
 	return require'packer'.startup(
 		function (use)
-			use "tpope/vim-sensible"
+			use 'tpope/vim-sensible'
+			use 'svermeulen/vimpeccable'
 	
 			use 'wbthomason/packer.nvim'
 			use 'siduck76/nvim-base16.lua'

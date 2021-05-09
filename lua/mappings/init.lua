@@ -21,4 +21,4 @@ vimp.vnoremap('<C-c>', '"+y')
 
 vimp.nnoremap('J', 'mzJ`z')
 
-require'nvim-tree'
+require'mappings.nvim-tree'

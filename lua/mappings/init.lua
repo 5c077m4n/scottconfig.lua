@@ -30,6 +30,8 @@ vimp.nnoremap('<CR>', ':noh<CR>')
 -- Switch CWD to the directory of the open buffer
 vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
+vimp.nnoremap('U', '<C-r>')
+
 require'mappings.nvim-tree'
 require'mappings.floaterm'
 require'mappings.undotree'

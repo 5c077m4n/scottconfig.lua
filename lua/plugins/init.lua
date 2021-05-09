@@ -42,7 +42,6 @@ function M.setup()
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
-			use 'neovim/nvim-lsp'
 			use 'neovim/nvim-lspconfig'
 			use 'hrsh7th/nvim-compe'
 			use 'lewis6991/gitsigns.nvim'

@@ -17,10 +17,8 @@ vimp.nnoremap({'silent'}, '<leader>]', ':tabn<CR>')
 vimp.nnoremap({'silent'}, '<leader>[', ':tabp<CR>')
 vimp.nnoremap({'silent'}, '<leader>tl', ':tabs<CR>')
 
-vimp.nnoremap({'silent'}, '<leader>tt', ':NvimTreeToggle<CR>')
-vimp.nnoremap({'silent'}, '<leader>tr', ':NvimTreeRefresh<CR>')
-vimp.nnoremap({'silent'}, '<leader>ts', ':NvimTreeFindFile<CR>')
-
 vimp.vnoremap('<C-c>', '"+y')
 
 vimp.nnoremap('J', 'mzJ`z')
+
+require'nvim-tree'

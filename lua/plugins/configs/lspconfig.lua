@@ -57,14 +57,14 @@ local function on_attach(client, bufnr)
 		vimp.inoremap({'silent'}, '<C-x><C-x>', ':LspSignatureHelp<CR>')
 	end)
 
-	if client.resolved_capabilities.document_formatting then
-		vim.api.nvim_exec([[
-		augroup LspAutocommands
-			autocmd! * <buffer>
-			autocmd BufWritePost <buffer> LspFormatting
-		augroup END
-		]], true)
-	end
+	--	if client.resolved_capabilities.document_formatting then
+	--		vim.api.nvim_exec([[
+	--		augroup LspAutocommands
+	--			autocmd! * <buffer>
+	--			autocmd BufWritePost <buffer> LspFormatting
+	--		augroup END
+	--		]], true)
+	--	end
 end
 
 nvim_lsp.tsserver.setup {

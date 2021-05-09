@@ -50,11 +50,10 @@ gls.left[1] = {
 	ViMode = {
 		provider = function()
 			-- auto change color according the vim mode
-			local mod_color = mode_color[vim.fn.mod()]
-			print(vim.fn.mod())
+			local color = mode_color[vim.fn.mode()]
 
-			if mod_color then
-				vim.api.nvim_command('hi GalaxyViMode guifg=' .. mod_color)
+			if color then
+				vim.api.nvim_command('hi GalaxyViMode guifg=' .. color)
 			end
             return '▊ '
         end,

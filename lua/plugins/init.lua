@@ -18,11 +18,11 @@ local function initPackages()
 	require'bufferline'
 	require'galaxyline'
 
-	require'lsp/typescript'
-	require'lsp/html'
-	require'lsp/css'
-	require'lsp/rust'
-	require'lsp/lua'
+	require'lspconfig/typescript'
+	require'lspconfig/html'
+	require'lspconfig/css'
+	require'lspconfig/rust'
+	require'lspconfig/lua'
 end
 
 function M.setup()

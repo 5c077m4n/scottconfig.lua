@@ -28,3 +28,4 @@ vimp.nnoremap('<CR>', ':noh<CR>')
 vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
 require'mappings.nvim-tree'
+require'mappings.floaterm'

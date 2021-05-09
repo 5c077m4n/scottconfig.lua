@@ -28,6 +28,7 @@ function M.initPackages()
 	require'plugins.configs.telescope'
 	require'plugins.configs.base16'
 	require'plugins.configs.galaxyline'
+	require'plugins.configs.ranger'
 
 	require'mappings'
 end
@@ -60,6 +61,7 @@ function M.setup()
 			use 'mbbill/undotree'
 			use {'glepnir/galaxyline.nvim', branch = 'main', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+			use {'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'} }
 	
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

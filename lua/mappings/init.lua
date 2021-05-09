@@ -47,3 +47,4 @@ vimp.nnoremap('U', '<C-r>')
 require'mappings.nvim-tree'
 require'mappings.floaterm'
 require'mappings.undotree'
+require'mappings.ranger'

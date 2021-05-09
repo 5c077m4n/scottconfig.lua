@@ -1,6 +1,12 @@
 local o = vim.o
 local g = vim.g
 
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+
+vim.o.history = 5000
+
 o.tabstop = 4
 o.shiftwidth = o.tabstop
 o.termguicolors = true

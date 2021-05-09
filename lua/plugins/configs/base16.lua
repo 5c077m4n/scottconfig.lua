@@ -1,3 +1,3 @@
 local base16 = require'base16'
 
-base16(base16.themes.github, true)
+base16(base16.themes.material, true)

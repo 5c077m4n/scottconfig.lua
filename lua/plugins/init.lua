@@ -48,12 +48,9 @@ function M.setup()
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
-			use 'sharkdp/bat'
-			use 'sharkdp/fd'
-			use 'BurntSushi/ripgrep'
 			use {
 				'nvim-telescope/telescope.nvim',
-				requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+				requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'sharkdp/fd'}, {'BurntSushi/ripgrep'}}
 			}
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use 'hrsh7th/vim-vsnip'

@@ -43,22 +43,21 @@ function M.setup()
 			use 'hrsh7th/nvim-compe'
 			use 'lewis6991/gitsigns.nvim'
 			use 'akinsho/nvim-bufferline.lua'
-			use 'glepnir/galaxyline.nvim'
 			use 'kyazdani42/nvim-tree.lua'
 			use 'nvim-telescope/telescope.nvim'
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use 'hrsh7th/vim-vsnip'
         	use 'rafamadriz/friendly-snippets'
 			use 'voldikss/vim-floaterm'
-			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+			use {'glepnir/galaxyline.nvim', branch = 'main'}
+			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,
 		{
 			display = {
-				open_fn = require'packer.util'.float,
-				border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+				open_fn = require'packer.util'.float
 			}
 		}
 	)

@@ -5,20 +5,25 @@ o.tabstop = 4
 o.shiftwidth = o.tabstop
 o.termguicolors = true
 o.completeopt = "menuone,noselect"
+o.number = true
+o.relativenumber = true
 g.mapleader = ' '
 g.maplocalleader = ','
 
 require'plugins'.setup()
 
-require'colors'
-require'treesitter'
-require'mappings'
+require'bufferline'
+require'galaxyline'
 
 require'lsp/typescript'
 require'lsp/html'
 require'lsp/css'
 require'lsp/rust'
 require'lsp/lua'
+
+require'colors'
+require'treesitter'
+require'mappings'
 
 local utils = require'utils'
 

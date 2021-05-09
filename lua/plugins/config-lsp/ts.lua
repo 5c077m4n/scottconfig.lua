@@ -1,4 +1,4 @@
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require'lspconfig'
 
 local function format_async(err, _, result, _, bufnr)
 	if err ~= nil or result == nil then return end

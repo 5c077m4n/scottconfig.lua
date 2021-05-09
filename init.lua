@@ -1,11 +1,11 @@
 local o = vim.o
 local g = vim.g
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
+o.incsearch = true
 
-vim.o.history = 5000
+o.history = 5000
 
 o.tabstop = 4
 o.shiftwidth = o.tabstop
@@ -14,9 +14,9 @@ o.completeopt = 'menuone,noselect'
 o.number = true
 o.relativenumber = true
 g.mapleader = ' '
-g.maplocalleader = ','
 
 require'plugins'.setup()
+require'plugins'.initPackages()
 
 require'colors'
 require'treesitter'

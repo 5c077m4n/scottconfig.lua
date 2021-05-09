@@ -13,27 +13,27 @@ local function bootstrap()
 	end
 end
 
-local function initPackages()
+function M.initPackages()
 	require'vimp'
 	require'bufferline'
 	require'galaxyline'
+	require'colorizer'.setup()
+	require'gitsigns'.setup()
 
-	require'lsp.html'
-	require'lsp.css'
-	require'lsp.typescript'
-	require'lsp.rust'
-	require'lsp.lua'
+	require'config-lsp'
+	require'config-compe'
 end
 
 function M.setup()
 	bootstrap()
+	vim.cmd [[packadd packer.nvim]]
 
-	require'packer'.startup(
+	return require'packer'.startup(
 		function (use)
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
 	
-			use 'wbthomason/packer.nvim'
+			use {'wbthomason/packer.nvim', opt = true}
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 	
@@ -60,8 +60,6 @@ function M.setup()
 			}
 		}
 	)
-
-	initPackages()
 end
 
 return M

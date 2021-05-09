@@ -18,9 +18,9 @@ local function initPackages()
 	require'bufferline'
 	require'galaxyline'
 
-	require'lsp.typescript'
 	require'lsp.html'
 	require'lsp.css'
+	require'lsp.typescript'
 	require'lsp.rust'
 	require'lsp.lua'
 end

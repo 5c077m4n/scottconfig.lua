@@ -1,5 +1,5 @@
 local telescope_builtin = require'telescope.builtin'
 
-vimp.nnoremap('<leader>ffl', function() telescope_builtin.find_files() end)
-vimp.nnoremap('<leader>fsr', function() telescope_builtin.live_grep() end)
-vimp.nnoremap('<leader>fb', function() telescope_builtin.buffers() end)
+vimp.nnoremap('<leader>ffl', telescope_builtin.find_files)
+vimp.nnoremap('<leader>fsr', telescope_builtin.live_grep)
+vimp.nnoremap('<leader>fb', telescope_builtin.buffers)

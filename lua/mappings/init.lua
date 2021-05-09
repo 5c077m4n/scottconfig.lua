@@ -20,6 +20,9 @@ vimp.nnoremap({'silent'}, '<leader>tl', ':tabs<CR>')
 vimp.vnoremap('<C-c>', '"+y')
 
 vimp.nnoremap('J', 'mzJ`z')
+-- Remap VIM 0 to first non-blank character
+vimp.nnoremap('0', '^')
+vimp.vnoremap('0', '^')
 
 -- Unsets the last search pattern register by hitting return
 vimp.nnoremap('<CR>', ':noh<CR>')
@@ -29,3 +32,4 @@ vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
 require'mappings.nvim-tree'
 require'mappings.floaterm'
+require'mappings.undotree'

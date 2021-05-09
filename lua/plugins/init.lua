@@ -50,6 +50,7 @@ function M.setup()
 			use 'hrsh7th/vim-vsnip'
         	use 'rafamadriz/friendly-snippets'
 			use 'voldikss/vim-floaterm'
+			use 'mbbill/undotree'
 			use {'glepnir/galaxyline.nvim', branch = 'main'}
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 	

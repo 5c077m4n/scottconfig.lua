@@ -50,3 +50,6 @@ o.magic = true
 o.showmatch = true
 -- How many tenths of a second to blink when matching brackets
 o.mat = 2
+
+o.undodir = os.getenv('HOME') .. '/undodir'
+o.undofile = true

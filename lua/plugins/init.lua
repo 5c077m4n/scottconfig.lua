@@ -26,6 +26,7 @@ function M.initPackages()
 	require'plugins.configs.floaterm'
 	require'plugins.configs.lspconfig'
 	require'plugins.configs.telescope'
+	require'plugins.configs.base16'
 
 	require'mappings'
 end

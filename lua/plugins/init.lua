@@ -20,8 +20,8 @@ function M.initPackages()
 	require'colorizer'.setup()
 	require'gitsigns'.setup()
 
-	require'plugins.config-lsp.init'
-	require'plugins.config-compe'
+	require'plugins.configs.lsp'
+	require'plugins.configs.compe'
 end
 
 function M.setup()

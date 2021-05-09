@@ -69,6 +69,8 @@ nvim_lsp.tsserver.setup {
 }
 
 local filetypes = {
+	javascirpt = 'eslint',
+	javascirptreact = 'eslint',
 	typescript = 'eslint',
 	typescriptreact = 'eslint',
 }
@@ -95,6 +97,8 @@ local formatters = {
 	prettier = {command = 'prettier', args = {'--stdin-filepath', '%filepath'}}
 }
 local formatFiletypes = {
+	javascript = 'prettier',
+	javascriptreact = 'prettier',
 	typescript = 'prettier',
 	typescriptreact = 'prettier'
 }

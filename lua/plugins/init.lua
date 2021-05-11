@@ -65,6 +65,7 @@ local function init_packer()
 				requires = {'rbgrouleff/bclose.vim'},
 			}
 			use 'mfussenegger/nvim-dap'
+			use 'jbyuki/one-small-step-for-vimkind'
 	
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

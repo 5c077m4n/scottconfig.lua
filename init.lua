@@ -1,5 +1,7 @@
 require'options'
 require'plugins'.setup()
+-- Needed for the global scope
+require'vimp'
 require'mappings'
 
 local cmd = vim.cmd

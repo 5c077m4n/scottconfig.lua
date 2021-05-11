@@ -1,21 +1,21 @@
 require'options'
 require'plugins'.setup()
-require'plugins'.initPackages()
+require'mappings'
 
 local cmd = vim.cmd
 
 -- Trigger autoread when changing buffers inside while inside vim
-cmd [[
+pcall(cmd [[
 augroup autoread_on_buffer_change
 	autocmd!
 	autocmd FocusGained,BufEnter * :checktime
 augroup END
-]]
+]])
 
 -- Return to the last editing point when opening files
-cmd [[
+pcall(cmd [[
 augroup last_read_point
 	autocmd!
 	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
-]]
+]])

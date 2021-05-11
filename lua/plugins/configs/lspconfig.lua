@@ -88,36 +88,36 @@ local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-l
 local sumneko_binary = sumneko_root_path..'/bin/'..utils.system_name()..'/lua-language-server'
 
 nvim_lsp.sumneko_lua.setup {
-  cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        globals = {'vim'},
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+	cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				path = vim.split(package.path, ';'),
+			},
+			diagnostics = {
+				globals = {'vim'},
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+				},
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
 }
 
 nvim_lsp.rust_analyzer.setup {
 	cmd = {'rust-analyzer'},
-    filetypes = {'rust'},
-    root_dir = root_pattern('Cargo.toml', 'rust-project.json'),
-    settings = {
-    	['rust-analyzer'] = {}
-    }
+	filetypes = {'rust'},
+	root_dir = root_pattern('Cargo.toml', 'rust-project.json'),
+	settings = {
+		['rust-analyzer'] = {}
+	}
 }
 
 nvim_lsp.html.setup {

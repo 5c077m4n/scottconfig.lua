@@ -43,8 +43,3 @@ vimp.inoremap('<C-l>', '<C-o>l')
 vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
 vimp.nnoremap('U', '<C-r>')
-
-require'mappings.nvim-tree'
-require'mappings.floaterm'
-require'mappings.undotree'
-require'mappings.ranger'

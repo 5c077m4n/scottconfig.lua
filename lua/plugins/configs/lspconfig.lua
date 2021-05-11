@@ -33,10 +33,10 @@ end
 nvim_lsp.tsserver.setup {
 	on_attach = function(client)
 		client.resolved_capabilities.document_formatting = false
-	end
-	cmd = { 'typescript-language-server', '--stdio' }
-	filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
-	root_dir = root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')
+	end,
+	cmd = { 'typescript-language-server', '--stdio' },
+	filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+	root_dir = root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
 }
 
 local filetypes = {
@@ -59,7 +59,7 @@ local linters = {
 			endLine = 'endLine',
 			endColumn = 'endColumn',
 			message = '${message} [${ruleId}]',
-			security = 'severity'
+			security = 'severity',
 		},
 		securities = {[2] = 'error', [1] = 'warning'}
 	}

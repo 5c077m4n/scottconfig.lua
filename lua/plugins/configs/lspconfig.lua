@@ -150,3 +150,24 @@ nvim_lsp.html.setup {
 nvim_lsp.cssls.setup {
 	capabilities = capabilities,
 }
+
+require'lspconfig'.vimls.setup {
+	capabilities = capabilities,
+	on_attach = function()
+		if not vim.fn.executable('vim-language-server') then
+			if vim.fn.executable('yarn') then
+				local is_exec_success, _ = pcall(os.execute('yarn global add vim-language-server'))
+				if not is_exec_success then
+					print('The tsserver dependencies could not be installed')
+				end
+			elseif vim.fn.executable('npm') then
+				local is_exec_success, _ = pcall(os.execute('npm install --global vim-language-server'))
+				if not is_exec_success then
+					print('The tsserver dependencies could not be installed')
+				end
+			else 
+				error('The vimls dependencies could not be installed')
+			end
+		end
+	end,
+}

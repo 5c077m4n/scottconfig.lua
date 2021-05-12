@@ -15,8 +15,8 @@ vimp.nnoremap({'silent'}, '<leader>wt', ':vs#<CR>')
 vimp.nnoremap({'silent'}, '<leader>tn', ':tab split<CR>')
 vimp.nnoremap({'silent'}, '<leader>tq', ':tabclose<CR>')
 vimp.nnoremap({'silent'}, '<leader>tQ', ':tabonly<CR>')
-vimp.nnoremap({'silent'}, '<leader>]', ':tabn<CR>')
-vimp.nnoremap({'silent'}, '<leader>[', ':tabp<CR>')
+vimp.nnoremap({'silent'}, '<leader>t]', ':tabn<CR>')
+vimp.nnoremap({'silent'}, '<leader>t[', ':tabp<CR>')
 vimp.nnoremap({'silent'}, '<leader>tl', ':tabs<CR>')
 
 -- Ctrl+c copys to clipboard

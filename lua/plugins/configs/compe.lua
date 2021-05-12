@@ -1,30 +1,26 @@
 local utils = require'utils'
 
-local function t(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
 function _G.tab_complete()
 	if vim.fn.pumvisible() == 1 then
-		return t '<C-n>'
+		return utils.nvim_replace_termcodes'<C-n>'
 	elseif vim.fn.call('vsnip#available', {1}) == 1 then
-		return t '<Plug>(vsnip-expand-or-jump)'
+		return utils.nvim_replace_termcodes'<Plug>(vsnip-expand-or-jump)'
 	elseif utils.check_back_space() then
-		return t '<Tab>'
+		return utils.nvim_replace_termcodes'<Tab>'
 	else
 		return vim.fn['compe#complete']()
 	end
 end
 function _G.s_tab_complete()
 	if vim.fn.pumvisible() == 1 then
-		return t '<C-p>'
+		return utils.nvim_replace_termcodes'<C-p>'
 	elseif vim.fn.call('vsnip#jumpable', {-1}) == 1 then
-		return t '<Plug>(vsnip-jump-prev)'
+		return utils.nvim_replace_termcodes'<Plug>(vsnip-jump-prev)'
 	else
-		return t '<S-Tab>'
+		return utils.nvim_replace_termcodes'<S-Tab>'
 	end
 end
 

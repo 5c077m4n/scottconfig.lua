@@ -34,4 +34,8 @@ function M.check_back_space()
 	end
 end
 
+function M.nvim_replace_termcodes(str)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 return M

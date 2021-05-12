@@ -92,6 +92,7 @@ local function init_packages()
 	require'plugins.configs.galaxyline' 
 	require'plugins.configs.ranger'
 	require'plugins.configs.nvim-dap'
+	require'plugins.configs.telescope'
 
 	require'mappings.lspsaga'
 	require'mappings.compe'

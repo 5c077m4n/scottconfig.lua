@@ -1,5 +1,7 @@
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', [[:luafile ~/.config/nvim/init.lua<CR>]])
+vimp.nnoremap('<leader>3', [[:PackerInstall<CR>]])
+vimp.nnoremap('<leader>4', [[:PackerSync<CR>]])
 
 -- Splits
 vimp.nnoremap('<C-h>', '<C-w>h')

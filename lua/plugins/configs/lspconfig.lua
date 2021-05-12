@@ -41,13 +41,13 @@ nvim_lsp.tsserver.setup {
 	on_attach = function(client)
 		client.resolved_capabilities.document_formatting = false
 
-		if !vim.fn.exists('typescript') or !vim.fn.exists('typescript-language-server') then
+		if not vim.fn.exists('typescript') or not vim.fn.exists('typescript-language-server') then
 			if vim.fn.exists('yarn') then
 				os.execute('yarn global add typescript typescript-language-server')
-			elseif vim.fn.exists('npm')
+			elseif vim.fn.exists('npm') then
 				os.execute('npm install --global typescript typescript-language-server')
 			else 
-				error('The ts dependencies could not be installed')
+				error('The tsserver dependencies could not be installed')
 			end
 		end
 	end,

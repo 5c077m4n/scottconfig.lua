@@ -3,9 +3,6 @@ require'telescope'.setup {
 		vimgrep_arguments = {
 			'ag',
 			'--vimgrep',
-			'--all-types',
-			'--hidden',
-			'--smart-case',
 		},
 	}
 }

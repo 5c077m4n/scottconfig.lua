@@ -33,7 +33,12 @@ local function init_packer()
 				requires = {{'nvim-lspconfig'}},
 			}
 			use 'hrsh7th/nvim-compe'
-			use 'lewis6991/gitsigns.nvim'
+			use {
+				'lewis6991/gitsigns.nvim',
+				requires = {
+					'nvim-lua/plenary.nvim'
+				}
+			}
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
 			use {
@@ -95,6 +100,7 @@ local function init_packages()
 	require'plugins.configs.nvim-dap'
 	require'plugins.configs.telescope'
 	require'plugins.configs.nvim-comment'
+	require'plugins.configs.gitsigns'
 
 	require'mappings.lspsaga'
 	require'mappings.compe'

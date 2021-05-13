@@ -1,4 +1,4 @@
-local cmd = vim.cmd
+local cmd = vim.api.nvim_command
 
 -- Re-read file when re-entering it
 pcall(function() 
@@ -23,7 +23,16 @@ pcall(function()
 	cmd [[
 	augroup highlight_yank
 	autocmd!
-	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+	autocmd TextYankPost * silent! :lua require'vim.highlight'.on_yank("IncSearch", 1000)
+	augroup END
+	]]
+end)
+
+pcall(function() 
+	cmd [[
+	augroup delete_trailing_spaces_on_save
+	autocmd!
+	autocmd BufWritePre * :lua require'utils'.clean_extra_spaces()
 	augroup END
 	]]
 end)

@@ -50,6 +50,7 @@ local function init_packer()
 			use 'rafamadriz/friendly-snippets'
 			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'
+			use 'terrortylor/nvim-comment'
 			use {
 				'glepnir/galaxyline.nvim',
 				branch = 'main',
@@ -93,6 +94,7 @@ local function init_packages()
 	require'plugins.configs.ranger'
 	require'plugins.configs.nvim-dap'
 	require'plugins.configs.telescope'
+	require'plugins.configs.nvim-comment'
 
 	require'mappings.lspsaga'
 	require'mappings.compe'

@@ -3,6 +3,30 @@ local utils = require'utils'
 
 local root_pattern = nvim_lsp.util.root_pattern
 
+local function try_global_install(package_name, package_alias)
+	package_alias = package_alias or package_name
+
+	if not vim.fn.executable(package_alias) then
+		if vim.fn.executable('yarn') then
+			local is_exec_success, _ = pcall(function ()
+				os.execute('yarn global add ' .. package_name)
+			end)
+			if not is_exec_success then
+				print('The package ' .. package_name .. 'could not be installed')
+			end
+		elseif vim.fn.executable('npm') then
+			local is_exec_success, _ = pcall(function()
+				os.execute('npm install --global ' .. package_name)
+			end)
+			if not is_exec_success then
+				print('The package ' .. package_name .. 'could not be installed')
+			end
+		else 
+			error('Yarn or NPM are needed to use the requested language server')
+		end
+	end
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -41,21 +65,8 @@ nvim_lsp.tsserver.setup {
 	on_attach = function(client)
 		client.resolved_capabilities.document_formatting = false
 
-		if not vim.fn.executable('tsc') or not vim.fn.executable('typescript-language-server') then
-			if vim.fn.executable('yarn') then
-				local is_exec_success, _ = pcall(os.execute('yarn global add typescript typescript-language-server'))
-				if not is_exec_success then
-					print('The tsserver dependencies could not be installed')
-				end
-			elseif vim.fn.executable('npm') then
-				local is_exec_success, _ = pcall(os.execute('npm install --global typescript typescript-language-server'))
-				if not is_exec_success then
-					print('The tsserver dependencies could not be installed')
-				end
-			else 
-				error('The tsserver dependencies could not be installed')
-			end
-		end
+		try_global_install('typescript', 'tsc')
+		try_global_install('typescript-language-server')
 	end,
 	cmd = { 'typescript-language-server', '--stdio' },
 	filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
@@ -146,62 +157,20 @@ nvim_lsp.rust_analyzer.setup {
 nvim_lsp.html.setup {
 	capabilities = capabilities,
 	on_attach = function()
-		if not vim.fn.executable('vscode-html-languageserver-bin') then
-			if vim.fn.executable('yarn') then
-				local is_exec_success, _ = pcall(os.execute('yarn global add vscode-html-languageserver-bin'))
-				if not is_exec_success then
-					print('The HTML language server dependencies could not be installed')
-				end
-			elseif vim.fn.executable('npm') then
-				local is_exec_success, _ = pcall(os.execute('npm install --global vscode-html-languageserver-bin'))
-				if not is_exec_success then
-					print('The HTML language server dependencies could not be installed')
-				end
-			else 
-				error('The HTML language server dependencies could not be installed')
-			end
-		end
+		try_global_install('vscode-html-languageserver-bin')
 	end
 }
 
 nvim_lsp.cssls.setup {
 	capabilities = capabilities,
 	on_attach = function()
-		if not vim.fn.executable('vscode-css-languageserver-bin') then
-			if vim.fn.executable('yarn') then
-				local is_exec_success, _ = pcall(os.execute('yarn global add vscode-css-languageserver-bin'))
-				if not is_exec_success then
-					print('The CSS language server dependencies could not be installed')
-				end
-			elseif vim.fn.executable('npm') then
-				local is_exec_success, _ = pcall(os.execute('npm install --global vscode-css-languageserver-bin'))
-				if not is_exec_success then
-					print('The CSS language server dependencies could not be installed')
-				end
-			else 
-				error('The CSS language server dependencies could not be installed')
-			end
-		end
+		try_global_install('vscode-css-languageserver-bin')
 	end
 }
 
 require'lspconfig'.vimls.setup {
 	capabilities = capabilities,
 	on_attach = function()
-		if not vim.fn.executable('vim-language-server') then
-			if vim.fn.executable('yarn') then
-				local is_exec_success, _ = pcall(os.execute('yarn global add vim-language-server'))
-				if not is_exec_success then
-					print('The vimls dependencies could not be installed')
-				end
-			elseif vim.fn.executable('npm') then
-				local is_exec_success, _ = pcall(os.execute('npm install --global vim-language-server'))
-				if not is_exec_success then
-					print('The vimls dependencies could not be installed')
-				end
-			else 
-				error('The vimls dependencies could not be installed')
-			end
-		end
+		try_global_install('vim-language-server')
 	end,
 }

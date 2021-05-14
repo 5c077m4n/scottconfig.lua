@@ -16,7 +16,7 @@ end
 local function init_packer()
 	vim.cmd [[packadd packer.nvim]]
 
-	return require'packer'.startup(
+	return require'packer'.startup({
 		function (use)
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
@@ -78,10 +78,10 @@ local function init_packer()
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,
-		{
+		config = {
 			display = {open_fn = require'packer.util'.float}
 		}
-	)
+	})
 end
 
 local function init_packages()

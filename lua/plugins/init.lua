@@ -24,6 +24,7 @@ local function init_packer()
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
+			-- use 'neoclide/coc.nvim'
 			use {
 				'neovim/nvim-lspconfig',
 				run = ':TSUpdate',

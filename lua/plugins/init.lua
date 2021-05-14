@@ -85,7 +85,6 @@ end
 local function init_packages()
 	require'vimp'
 	require'colorizer'.setup() 
-	require'gitsigns'.setup()
 	require'bufferline'.setup()
 
 	require'plugins.configs.base16' 

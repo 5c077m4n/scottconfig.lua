@@ -23,7 +23,7 @@ nnoremap({'buffer', 'silent'}, '<leader>cr', ':CocRestart<CR>')
 -- Format current buffer.
 map_command('Format', function() cmd [[:call CocAction('format')]] end)
 -- Fold current buffer.
-map_command('', function() cmd [[call CocAction('fold', <f-args>)]] end)
+map_command('Fold', function() cmd [[call CocAction('fold', <f-args>)]] end)
 -- Organize imports of the current buffer.
 map_command('OrgImp', function() cmd [[:call CocAction('runCommand', 'editor.action.organizeImport')]] end)
 

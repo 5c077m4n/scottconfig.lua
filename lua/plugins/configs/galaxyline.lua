@@ -115,10 +115,10 @@ gls.right[5] = {
     ShowLspClient = {
         provider = 'GetLspClient',
         condition = function()
-            local tbl = {['dashboard'] = true, [' '] = true}
-
-            if tbl[vim.bo.filetype] then return false end
-            return true
+			return not ({
+				['dashboard'] = true,
+				[' '] = true,
+			})[vim.bo.filetype]
         end,
         icon = '  ',
         highlight = {colors.grey, colors.bg}

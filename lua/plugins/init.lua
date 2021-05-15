@@ -103,6 +103,7 @@ local function init_packages()
 	require'plugins.configs.nvim-dap'
 	require'plugins.configs.telescope'
 	require'plugins.configs.nvim-comment'
+	-- require'plugins.configs.coc'
 
 	require'mappings.lspsaga'
 	require'mappings.compe'
@@ -112,6 +113,7 @@ local function init_packages()
 	require'mappings.undotree'
 	require'mappings.ranger'
 	require'mappings.nvim-dap'
+	-- require'mappings.coc'
 end
 
 function M.setup()

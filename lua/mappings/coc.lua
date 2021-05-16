@@ -1,4 +1,4 @@
-local cmd = vim.api.nvim_command
+local cmd = vim.cmd
 local nmap = vimp.nmap
 local xmap = vimp.xmap
 local nnoremap = vimp.nnoremap
@@ -21,18 +21,18 @@ nnoremap({'buffer', 'silent'}, '<leader>cc', ':CocList commands<CR>')
 nnoremap({'buffer', 'silent'}, '<leader>cr', ':CocRestart<CR>')
 
 -- Format current buffer.
-map_command('Format', function() cmd [[:call CocAction('format')]] end)
+map_command('Format', function() cmd [[call CocAction('format')]] end)
 -- Fold current buffer.
 map_command('Fold', function() cmd [[call CocAction('fold', <f-args>)]] end)
 -- Organize imports of the current buffer.
-map_command('OrgImp', function() cmd [[:call CocAction('runCommand', 'editor.action.organizeImport')]] end)
+map_command('OrgImp', function() cmd [[call CocAction('runCommand', 'editor.action.organizeImport')]] end)
 
 --- Jest
 -- Run jest for current project
-map_command('Jest', function() cmd [[:call CocAction('runCommand', 'jest.projectTest')]] end)
+map_command('Jest', function() cmd [[call CocAction('runCommand', 'jest.projectTest')]] end)
 -- Run jest for current file
-map_command('JestFile', function() cmd [[:call CocAction('runCommand', 'jest.fileTest', ['%'])]] end)
+map_command('JestFile', function() cmd [[call CocAction('runCommand', 'jest.fileTest', ['%'])]] end)
 -- Run jest for current test
-map_command('JestTest', function() cmd [[:call CocAction('runCommand', 'jest.singleTest')]] end)
+map_command('JestTest', function() cmd [[call CocAction('runCommand', 'jest.singleTest')]] end)
 -- Init jest in current cwd, require global jest command exists
-map_command('JestInit', function() cmd [[:call CocAction('runCommand', 'jest.init')]] end)
+map_command('JestInit', function() cmd [[call CocAction('runCommand', 'jest.init')]] end)

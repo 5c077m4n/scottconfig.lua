@@ -107,7 +107,7 @@ local function init_packages()
 	require'vimrc.plugins.nvim-dap'
 	require'vimrc.plugins.telescope'
 	require'vimrc.plugins.nvim-comment'
-	-- require'vimrc.plugins.configs.coc'
+	-- require'vimrc.plugins.coc'
 end
 
 function M.setup()

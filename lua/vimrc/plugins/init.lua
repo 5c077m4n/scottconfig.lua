@@ -108,16 +108,6 @@ local function init_packages()
 	require'vimrc.plugins.configs.telescope'
 	require'vimrc.plugins.configs.nvim-comment'
 	-- require'vimrc.plugins.configs.coc'
-
-	require'vimrc.mappings.lspsaga'
-	require'vimrc.mappings.compe'
-	require'vimrc.mappings.nvim-tree'
-	require'vimrc.mappings.telescope'
-	require'vimrc.mappings.floaterm'
-	require'vimrc.mappings.undotree'
-	require'vimrc.mappings.ranger'
-	require'vimrc.mappings.nvim-dap'
-	-- require'vimrc.mappings.coc'
 end
 
 function M.setup()

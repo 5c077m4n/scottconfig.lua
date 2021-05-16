@@ -94,19 +94,19 @@ local function init_packages()
 	require'todo-comments'.setup()
 	require'lspkind'.init()
 
-	require'vimrc.plugins.configs.gitsigns'
-	require'vimrc.plugins.configs.base16'
-	require'vimrc.plugins.configs.nvim-treesitter'
-	require'vimrc.plugins.configs.lspconfig'
-	require'vimrc.plugins.configs.lspsaga'
-	require'vimrc.plugins.configs.compe'
-	require'vimrc.plugins.configs.nvim-tree'
-	require'vimrc.plugins.configs.floaterm'
-	require'vimrc.plugins.configs.galaxyline'
-	require'vimrc.plugins.configs.ranger'
-	require'vimrc.plugins.configs.nvim-dap'
-	require'vimrc.plugins.configs.telescope'
-	require'vimrc.plugins.configs.nvim-comment'
+	require'vimrc.plugins.gitsigns'
+	require'vimrc.plugins.base16'
+	require'vimrc.plugins.nvim-treesitter'
+	require'vimrc.plugins.lspconfig'
+	require'vimrc.plugins.lspsaga'
+	require'vimrc.plugins.compe'
+	require'vimrc.plugins.nvim-tree'
+	require'vimrc.plugins.floaterm'
+	require'vimrc.plugins.galaxyline'
+	require'vimrc.plugins.ranger'
+	require'vimrc.plugins.nvim-dap'
+	require'vimrc.plugins.telescope'
+	require'vimrc.plugins.nvim-comment'
 	-- require'vimrc.plugins.configs.coc'
 end
 

@@ -20,6 +20,7 @@ vimp.nnoremap({'silent'}, '<leader>tQ', ':tabonly<CR>')
 vimp.nnoremap({'silent'}, '<leader>t]', ':tabn<CR>')
 vimp.nnoremap({'silent'}, '<leader>t[', ':tabp<CR>')
 vimp.nnoremap({'silent'}, '<leader>tl', ':tabs<CR>')
+vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 
 -- Ctrl+c copys to clipboard
 vimp.vnoremap('<C-c>', '"+y')

@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 
 -- Re-read file when re-entering it
-pcall(function() 
+pcall(function()
 	cmd [[
 	augroup autoread_on_buffer_change
 		autocmd!
@@ -23,12 +23,12 @@ pcall(function()
 	cmd [[
 	augroup highlight_yank
     	autocmd!
-    	autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup = 'IncSearch', timeout = 1000}
+    	autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup = 'IncSearch', timeout = 500}
 	augroup END
 	]]
 end)
 
-pcall(function() 
+pcall(function()
 	cmd [[
 	augroup delete_trailing_spaces_on_save
 		autocmd!

@@ -5,22 +5,22 @@ local utils = require'utils'
 --- jump to prev/next snippet's placeholder
 function _G.tab_complete()
 	if vim.fn.pumvisible() == 1 then
-		return utils.nvim_replace_termcodes'<C-n>'
+		return utils.get_termcode'<C-n>'
 	elseif vim.fn.call('vsnip#available', {1}) == 1 then
-		return utils.nvim_replace_termcodes'<Plug>(vsnip-expand-or-jump)'
+		return utils.get_termcode'<Plug>(vsnip-expand-or-jump)'
 	elseif utils.check_back_space() then
-		return utils.nvim_replace_termcodes'<Tab>'
+		return utils.get_termcode'<Tab>'
 	else
 		return vim.fn['compe#complete']()
 	end
 end
 function _G.s_tab_complete()
 	if vim.fn.pumvisible() == 1 then
-		return utils.nvim_replace_termcodes'<C-p>'
+		return utils.get_termcode'<C-p>'
 	elseif vim.fn.call('vsnip#jumpable', {-1}) == 1 then
-		return utils.nvim_replace_termcodes'<Plug>(vsnip-jump-prev)'
+		return utils.get_termcode'<Plug>(vsnip-jump-prev)'
 	else
-		return utils.nvim_replace_termcodes'<S-Tab>'
+		return utils.get_termcode'<S-Tab>'
 	end
 end
 

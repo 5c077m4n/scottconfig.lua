@@ -34,7 +34,7 @@ function M.check_back_space()
 	end
 end
 
-function M.nvim_replace_termcodes(str)
+function M.get_termcode(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
@@ -42,7 +42,7 @@ function M.clean_extra_spaces()
 	local save_cursor = vim.fn.getpos('.')
 	local old_query = vim.fn.getreg('/')
 
-	vim.api.nvim_command [[silent! %s/\s\+$//e]]
+	vim.cmd [[silent! %s/\s\+$//e]]
 	vim.fn.setpos('.', save_cursor)
 	vim.fn.setreg('/', old_query)
 end

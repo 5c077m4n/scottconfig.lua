@@ -21,7 +21,7 @@ local function try_global_install(package_name, package_alias)
 			if not is_exec_success then
 				print('The package ' .. package_name .. 'could not be installed')
 			end
-		else 
+		else
 			error('Yarn or NPM are needed to use the requested language server')
 		end
 	end

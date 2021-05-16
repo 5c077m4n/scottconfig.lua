@@ -3,8 +3,8 @@ local M = {}
 function M.unload_lua_namespace(prefix)
 	local prefix_with_dot = prefix .. '.'
 
-	for key, value in pairs(package.loaded) do
-		if key == prefix or key:sub(1, #prefix_with_dot) == prefix_with_dot then
+	for module_name, _ in pairs(package.loaded) do
+		if module_name == prefix or string.match(module_name, '^' .. prefix_with_dot) then
 			package.loaded[key] = nil
 		end
 	end

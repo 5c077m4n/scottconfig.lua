@@ -1,4 +1,4 @@
-local coc_utils = require'utils.coc'
+local coc_utils = require'vimrc.utils.coc'
 
 vim.g.coc_global_extensions = coc_utils.get_coc_extenstions()
 

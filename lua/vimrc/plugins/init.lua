@@ -34,6 +34,7 @@ local function init_packer()
 				requires = {{'nvim-lspconfig'}},
 			}
 			use 'hrsh7th/nvim-compe'
+			user 'onsails/lspkind-nvim'
 			use {
 				'lewis6991/gitsigns.nvim',
 				requires = {
@@ -79,7 +80,9 @@ local function init_packer()
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,
 		config = {
-			display = {open_fn = require'packer.util'.float}
+			display = {
+				open_fn = require'packer.util'.float,
+			},
 		}
 	})
 end
@@ -89,6 +92,7 @@ local function init_packages()
 	require'colorizer'.setup()
 	require'bufferline'.setup()
 	require'todo-comments'.setup()
+	require'lspkind'.init()
 
 	require'vimrc.plugins.configs.gitsigns'
 	require'vimrc.plugins.configs.base16'

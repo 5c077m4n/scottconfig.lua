@@ -10,4 +10,10 @@ function M.unload_lua_namespace(prefix)
 	end
 end
 
+function M.reload_vimrc()
+	vimp.unmap_all()
+	require'vimrc.utils.modules'.unload_lua_namespace('vimrc')
+	require'vimrc'
+end
+
 return M

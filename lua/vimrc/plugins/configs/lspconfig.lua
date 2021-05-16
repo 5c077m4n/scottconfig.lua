@@ -118,6 +118,7 @@ nvim_lsp.diagnosticls.setup {
 	}
 }
 
+-- To install server @see https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path..'/bin/'..utils.system_name()..'/lua-language-server'
 

@@ -1,4 +1,4 @@
-local utils = require'utils'
+local utils = require'vimrc.utils'
 
 local o = vim.o
 local g = vim.g

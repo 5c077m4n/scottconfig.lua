@@ -1,6 +1,6 @@
 local M = {}
 
-function M.unload_lua_namespace()
+function M.unload_lua_namespace(prefix)
 	local prefix_with_dot = prefix .. '.'
 
 	for key, value in pairs(package.loaded) do

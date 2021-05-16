@@ -74,7 +74,7 @@ local function init_packer()
 			}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
-	
+
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,
@@ -86,34 +86,34 @@ end
 
 local function init_packages()
 	require'vimp'
-	require'colorizer'.setup() 
+	require'colorizer'.setup()
 	require'bufferline'.setup()
 	require'todo-comments'.setup()
 
-	require'plugins.configs.gitsigns'
-	require'plugins.configs.base16' 
-	require'plugins.configs.nvim-treesitter'
-	require'plugins.configs.lspconfig' 
-	require'plugins.configs.lspsaga'
-	require'plugins.configs.compe'
-	require'plugins.configs.nvim-tree'
-	require'plugins.configs.floaterm'
-	require'plugins.configs.galaxyline' 
-	require'plugins.configs.ranger'
-	require'plugins.configs.nvim-dap'
-	require'plugins.configs.telescope'
-	require'plugins.configs.nvim-comment'
-	-- require'plugins.configs.coc'
+	require'vimrc.plugins.configs.gitsigns'
+	require'vimrc.plugins.configs.base16'
+	require'vimrc.plugins.configs.nvim-treesitter'
+	require'vimrc.plugins.configs.lspconfig'
+	require'vimrc.plugins.configs.lspsaga'
+	require'vimrc.plugins.configs.compe'
+	require'vimrc.plugins.configs.nvim-tree'
+	require'vimrc.plugins.configs.floaterm'
+	require'vimrc.plugins.configs.galaxyline'
+	require'vimrc.plugins.configs.ranger'
+	require'vimrc.plugins.configs.nvim-dap'
+	require'vimrc.plugins.configs.telescope'
+	require'vimrc.plugins.configs.nvim-comment'
+	-- require'vimrc.plugins.configs.coc'
 
-	require'mappings.lspsaga'
-	require'mappings.compe'
-	require'mappings.nvim-tree'
-	require'mappings.telescope' 
-	require'mappings.floaterm'
-	require'mappings.undotree'
-	require'mappings.ranger'
-	require'mappings.nvim-dap'
-	-- require'mappings.coc'
+	require'vimrc.mappings.lspsaga'
+	require'vimrc.mappings.compe'
+	require'vimrc.mappings.nvim-tree'
+	require'vimrc.mappings.telescope'
+	require'vimrc.mappings.floaterm'
+	require'vimrc.mappings.undotree'
+	require'vimrc.mappings.ranger'
+	require'vimrc.mappings.nvim-dap'
+	-- require'vimrc.mappings.coc'
 end
 
 function M.setup()

@@ -1,5 +1,5 @@
 local nvim_lsp = require'lspconfig'
-local utils = require'utils'
+local utils = require'vimrc.utils'
 
 local root_pattern = nvim_lsp.util.root_pattern
 

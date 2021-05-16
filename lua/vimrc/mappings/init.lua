@@ -1,8 +1,8 @@
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', function()
 	vimp.unmap_all()
-	require'plenary'.reload_modules()
-	require'init'
+	require'plenary.reload'.reload_modules('vimrc')
+	require'vimrc'
 end)
 vimp.nnoremap('<leader>3', [[:PackerInstall<CR>]])
 vimp.nnoremap('<leader>4', [[:PackerSync<CR>]])

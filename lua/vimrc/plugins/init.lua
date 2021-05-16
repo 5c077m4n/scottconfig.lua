@@ -34,7 +34,7 @@ local function init_packer()
 				requires = {{'nvim-lspconfig'}},
 			}
 			use 'hrsh7th/nvim-compe'
-			user 'onsails/lspkind-nvim'
+			use 'onsails/lspkind-nvim'
 			use {
 				'lewis6991/gitsigns.nvim',
 				requires = {

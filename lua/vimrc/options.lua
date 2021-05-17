@@ -4,12 +4,13 @@ local o = vim.o
 local g = vim.g
 
 g.mapleader = ' '
+g.maplocalleader = ' '
 g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 
 -- Configure backspace so it acts as it should act
 o.backspace = 'eol,start,indent'
 
-o.updatetime = 300
+o.updatetime = 250
 o.termguicolors = true
 o.ignorecase = true
 o.smartcase = true
@@ -20,8 +21,13 @@ o.shiftwidth = o.tabstop
 o.ai = true
 o.si = true
 o.wrap = true
+-- Toggle paste mode
+o.pastetoggle = '<F3>'
 
 o.completeopt = 'menuone,noselect'
+
+-- Incremental live completion
+o.inccomplete = 'nosplit'
 
 -- Line numbering
 o.number = true

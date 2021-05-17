@@ -2,13 +2,13 @@ local M = {}
 
 local function bootstrap()
 	local fn = vim.fn
-	local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
 		local execute = vim.api.nvim_command
 		local fn = vim.fn
 
-		fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+		fn.system {'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path}
 		execute 'packadd packer.nvim'
 	end
 end
@@ -29,6 +29,7 @@ local function init_packer()
 			use 'kabouzeid/nvim-lspinstall'
 			use 'hrsh7th/nvim-compe'
 			use 'onsails/lspkind-nvim'
+			use 'ray-x/lsp_signature.nvim'
 			use {
 				'lewis6991/gitsigns.nvim',
 				requires = {'nvim-lua/plenary.nvim'}

@@ -1,8 +1,10 @@
-local lspinstall = require'lspinstall'
 local nvim_lsp = require'lspconfig'
+local lspinstall = require'lspinstall'
+local lsp_sig = require'lsp_signature'
 
 local function on_attach(_client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	lsp_sig.on_attach()
 
 	vimp.add_buffer_maps(bufnr, function()
 		local lsp = vim.lsp

@@ -6,6 +6,15 @@ local function on_attach(_client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_sig.on_attach()
 
+	lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+	lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+	lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+	lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+	lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+	lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+	lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+	lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
 	vimp.add_buffer_maps(bufnr, function()
 		local lsp = vim.lsp
 
@@ -29,12 +38,12 @@ local function setup_servers()
 	local servers = lspinstall.installed_servers()
 
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup { on_attach = on_attach }
+		nvim_lsp[server].setup {on_attach = on_attach}
 	end
 end
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function ()
+lspinstall.post_install_hook = function()
 	setup_servers() -- reload installed servers
 	vim.cmd [[bufdo e]] -- this triggers the FileType autocmd that starts the server
 end

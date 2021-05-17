@@ -30,6 +30,7 @@ local function init_packer()
 			use 'hrsh7th/nvim-compe'
 			use 'onsails/lspkind-nvim'
 			use 'ray-x/lsp_signature.nvim'
+			use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
 			use {
 				'lewis6991/gitsigns.nvim',
 				requires = {'nvim-lua/plenary.nvim'}

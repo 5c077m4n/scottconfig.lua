@@ -25,22 +25,13 @@ local function init_packer()
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
 			-- use 'neoclide/coc.nvim'
-			use {
-				'neovim/nvim-lspconfig',
-				run = ':TSUpdate',
-			}
+			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
-			use {
-				'glepnir/lspsaga.nvim',
-				requires = {{'nvim-lspconfig'}},
-			}
 			use 'hrsh7th/nvim-compe'
 			use 'onsails/lspkind-nvim'
 			use {
 				'lewis6991/gitsigns.nvim',
-				requires = {
-					'nvim-lua/plenary.nvim'
-				}
+				requires = {'nvim-lua/plenary.nvim'}
 			}
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
@@ -70,10 +61,7 @@ local function init_packer()
 				branch = 'lua',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
-			use {
-				'francoiscabrol/ranger.vim',
-				requires = {'rbgrouleff/bclose.vim'},
-			}
+			use {'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'}}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
 

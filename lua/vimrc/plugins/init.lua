@@ -29,6 +29,7 @@ local function init_packer()
 				'neovim/nvim-lspconfig',
 				run = ':TSUpdate',
 			}
+			use 'kabouzeid/nvim-lspinstall'
 			use {
 				'glepnir/lspsaga.nvim',
 				requires = {{'nvim-lspconfig'}},

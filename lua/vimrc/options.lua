@@ -27,7 +27,7 @@ o.pastetoggle = '<F3>'
 o.completeopt = 'menuone,noselect'
 
 -- Incremental live completion
-o.inccomplete = 'nosplit'
+o.inccommand = 'nosplit'
 
 -- Line numbering
 o.number = true

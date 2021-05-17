@@ -31,7 +31,7 @@ vimp.nnoremap('0', '^')
 vimp.vnoremap('0', '^')
 
 -- Unsets the last search pattern register by hitting return
-vimp.nnoremap('<CR>', ':noh<CR>')
+vimp.nnoremap('<CR>', ':noh<CR><CR>')
 
 -- Word traversing
 vimp.inoremap('<C-b>', '<C-o>b')

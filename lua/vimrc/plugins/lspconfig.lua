@@ -5,23 +5,28 @@ local function on_attach(_client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	vimp.add_buffer_maps(bufnr, function()
-		vimp.nnoremap({'silent'}, 'gD', function() vim.lsp.buf.declaration() end)
-		vimp.nnoremap({'silent'}, 'gd', function() vim.lsp.buf.definition() end)
-		vimp.nnoremap({'silent'}, 'K', function() vim.lsp.buf.hover() end)
-		vimp.nnoremap({'silent'}, 'gi', function() vim.lsp.buf.implementation() end)
-		vimp.nnoremap({'silent'}, '<C-k>', function() vim.lsp.buf.signature_help() end)
-		vimp.nnoremap({'silent'}, '<leader>gD', function() vim.lsp.buf.type_definition() end)
-		vimp.nnoremap({'silent'}, '<leader>rn', function() vim.lsp.buf.rename() end)
-		vimp.nnoremap({'silent'}, 'gr', function() vim.lsp.buf.references() end)
-		vimp.nnoremap({'silent'}, '<leader>ca', function() vim.lsp.buf.code_action() end)
-		vimp.nnoremap({'silent'}, 'g[', function() vim.lsp.diagnostic.goto_prev() end)
-		vimp.nnoremap({'silent'}, 'g]', function() vim.lsp.diagnostic.goto_next() end)
+		local lsp = vim.lsp
+
+		vimp.nnoremap({'silent'}, 'gD', lsp.buf.declaration)
+		vimp.nnoremap({'silent'}, 'gd', lsp.buf.definition)
+		vimp.nnoremap({'silent'}, 'K', lsp.buf.hover)
+		vimp.nnoremap({'silent'}, 'gi', lsp.buf.implementation)
+		vimp.nnoremap({'silent'}, '<C-k>', lsp.buf.signature_help)
+		vimp.nnoremap({'silent'}, '<leader>gD', lsp.buf.type_definition)
+		vimp.nnoremap({'silent'}, '<leader>rn', lsp.buf.rename)
+		vimp.nnoremap({'silent'}, 'gr', lsp.buf.references)
+		vimp.nnoremap({'silent'}, '<leader>ca', lsp.buf.code_action)
+		vimp.nnoremap({'silent'}, 'g[', lsp.diagnostic.goto_prev)
+		vimp.nnoremap({'silent'}, 'g]', lsp.diagnostic.goto_next)
+
+		vimp.map_command('Format', lsp.buf.formatting)
 	end)
 end
 
 local function setup_servers()
 	lspinstall.setup()
 	local servers = lspinstall.installed_servers()
+
 	for _, server in pairs(servers) do
 		nvim_lsp[server].setup { on_attach = on_attach }
 	end

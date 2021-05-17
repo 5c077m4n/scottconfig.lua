@@ -36,3 +36,12 @@ pcall(function()
 	augroup END
 	]]
 end)
+
+pcall(function()
+	cmd [[
+	augroup recompile_on_init_change
+		autocmd!
+		autocmd BufWritePost init.lua,vimrc.lua PackerCompile
+	augroup END
+	]]
+end)

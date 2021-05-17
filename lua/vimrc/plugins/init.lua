@@ -87,7 +87,6 @@ local function init_packages()
 	require'vimrc.plugins.base16'
 	require'vimrc.plugins.nvim-treesitter'
 	require'vimrc.plugins.lspconfig'
-	require'vimrc.plugins.lspsaga'
 	require'vimrc.plugins.compe'
 	require'vimrc.plugins.nvim-tree'
 	require'vimrc.plugins.floaterm'

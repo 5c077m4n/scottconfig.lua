@@ -31,6 +31,7 @@ local function init_packer()
 			use 'onsails/lspkind-nvim'
 			use 'ray-x/lsp_signature.nvim'
 			use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
+			use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 			use {
 				'lewis6991/gitsigns.nvim',
 				requires = {'nvim-lua/plenary.nvim'}
@@ -97,6 +98,7 @@ local function init_packages()
 	require'vimrc.plugins.nvim-dap'
 	require'vimrc.plugins.telescope'
 	require'vimrc.plugins.nvim-comment'
+	require'vimrc.plugins.trouble'
 	-- require'vimrc.plugins.coc'
 end
 

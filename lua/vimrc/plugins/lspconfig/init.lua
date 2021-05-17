@@ -3,6 +3,8 @@ local lspinstall = require'lspinstall'
 local lsp_sig = require'lsp_signature'
 
 local function on_attach(_client, bufnr)
+	local lsp = vim.lsp
+
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_sig.on_attach()
 
@@ -16,8 +18,6 @@ local function on_attach(_client, bufnr)
 	lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 	vimp.add_buffer_maps(bufnr, function()
-		local lsp = vim.lsp
-
 		vimp.nnoremap({'silent'}, 'gD', lsp.buf.declaration)
 		vimp.nnoremap({'silent'}, 'gd', lsp.buf.definition)
 		vimp.nnoremap({'silent'}, 'K', lsp.buf.hover)

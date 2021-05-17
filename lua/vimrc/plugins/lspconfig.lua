@@ -18,8 +18,7 @@ local function on_attach(_client, bufnr)
 		vimp.nnoremap({'silent'}, '<leader>ca', lsp.buf.code_action)
 		vimp.nnoremap({'silent'}, 'g[', lsp.diagnostic.goto_prev)
 		vimp.nnoremap({'silent'}, 'g]', lsp.diagnostic.goto_next)
-
-		vimp.map_command('Format', lsp.buf.formatting)
+		vimp.nnoremap({'silent'}, '<C-l>', lsp.buf.formatting)
 	end)
 end
 

@@ -23,7 +23,7 @@ local function setup_servers()
 	lspinstall.setup()
 	local servers = lspinstall.installed_servers()
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup { on_attach }
+		nvim_lsp[server].setup { on_attach = on_attach }
 	end
 end
 

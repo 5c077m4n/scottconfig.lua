@@ -21,7 +21,7 @@ local function init_packer()
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
-			use 'siduck76/nvim-base16.lua'
+			use 'shaunsingh/nord.nvim'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
@@ -63,6 +63,7 @@ local function init_packer()
 				branch = 'lua',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
+			use 'folke/which-key.nvim'
 			use {'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'}}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
@@ -84,9 +85,10 @@ local function init_packages()
 	require'bufferline'.setup()
 	require'todo-comments'.setup()
 	require'lspkind'.init()
+	require'which-key'.setup()
+	require'nord'.set()
 
 	require'vimrc.plugins.gitsigns'
-	require'vimrc.plugins.base16'
 	require'vimrc.plugins.nvim-treesitter'
 	require'vimrc.plugins.lspconfig'
 	require'vimrc.plugins.compe'

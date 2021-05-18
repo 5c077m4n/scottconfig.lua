@@ -11,6 +11,7 @@ g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 o.backspace = 'eol,start,indent'
 
 o.updatetime = 250
+o.timeoutlen = 500
 o.termguicolors = true
 o.ignorecase = true
 o.smartcase = true

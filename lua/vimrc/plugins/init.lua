@@ -24,7 +24,6 @@ local function init_packer()
 			use 'siduck76/nvim-base16.lua'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
-			-- use 'neoclide/coc.nvim'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
 			use 'hrsh7th/nvim-compe'
@@ -99,7 +98,6 @@ local function init_packages()
 	require'vimrc.plugins.telescope'
 	require'vimrc.plugins.nvim-comment'
 	require'vimrc.plugins.trouble'
-	-- require'vimrc.plugins.coc'
 end
 
 function M.setup()

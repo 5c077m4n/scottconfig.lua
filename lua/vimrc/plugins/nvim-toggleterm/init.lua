@@ -1,2 +1,2 @@
-require'vimrc.plugins.floaterm.config'
-require'vimrc.plugins.floaterm.commands'
+require'vimrc.plugins.nvim-toggleterm.config'
+require'vimrc.plugins.nvim-toggleterm.commands'

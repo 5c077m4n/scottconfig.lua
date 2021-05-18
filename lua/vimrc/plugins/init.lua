@@ -63,7 +63,6 @@ local function init_packer()
 				branch = 'lua',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
-			use 'folke/which-key.nvim'
 			use {'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'}}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
@@ -85,8 +84,6 @@ local function init_packages()
 	require'bufferline'.setup()
 	require'todo-comments'.setup()
 	require'lspkind'.init()
-	require'which-key'.setup()
-	require'nord'.set()
 
 	require'vimrc.plugins.gitsigns'
 	require'vimrc.plugins.nvim-treesitter'
@@ -100,6 +97,7 @@ local function init_packages()
 	require'vimrc.plugins.telescope'
 	require'vimrc.plugins.nvim-comment'
 	require'vimrc.plugins.trouble'
+	require'vimrc.plugins.theme'
 end
 
 function M.setup()

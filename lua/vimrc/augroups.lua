@@ -45,3 +45,13 @@ pcall(function()
 	augroup END
 	]]
 end)
+
+pcall(function() 
+	cmd [[
+	augroup highlight_cursor_line
+		autocmd!
+		autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+		autocmd WinLeave * setlocal nocursorline
+	augroup END
+	]]
+end)

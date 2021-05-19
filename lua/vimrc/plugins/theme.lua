@@ -1,5 +1,5 @@
 -- 'darker' | 'lighter' | 'oceanic' | 'palenight' | 'deep ocean'
-vim.g.material_style = 'deep ocean'
+vim.g.material_style = 'darker'
 
 require'material'.set()
 require'colorizer'.setup()

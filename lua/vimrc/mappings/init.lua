@@ -1,7 +1,7 @@
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
-vimp.nnoremap('<leader>2', function() require'vimrc.utils.modules'.reload_vimrc() end)
-vimp.nnoremap('<leader>3', function() require'packer'.install() end)
-vimp.nnoremap('<leader>4', function() require'packer'.sync() end)
+vimp.nnoremap('<leader>2', require'vimrc.utils.modules'.reload_vimrc)
+vimp.nnoremap('<leader>3', require'packer'.install)
+vimp.nnoremap('<leader>4', require'packer'.sync)
 
 -- Splits
 vimp.nnoremap('<C-h>', '<C-w>h')
@@ -49,9 +49,8 @@ vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
 vimp.nnoremap('U', '<C-r>')
 
--- Git
+-- Git mergetool
 vimp.nnoremap('<leader>gm', [[:G mergetool<CR>]])
-
 vimp.nnoremap('<leader>gdd', [[:Gvdiffsplit!<CR>]])
 vimp.nnoremap('<leader>gdh', [[:diffget //2<CR>]])
 vimp.nnoremap('<leader>gdl', [[:diffget //3<CR>]])

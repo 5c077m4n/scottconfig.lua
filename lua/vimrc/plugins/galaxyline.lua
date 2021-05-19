@@ -26,7 +26,6 @@ local mode_color = {
 	n = colors.blue,
 	i = colors.green,
 	v = colors.purple,
-	[''] = colors.purple,
 	V = colors.purple,
 	c = colors.magenta,
 	no = colors.blue,
@@ -117,6 +116,7 @@ gls.right[5] = {
         condition = function()
 			return not ({
 				['dashboard'] = true,
+				['toggleterm'] = true,
 				[' '] = true,
 			})[vim.bo.filetype]
         end,

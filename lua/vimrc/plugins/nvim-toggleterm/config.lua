@@ -1,5 +1,5 @@
 require'toggleterm'.setup {
 	open_mapping = [[<F12>]],
-	direction = 'float',
+	direction = 'horizontal',
 	size = 40,
 }

@@ -22,7 +22,7 @@ local function init_packer()
 			use 'tpope/vim-fugitive'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
-			use 'shaunsingh/nord.nvim'
+			use 'marko-cerovac/material.nvim'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'nvim-treesitter/nvim-treesitter'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}

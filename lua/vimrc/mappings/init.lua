@@ -22,6 +22,8 @@ vimp.nnoremap({'silent'}, '<leader>t[', ':tabp<CR>')
 vimp.nnoremap({'silent'}, '<leader>tl', ':tabs<CR>')
 vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 
+-- Ctrl+a selects all file content
+vimp.nnoremap('<C-a>', 'ggVG')
 -- Ctrl+c copys to clipboard
 vimp.vnoremap('<C-c>', '"+y')
 -- Join line does not go one down

@@ -1,5 +1,0 @@
-{
-  "rust-analyzer.server.path": "/home/roee/.cargo/bin/rust-analyzer",
-  "cSpell.userWords": ["consts", "structopt", "wasm"],
-  "cSpell.enabled": false
-}

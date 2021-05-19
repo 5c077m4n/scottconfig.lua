@@ -85,9 +85,7 @@ end
 
 local function init_packages()
 	require'vimp'
-	require'colorizer'.setup()
-	require'bufferline'.setup()
-	require'todo-comments'.setup()
+	require'neogit'.setup {}
 
 	require'vimrc.plugins.gitsigns'
 	require'vimrc.plugins.nvim-treesitter'

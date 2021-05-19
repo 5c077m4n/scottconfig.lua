@@ -1,4 +1,4 @@
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
+-- 'darker' | 'lighter' | 'oceanic' | 'palenight' | 'deep ocean'
+vim.g.material_style = 'deep ocean'
 
-require'nord'.set()
+require'material'.set()

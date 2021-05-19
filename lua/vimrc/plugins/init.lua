@@ -19,6 +19,7 @@ local function init_packer()
 	return require'packer'.startup({
 		function (use)
 			use 'tpope/vim-sensible'
+			use 'tpope/vim-fugitive'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			use 'shaunsingh/nord.nvim'

@@ -18,38 +18,42 @@ local function init_packer()
 
 	return require'packer'.startup({
 		function (use)
+			-- General
 			use 'tpope/vim-sensible'
-			use 'tpope/vim-fugitive'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
+			-- Theme
 			use 'marko-cerovac/material.nvim'
 			use 'norcalli/nvim-colorizer.lua'
+			-- File tree
 			use 'nvim-treesitter/nvim-treesitter'
+			-- LSP
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
 			use 'hrsh7th/nvim-compe'
 			use 'onsails/lspkind-nvim'
 			use 'ray-x/lsp_signature.nvim'
-			use {'RishabhRD/nvim-lsputils', requires = {'RishabhRD/popfix'}}
-			use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
-			use {
-				'lewis6991/gitsigns.nvim',
-				requires = {'nvim-lua/plenary.nvim'}
-			}
+			use {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix'}
+			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+			use 'hrsh7th/vim-vsnip'
+			use 'rafamadriz/friendly-snippets'
+			-- Git
+			use 'tpope/vim-fugitive'
+			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
+			use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
 			use {
 				'nvim-telescope/telescope.nvim',
 				requires = {
-					{'nvim-lua/popup.nvim'},
-					{'nvim-lua/plenary.nvim'},
-					{'sharkdp/fd'},
-					{'BurntSushi/ripgrep'},
+					'nvim-lua/popup.nvim',
+					'nvim-lua/plenary.nvim',
+					'sharkdp/fd',
+					'BurntSushi/ripgrep',
 				},
 			}
 			use 'nvim-telescope/telescope-media-files.nvim'
-			use 'hrsh7th/vim-vsnip'
-			use 'rafamadriz/friendly-snippets'
 			use 'akinsho/nvim-toggleterm.lua'
 			use 'mbbill/undotree'
 			use 'terrortylor/nvim-comment'
@@ -64,7 +68,7 @@ local function init_packer()
 				branch = 'lua',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
-			use {'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'}}
+			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
 
@@ -84,7 +88,6 @@ local function init_packages()
 	require'colorizer'.setup()
 	require'bufferline'.setup()
 	require'todo-comments'.setup()
-	require'lspkind'.init()
 
 	require'vimrc.plugins.gitsigns'
 	require'vimrc.plugins.nvim-treesitter'

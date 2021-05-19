@@ -17,3 +17,6 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# Packer.nvim build file
+packer_compiled.vim

@@ -16,7 +16,7 @@ end
 local function init_packer()
 	vim.cmd [[packadd packer.nvim]]
 
-	return require'packer'.startup({
+	return require'packer'.startup {
 		function (use)
 			-- General
 			use 'tpope/vim-sensible'
@@ -39,9 +39,10 @@ local function init_packer()
 			use 'rafamadriz/friendly-snippets'
 			-- Git
 			use 'tpope/vim-fugitive'
-			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
-			use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
+			use 'tversteeg/registers.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
 			use {
@@ -80,7 +81,7 @@ local function init_packer()
 				open_fn = require'packer.util'.float,
 			},
 		}
-	})
+	}
 end
 
 local function init_packages()

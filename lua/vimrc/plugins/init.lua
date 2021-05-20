@@ -55,6 +55,7 @@ local function init_packer()
 				},
 			}
 			use 'nvim-telescope/telescope-media-files.nvim'
+			use {'phaazon/hop.nvim', as = 'hop'}
 			use 'akinsho/nvim-toggleterm.lua'
 			use 'mbbill/undotree'
 			use 'terrortylor/nvim-comment'
@@ -101,6 +102,7 @@ local function init_packages()
 	require'vimrc.plugins.nvim-comment'
 	require'vimrc.plugins.trouble'
 	require'vimrc.plugins.theme'
+	require'vimrc.plugins.hop'
 end
 
 function M.setup()

@@ -42,7 +42,7 @@ local function init_packer()
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
-			use 'tversteeg/registers.nvim'
+			use 'folke/which-key.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
 			use {
@@ -103,6 +103,7 @@ local function init_packages()
 	require'vimrc.plugins.trouble'
 	require'vimrc.plugins.theme'
 	require'vimrc.plugins.hop'
+	require'vimrc.plugins.which-key'
 end
 
 function M.setup()

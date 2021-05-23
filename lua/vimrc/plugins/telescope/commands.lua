@@ -1,7 +1,7 @@
 local telescope_builtin = require'telescope.builtin'
 
 vimp.nnoremap('<leader>fls', telescope_builtin.find_files)
-vimp.nnoremap('<leader>fgl', telescope_builtin.git_files)
+vimp.nnoremap('<leader>fgs', telescope_builtin.git_files)
 vimp.nnoremap('<leader>fs', telescope_builtin.live_grep)
 vimp.nnoremap('<leader>fb', telescope_builtin.buffers)
 vimp.nnoremap('<leader>fo', telescope_builtin.oldfiles)
@@ -18,7 +18,7 @@ require'which-key'.register {
 			s = '+fuzzy find',
 		},
 		ls = 'File list',
-		gl = 'Git file list',
+		gs = 'Git file list',
 		s = 'Live grep',
 		b = 'Buffer list',
 		o = 'Old files',

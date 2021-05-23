@@ -41,6 +41,8 @@ local function init_packer()
 			use 'tpope/vim-fugitive'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+			-- JSON query
+			use 'gennaro-tedesco/nvim-jqx'
 
 			use 'folke/which-key.nvim'
 			use 'akinsho/nvim-bufferline.lua'

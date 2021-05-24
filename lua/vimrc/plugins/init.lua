@@ -90,9 +90,8 @@ end
 
 local function init_packages()
 	require'vimp'
-	require'neogit'.setup {}
 
-	require'vimrc.plugins.gitsigns'
+	require'vimrc.plugins.git'
 	require'vimrc.plugins.nvim-treesitter'
 	require'vimrc.plugins.lspconfig'
 	require'vimrc.plugins.compe'

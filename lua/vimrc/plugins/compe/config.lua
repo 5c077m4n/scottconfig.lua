@@ -18,7 +18,7 @@ require'compe'.setup {
 		tags = true,
 		spell = true,
 		calc = true,
-		-- Neovim spesific
+		-- Neovim specific
 		nvim_lsp = true,
 		nvim_lua = true,
 		-- External

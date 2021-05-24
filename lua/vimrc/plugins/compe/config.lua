@@ -13,12 +13,15 @@ require'compe'.setup {
 	documentation = true,
 
 	source = {
-		path = true,
 		buffer = true,
+		path = true,
+		tags = true,
+		spell = true,
 		calc = true,
+		-- Neovim spesific
 		nvim_lsp = true,
 		nvim_lua = true,
-		vsnip = true,
-		ultisnips = true,
+		-- External
+		vsnip = true
 	},
 }

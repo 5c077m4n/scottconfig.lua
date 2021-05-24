@@ -1,6 +1,6 @@
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', require'vimrc.utils.modules'.reload_vimrc)
-vimp.nnoremap('<leader>3', require'packer'.install)
+vimp.nnoremap('<leader>3', function() vim.fn.system [[git -C ~/.config/nvim pull --force]] end)
 vimp.nnoremap('<leader>4', require'packer'.sync)
 
 -- Splits

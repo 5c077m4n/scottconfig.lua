@@ -21,9 +21,6 @@ require'bufferline'.setup {
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			return '(' .. count .. ')'
 		end,
-		sort_by = function(buffer_a, buffer_b)
-			return buffer_a.modified > buffer_b.modified
-		end,
 	},
 }
 require'todo-comments'.setup()

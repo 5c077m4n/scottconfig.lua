@@ -8,14 +8,14 @@ local function on_attach(_client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_sig.on_attach()
 
-	-- lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-	-- lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-	-- lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-	-- lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-	-- lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-	-- lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-	-- lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-	-- lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+	lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+	lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+	lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+	lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+	lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+	lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+	lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+	lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({'silent'}, 'gD', lsp.buf.declaration)
@@ -47,5 +47,5 @@ lspinstall.post_install_hook = function()
 	vim.cmd [[bufdo e]] -- this triggers the FileType autocmd that starts the server
 end
 
-require'lspkind'.init()
+require'lspkind'.init() -- Icons on popup
 setup_servers()

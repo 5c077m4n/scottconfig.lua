@@ -25,9 +25,9 @@ vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 -- Ctrl+a selects all file content
 vimp.nnoremap('<C-a>', 'ggVG')
 -- Ctrl+c copys to clipboard
-vimp.vnoremap('<C-c>', '"+y')
+vimp.vnoremap('<C-c>', [["+y]])
 -- Join line does not go one down
-vimp.nnoremap('J', 'mzJ`z')
+vimp.nnoremap('J', [[mzJ`z]])
 -- Remap VIM 0 to first non-blank character
 vimp.nnoremap('0', '^')
 vimp.vnoremap('0', '^')

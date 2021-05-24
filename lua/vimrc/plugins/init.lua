@@ -44,6 +44,7 @@ local function init_packer()
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
 
+			use 'glepnir/dashboard-nvim'
 			use 'folke/which-key.nvim'
 			use 'akinsho/nvim-bufferline.lua'
 			use 'kyazdani42/nvim-tree.lua'
@@ -105,6 +106,7 @@ local function init_packages()
 	require'vimrc.plugins.trouble'
 	require'vimrc.plugins.theme'
 	require'vimrc.plugins.hop'
+	require'vimrc.plugins.dashboard'
 	require'vimrc.plugins.which-key'
 end
 

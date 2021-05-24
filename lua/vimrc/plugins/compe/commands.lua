@@ -3,7 +3,7 @@ local utils = require'vimrc.utils'
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
-local function tab_complete()
+function _G.tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode'<C-n>'
 	elseif vim.fn.call('vsnip#available', {1}) == 1 then
@@ -14,7 +14,7 @@ local function tab_complete()
 		return vim.fn['compe#complete']()
 	end
 end
-local function s_tab_complete()
+function _G.s_tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode'<C-p>'
 	elseif vim.fn.call('vsnip#jumpable', {-1}) == 1 then
@@ -24,7 +24,7 @@ local function s_tab_complete()
 	end
 end
 
-vimp.inoremap('<Tab>', tab_complete)
-vimp.snoremap('<Tab>', tab_complete)
-vimp.inoremap('<S-Tab>', s_tab_complete)
-vimp.snoremap('<S-Tab>', s_tab_complete)
+vimp.inoremap({'expr'}, '<Tab>', [[v:lua._G.tab_complete()]])
+vimp.snoremap({'expr'}, '<Tab>', [[v:lua._G.tab_complete()]])
+vimp.inoremap({'expr'}, '<S-Tab>', [[v:lua._G.s_tab_complete()]])
+vimp.snoremap({'expr'}, '<S-Tab>', [[v:lua._G.s_tab_complete()]])

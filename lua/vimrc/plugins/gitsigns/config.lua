@@ -12,5 +12,5 @@ gitsigns.setup {
 		interval = 800
 	},
 	current_line_blame = true,
-	update_debounce = 100,
+	update_debounce = 500,
 }

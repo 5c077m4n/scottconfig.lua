@@ -25,6 +25,7 @@ local function init_packer()
 			-- Theme
 			use 'marko-cerovac/material.nvim'
 			use 'norcalli/nvim-colorizer.lua'
+			use 'yamatsum/nvim-cursorline'
 			-- File tree
 			use 'nvim-treesitter/nvim-treesitter'
 			-- LSP

@@ -1,4 +1,3 @@
-vim.g.material_style = 'darker' -- 'darker' | 'lighter' | 'oceanic' | 'palenight' | 'deep ocean'
 vim.g.indentLine_fileTypeExclude = {'dashboard'}
 
 vim.cmd [[
@@ -9,7 +8,7 @@ augroup no_tabline_in_dashboard
 augroup END
 ]]
 
-require'material'.set()
+require'onedark'.setup()
 require'colorizer'.setup()
 require'bufferline'.setup {
 	options = {

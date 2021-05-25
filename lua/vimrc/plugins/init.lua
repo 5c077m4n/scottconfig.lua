@@ -113,7 +113,7 @@ function M.setup()
 	bootstrap()
 
 	init_packer()
-	init_packages()
+	pcall(init_packages)
 end
 
 return M

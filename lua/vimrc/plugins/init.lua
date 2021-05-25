@@ -23,7 +23,7 @@ local function init_packer()
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			-- Theme
-			use 'marko-cerovac/material.nvim'
+			use 'navarasu/onedark.nvim'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'yamatsum/nvim-cursorline'
 			-- File tree

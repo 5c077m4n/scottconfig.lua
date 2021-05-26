@@ -59,7 +59,7 @@ local function init_packer()
 			}
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use {'phaazon/hop.nvim', as = 'hop'}
-			use 'numtostr/FTerm.nvim'
+			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'
 			use 'terrortylor/nvim-comment'
 			use 'folke/todo-comments.nvim'

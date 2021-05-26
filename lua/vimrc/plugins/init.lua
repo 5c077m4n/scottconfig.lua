@@ -25,7 +25,7 @@ local function init_packer()
 			-- Theme
 			use 'navarasu/onedark.nvim'
 			use 'norcalli/nvim-colorizer.lua'
-			use 'delphinus/vim-auto-cursorline'
+			use 'yamatsum/nvim-cursorline'
 			use 'folke/todo-comments.nvim'
 			use 'glepnir/dashboard-nvim'
 			use {

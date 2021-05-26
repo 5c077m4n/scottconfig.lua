@@ -25,10 +25,23 @@ local function init_packer()
 			-- Theme
 			use 'navarasu/onedark.nvim'
 			use 'norcalli/nvim-colorizer.lua'
-			use 'yamatsum/nvim-cursorline'
+			use 'delphinus/vim-auto-cursorline'
+			use 'folke/todo-comments.nvim'
+			use 'glepnir/dashboard-nvim'
+			use {
+				'glepnir/galaxyline.nvim',
+				branch = 'main',
+				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			}
+			use {
+				'lukas-reineke/indent-blankline.nvim',
+				branch = 'lua',
+				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			}
 			-- File tree
-			use 'nvim-treesitter/nvim-treesitter'
+			use 'kyazdani42/nvim-tree.lua'
 			-- LSP
+			use 'nvim-treesitter/nvim-treesitter'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
 			use 'hrsh7th/nvim-compe'
@@ -44,10 +57,8 @@ local function init_packer()
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
 
-			use 'glepnir/dashboard-nvim'
 			use 'folke/which-key.nvim'
 			use 'akinsho/nvim-bufferline.lua'
-			use 'kyazdani42/nvim-tree.lua'
 			use {
 				'nvim-telescope/telescope.nvim',
 				requires = {
@@ -62,17 +73,6 @@ local function init_packer()
 			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'
 			use 'terrortylor/nvim-comment'
-			use 'folke/todo-comments.nvim'
-			use {
-				'glepnir/galaxyline.nvim',
-				branch = 'main',
-				requires = {'kyazdani42/nvim-web-devicons', opt = true},
-			}
-			use {
-				'lukas-reineke/indent-blankline.nvim',
-				branch = 'lua',
-				requires = {'kyazdani42/nvim-web-devicons', opt = true},
-			}
 			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
 			use 'mfussenegger/nvim-dap'
 			use 'jbyuki/one-small-step-for-vimkind'
@@ -113,7 +113,10 @@ function M.setup()
 	bootstrap()
 
 	init_packer()
-	pcall(init_packages)
+	local status, err = pcall(init_packages)
+	if not status then
+		print(err)
+	end
 end
 
 return M

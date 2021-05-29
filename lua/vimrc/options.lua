@@ -1,6 +1,6 @@
 local utils = require'vimrc.utils'
 
-local o = vim.o
+local o = vim.opt
 local g = vim.g
 
 g.mapleader = ' '
@@ -8,7 +8,7 @@ g.maplocalleader = ' '
 g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 
 -- Configure backspace so it acts as it should act
-o.backspace = 'eol,start,indent'
+o.backspace = {'eol', 'start', 'indent'}
 
 o.updatetime = 250
 o.timeoutlen = 500
@@ -18,14 +18,14 @@ o.smartcase = true
 o.incsearch = true
 o.history = 5000
 o.tabstop = 4
-o.shiftwidth = o.tabstop
+o.shiftwidth = 4
 o.ai = true
 o.si = true
 o.wrap = true
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
 
-o.completeopt = 'menuone,noselect'
+o.completeopt = {'menuone', 'noselect'}
 
 -- Incremental live completion
 o.inccommand = 'nosplit'
@@ -36,7 +36,7 @@ o.relativenumber = true
 
 o.langmenu = 'en'
 o.wildmenu = true
-o.wildignore = '*.o,*~,*.pyc'
+o.wildignore = {'*.o', '*~', '*.pyc'}
 o.encoding = 'utf8'
 o.hidden = true
 

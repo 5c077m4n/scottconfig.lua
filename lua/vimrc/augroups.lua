@@ -14,7 +14,7 @@ pcall(function()
 	cmd [[
 	augroup last_read_point_on_file_open
 		autocmd!
-		autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+		autocmd BufReadPost * lua require'vimrc.utils'.jump_to_last_visited()
 	augroup END
 	]]
 end)
@@ -32,7 +32,7 @@ pcall(function()
 	cmd [[
 	augroup delete_trailing_spaces_on_save
 		autocmd!
-		autocmd BufWritePre * silent! lua require'utils'.clean_extra_spaces()
+		autocmd BufWritePre * silent! lua require'vimrc.utils'.clean_extra_spaces()
 	augroup END
 	]]
 end)

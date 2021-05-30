@@ -10,6 +10,5 @@ require'gitsigns'.setup {
 	watch_index = {
 		interval = 800
 	},
-	current_line_blame = true,
 	update_debounce = 500,
 }

@@ -33,11 +33,7 @@ local function init_packer()
 				branch = 'main',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
-			use {
-				'lukas-reineke/indent-blankline.nvim',
-				branch = 'lua',
-				requires = 'Yggdroot/indentLine',
-			}
+			use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 			-- File tree
 			use 'kyazdani42/nvim-tree.lua'
 			-- LSP

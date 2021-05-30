@@ -5,8 +5,13 @@ local trouble = require'trouble.providers.telescope'
 telescope.setup {
 	defaults = {
 		vimgrep_arguments = {
-			'ag',
-			'--vimgrep',
+			'rg',
+			'--color=never',
+			'--no-heading',
+			'--with-filename',
+			'--line-number',
+			'--column',
+			'--smart-case',
 		},
 		mappings = {
 			i = { ['<C-t>'] = trouble.open_with_trouble },

@@ -5,12 +5,20 @@ local saga = require'lspsaga'
 
 saga.init_lsp_saga {
 	code_action_keys = {
-		quit = {'q', '<Esc>'},
 		exec = '<CR>',
+		quit = {'q', '<Esc>'},
 	},
 	rename_action_keys = {
-		quit = {'<C-c>', '<Esc>'},
 		exec = '<CR>',
+		quit = {'<C-c>', '<Esc>'},
+	},
+	finder_action_keys = {
+		open = '<CR>',
+		vsplit = '<C-v>',
+		split = '<C-h>',
+		scroll_down = '<C-f>',
+		scroll_up = '<C-b>',
+		quit = {'q', '<Esc>'},
 	},
 	rename_prompt_prefix = '>',
 }

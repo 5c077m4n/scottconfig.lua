@@ -6,7 +6,12 @@ local function on_attach(_client, bufnr)
 	local lsp = vim.lsp
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	lsp_sig.on_attach()
+	lsp_sig.on_attach {
+		bind = true,
+		handler_opts = {
+			border = "single",
+		},
+	}
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({'silent'}, 'gD', lsp.buf.declaration)

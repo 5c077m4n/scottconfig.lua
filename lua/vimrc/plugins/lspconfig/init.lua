@@ -1,7 +1,9 @@
 local nvim_lsp = require'lspconfig'
 local lspinstall = require'lspinstall'
 local lsp_sig = require'lsp_signature'
+local telescope_builtin = require'telescope.builtin'
 local saga = require'lspsaga'
+local which_key = require'which-key'
 
 saga.init_lsp_saga {
 	code_action_keys = {
@@ -42,25 +44,36 @@ local function on_attach(_client, bufnr)
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({'silent'}, 'gD', lsp.buf.declaration)
-		vimp.nnoremap({'silent'}, 'gd', lsp.buf.definition)
+		vimp.nnoremap({'silent'}, 'gd', telescope_builtin.lsp_definitions)
 		vimp.nnoremap({'silent'}, 'gh', require'lspsaga.provider'.lsp_finder)
 		vimp.nnoremap({'silent'}, 'K', require'lspsaga.hover'.render_hover_doc)
-		vimp.nnoremap({'silent'}, '<C-f>', function() 
+		vimp.nnoremap({'silent'}, '<C-f>', function()
 			require'lspsaga.action'.smart_scroll_with_saga(1)
 		end)
-		vimp.nnoremap({'silent'}, '<C-b>', function() 
+		vimp.nnoremap({'silent'}, '<C-b>', function()
 			require'lspsaga.action'.smart_scroll_with_saga(-1)
 		end)
-		vimp.nnoremap({'silent'}, 'gi', lsp.buf.implementation)
+		vimp.nnoremap({'silent'}, 'gi', telescope_builtin.lsp_implementations)
 		vimp.nnoremap({'silent'}, '<leader>gD', lsp.buf.type_definition)
 		vimp.nnoremap({'silent'}, '<leader>rn', require'lspsaga.rename'.rename)
-		vimp.nnoremap({'silent'}, 'gr', lsp.buf.references)
+		vimp.nnoremap({'silent'}, 'gr', telescope_builtin.lsp_references)
 		vimp.nnoremap({'silent'}, 'g[', lsp.diagnostic.goto_prev)
 		vimp.nnoremap({'silent'}, 'g]', lsp.diagnostic.goto_next)
 		vimp.nnoremap({'silent'}, '<leader>l', lsp.buf.formatting)
 		vimp.nnoremap({'silent'}, '<leader>ca', require'lspsaga.codeaction'.code_action)
 		vimp.vnoremap({'silent'}, '<leader>ca', require'lspsaga.codeaction'.range_code_action)
 	end)
+
+	which_key.register({
+		['gD'] = 'Declaration',
+		['gd'] = 'Definition',
+		['gh'] = 'LSP Finder',
+		['K'] = 'Show docs',
+		['gi'] = 'Show implementations',
+		['gr'] = 'Show refs',
+		['<leader>rn'] = 'Param rename',
+		['<leader>l'] = 'Format',
+	}, { buffer = bufnr, silent = true })
 end
 
 local function setup_servers()

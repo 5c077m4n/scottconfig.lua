@@ -50,6 +50,7 @@ local function init_packer()
 			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 			use 'hrsh7th/vim-vsnip'
 			use 'rafamadriz/friendly-snippets'
+			use 'glepnir/lspsaga.nvim'
 			-- Git
 			use 'tpope/vim-fugitive'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}

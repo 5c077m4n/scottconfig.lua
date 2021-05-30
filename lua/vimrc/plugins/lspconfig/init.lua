@@ -12,6 +12,7 @@ saga.init_lsp_saga {
 		exec = '<CR>',
 		quit = {'<C-c>', '<Esc>'},
 	},
+	rename_prompt_prefix = '>',
 	finder_action_keys = {
 		open = '<CR>',
 		vsplit = '<C-v>',
@@ -20,7 +21,12 @@ saga.init_lsp_saga {
 		scroll_up = '<C-b>',
 		quit = {'q', '<Esc>'},
 	},
-	rename_prompt_prefix = '>',
+	code_action_prompt = {
+		enable = true,
+		sign = false,
+		sign_priority = 20,
+		virtual_text = true,
+	},
 }
 
 local function on_attach(_client, bufnr)

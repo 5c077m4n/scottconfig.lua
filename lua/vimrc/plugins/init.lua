@@ -65,6 +65,10 @@ local function init_packer()
 					'BurntSushi/ripgrep',
 				},
 			}
+			use {
+				'rmagatti/session-lens',
+				requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+			}
 			use 'nvim-telescope/telescope-media-files.nvim'
 			use {'phaazon/hop.nvim', as = 'hop'}
 			use 'voldikss/vim-floaterm'

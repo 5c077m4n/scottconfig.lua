@@ -5,9 +5,9 @@ g.onedark_style = 'warmer'
 
 -- indent-blankline config
 g.indent_blankline_use_treesitter = true
+g.indent_blankline_char = '¦'
 g.indent_blankline_show_first_indent_level = false
 g.indent_blankline_show_current_context = true
-vim.cmd [[highlight IndentBlanklineChar guifg=#3f3f3f gui=nocombine]]
 
 vim.cmd [[
 augroup no_tabline_in_dashboard

@@ -36,7 +36,7 @@ local function init_packer()
 			use {
 				'lukas-reineke/indent-blankline.nvim',
 				branch = 'lua',
-				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+				requires = 'Yggdroot/indentLine',
 			}
 			-- File tree
 			use 'kyazdani42/nvim-tree.lua'

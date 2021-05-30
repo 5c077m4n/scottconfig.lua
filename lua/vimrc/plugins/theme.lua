@@ -1,11 +1,13 @@
-vim.g.indentLine_fileTypeExclude = {'dashboard'}
-vim.g.onedark_style = 'warmer'
+local g = vim.g
+
+g.indentLine_fileTypeExclude = {'dashboard'}
+g.onedark_style = 'warmer'
 
 -- indent-blankline config
-vim.g.indent_blankline_use_treesitter = true
-vim.g.indent_blankline_char = '¦'
-vim.g.indent_blankline_show_first_indent_level = false
-vim.g.indent_blankline_show_current_context = true
+g.indent_blankline_use_treesitter = true
+g.indent_blankline_show_first_indent_level = false
+g.indent_blankline_show_current_context = true
+vim.cmd [[highlight IndentBlanklineChar guifg=#3f3f3f gui=nocombine]]
 
 vim.cmd [[
 augroup no_tabline_in_dashboard
@@ -24,7 +26,7 @@ require'bufferline'.setup {
 		mappings = false,
 		offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory", text_align = "left"}},
 		diagnostics = 'nvim_lsp',
-		diagnostics_indicator = function(count, level, diagnostics_dict, context)
+		diagnostics_indicator = function(count, _level, _diagnostics_dict, _context)
 			return '(' .. count .. ')'
 		end,
 	},

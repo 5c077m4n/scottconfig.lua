@@ -8,7 +8,7 @@ require'gitsigns'.setup {
 		changedelete = {hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn'},
 	},
 	watch_index = {
-		interval = 800
+		interval = 800,
 	},
 	update_debounce = 500,
 }

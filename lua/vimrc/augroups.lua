@@ -46,7 +46,7 @@ pcall(function()
 	]]
 end)
 
-pcall(function() 
+pcall(function()
 	cmd [[
 	augroup highlight_cursor_line
 		autocmd!

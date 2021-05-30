@@ -36,7 +36,7 @@ local function on_attach(_client, bufnr)
 	lsp_sig.on_attach {
 		bind = true,
 		handler_opts = {
-			border = "single",
+			border = 'single',
 		},
 	}
 

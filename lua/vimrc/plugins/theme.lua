@@ -1,5 +1,5 @@
 vim.g.indentLine_fileTypeExclude = {'dashboard'}
-vim.g.onedark_style = 'warm'
+vim.g.onedark_style = 'warmer'
 
 vim.cmd [[
 augroup no_tabline_in_dashboard

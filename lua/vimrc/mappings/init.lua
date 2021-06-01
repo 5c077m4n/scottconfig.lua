@@ -1,10 +1,10 @@
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', require'vimrc.utils.modules'.reload_vimrc)
 vimp.nnoremap('<leader>3', function()
-	vim.fn.system [[git -C ~/.config/nvim pull --force]] 
+	vim.fn.system [[git -C ~/.config/nvim pull --force]]
 	print('Neovim config updated successfully!')
 end)
-vimp.nnoremap('<leader>4', require'vimrc.utils'.run_in_modifiable_only(require'packer'.sync))
+vimp.nnoremap('<leader>4', require'packer'.sync)
 
 -- Splits
 vimp.nnoremap('<C-h>', '<C-w>h')
@@ -36,7 +36,7 @@ vimp.nnoremap('0', '^')
 vimp.vnoremap('0', '^')
 
 -- Unsets the last search pattern register by hitting return
-vimp.nnoremap('<CR>', ':noh<CR><CR>')
+vimp.nnoremap({'silent'}, '<CR>', ':nohlsearch<CR><CR>')
 
 -- Word traversing
 vimp.inoremap('<C-b>', '<C-o>b')

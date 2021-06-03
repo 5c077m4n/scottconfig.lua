@@ -1,3 +1,3 @@
 local hop = require'hop'
 
-vimp.nnoremap('hw', hop.hint_words)
+vimp.nnoremap('F', hop.hint_words)

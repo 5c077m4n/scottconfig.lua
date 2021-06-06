@@ -79,9 +79,12 @@ end
 local function setup_servers()
 	lspinstall.setup()
 	local servers = lspinstall.installed_servers()
+	if #servers == 0 then
+		servers = {'bash', 'css', 'graphql', 'html', 'lua', 'rust', 'tailwindcss', 'typescript', 'vim', 'yaml'}
+	end
 
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup {on_attach = on_attach}
+		nvim_lsp[server].setup { on_attach = on_attach }
 	end
 end
 

@@ -108,6 +108,7 @@ local function init_packages()
 	require'vimrc.plugins.hop'
 	require'vimrc.plugins.dashboard'
 	require'vimrc.plugins.which-key'
+	require'vimrc.plugins.session'
 end
 
 function M.setup()

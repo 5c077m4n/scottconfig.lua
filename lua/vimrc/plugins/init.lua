@@ -27,7 +27,6 @@ local function init_packer()
 			use 'norcalli/nvim-colorizer.lua'
 			use 'yamatsum/nvim-cursorline'
 			use 'folke/todo-comments.nvim'
-			use 'glepnir/dashboard-nvim'
 			use {
 				'glepnir/galaxyline.nvim',
 				branch = 'main',
@@ -106,7 +105,6 @@ local function init_packages()
 	require'vimrc.plugins.trouble'
 	require'vimrc.plugins.theme'
 	require'vimrc.plugins.hop'
-	require'vimrc.plugins.dashboard'
 	require'vimrc.plugins.which-key'
 	require'vimrc.plugins.session'
 end

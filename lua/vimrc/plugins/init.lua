@@ -39,17 +39,20 @@ local function init_packer()
 			use 'nvim-treesitter/nvim-treesitter'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
-			use 'hrsh7th/nvim-compe'
 			use 'onsails/lspkind-nvim'
 			use 'ray-x/lsp_signature.nvim'
 			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-			use 'hrsh7th/vim-vsnip'
-			use 'rafamadriz/friendly-snippets'
 			use 'glepnir/lspsaga.nvim'
+			-- Code snippets
+			use {
+				'hrsh7th/nvim-compe',
+				requires = {'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets'},
+				opt = true,
+			}
 			-- Git
 			use 'tpope/vim-fugitive'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
-			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', disable = true}
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
 
@@ -74,9 +77,10 @@ local function init_packer()
 			use 'mbbill/undotree'
 			use 'terrortylor/nvim-comment'
 			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
+			-- Debugging
 			use 'mfussenegger/nvim-dap'
-			use 'jbyuki/one-small-step-for-vimkind'
-
+			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap'} -- lua debugger
+			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
 		end,

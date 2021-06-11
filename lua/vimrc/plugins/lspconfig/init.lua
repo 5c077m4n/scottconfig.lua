@@ -98,6 +98,5 @@ lspinstall.post_install_hook = function()
 	vim.cmd [[bufdo e]] -- this triggers the FileType autocmd that starts the server
 end
 
-vim.cmd [[packadd lspkind]]
 require'lspkind'.init() -- Icons in autocomplete popup
 setup_servers()

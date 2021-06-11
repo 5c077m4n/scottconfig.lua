@@ -30,7 +30,7 @@ local function init_packer()
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
-			use {'onsails/lspkind-nvim', opt = true}
+			use 'onsails/lspkind-nvim'
 			-- File tree
 			use 'kyazdani42/nvim-tree.lua'
 			-- LSP

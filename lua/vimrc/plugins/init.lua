@@ -5,11 +5,8 @@ local function bootstrap()
 	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
-		local execute = vim.api.nvim_command
-		local fn = vim.fn
-
-		fn.system {'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path}
-		execute 'packadd packer.nvim'
+		vim.fn.system {'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path}
+		vim.cmd [[packadd packer.nvim]]
 	end
 end
 
@@ -32,14 +29,14 @@ local function init_packer()
 				branch = 'main',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
-			use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+			use {'onsails/lspkind-nvim', opt = true}
 			-- File tree
 			use 'kyazdani42/nvim-tree.lua'
 			-- LSP
 			use 'nvim-treesitter/nvim-treesitter'
 			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
 			use 'kabouzeid/nvim-lspinstall'
-			use 'onsails/lspkind-nvim'
 			use 'ray-x/lsp_signature.nvim'
 			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 			use 'glepnir/lspsaga.nvim'
@@ -52,7 +49,6 @@ local function init_packer()
 			-- Git
 			use 'tpope/vim-fugitive'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
-			use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', disable = true}
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
 

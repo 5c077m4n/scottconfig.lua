@@ -31,8 +31,12 @@ saga.init_lsp_saga {
 	},
 }
 
-local function on_attach(_client, bufnr)
+local function on_attach(client, bufnr)
 	local lsp = vim.lsp
+
+	if client.config.flags then
+		client.config.flags.allow_incremental_sync = true
+	end
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_sig.on_attach {

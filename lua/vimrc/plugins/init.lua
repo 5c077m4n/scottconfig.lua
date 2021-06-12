@@ -75,7 +75,7 @@ local function init_packer()
 			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
 			-- Debugging
 			use {'mfussenegger/nvim-dap', opt = true}
-			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap', opt = true} -- lua debugger
+			use {'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap', opt = true}
 			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}
@@ -99,7 +99,6 @@ local function init_packages()
 	require'vimrc.plugins.terminal'
 	require'vimrc.plugins.galaxyline'
 	require'vimrc.plugins.ranger'
-	require'vimrc.plugins.nvim-dap'
 	require'vimrc.plugins.telescope'
 	require'vimrc.plugins.nvim-comment'
 	require'vimrc.plugins.trouble'

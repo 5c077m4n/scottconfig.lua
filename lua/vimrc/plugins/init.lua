@@ -29,6 +29,7 @@ local function init_packer()
 				branch = 'main',
 				requires = {'kyazdani42/nvim-web-devicons', opt = true},
 			}
+			use 'akinsho/nvim-bufferline.lua'
 			use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 			use 'onsails/lspkind-nvim'
 			-- File tree
@@ -53,7 +54,6 @@ local function init_packer()
 			use 'gennaro-tedesco/nvim-jqx'
 
 			use 'folke/which-key.nvim'
-			use 'akinsho/nvim-bufferline.lua'
 			use {
 				'nvim-telescope/telescope.nvim',
 				requires = {
@@ -67,7 +67,7 @@ local function init_packer()
 				'rmagatti/session-lens',
 				requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
 			}
-			use 'nvim-telescope/telescope-media-files.nvim'
+			use {'nvim-telescope/telescope-media-files.nvim', requires = 'nvim-telescope/telescope.nvim'}
 			use {'phaazon/hop.nvim', as = 'hop'}
 			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'

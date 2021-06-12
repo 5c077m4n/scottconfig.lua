@@ -1,4 +1,5 @@
 vim.cmd [[packadd vim-vsnip]]
+vim.cmd [[packadd friendly-snippets]]
 
 require'compe'.setup {
 	enabled = true,

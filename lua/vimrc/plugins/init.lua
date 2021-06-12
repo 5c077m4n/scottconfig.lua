@@ -74,8 +74,8 @@ local function init_packer()
 			use 'terrortylor/nvim-comment'
 			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
 			-- Debugging
-			use 'mfussenegger/nvim-dap'
-			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap'} -- lua debugger
+			use {'mfussenegger/nvim-dap', opt = true}
+			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap', opt = true} -- lua debugger
 			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

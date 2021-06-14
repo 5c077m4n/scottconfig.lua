@@ -70,6 +70,7 @@ local function init_packer()
 			use {'phaazon/hop.nvim', as = 'hop'}
 			use 'voldikss/vim-floaterm'
 			use 'mbbill/undotree'
+			use 'sbdchd/neoformat'
 			use 'terrortylor/nvim-comment'
 			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
 			-- Debugging

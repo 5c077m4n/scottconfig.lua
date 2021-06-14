@@ -31,9 +31,6 @@ saga.init_lsp_saga {
 	},
 }
 
-vimp.nnoremap({'silent'}, '<leader>l', ':Neoformat<CR>')
-vimp.vnoremap({'silent'}, '<leader>l', ':Neoformat! ' .. vim.bo.filetype .. '<CR>')
-
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 
@@ -68,6 +65,9 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({'silent', 'override'}, 'g]', lsp.diagnostic.goto_next)
 		vimp.nnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.code_action)
 		vimp.vnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.range_code_action)
+
+		vimp.nnoremap({'silent'}, '<leader>l', ':Neoformat<CR>')
+		vimp.vnoremap({'silent'}, '<leader>l', ':Neoformat! ' .. vim.bo.filetype .. '<CR>')
 	end)
 
 	which_key.register({
@@ -78,6 +78,7 @@ local function on_attach(client, bufnr)
 		['gi'] = 'Show implementations',
 		['gr'] = 'Show refs',
 		['<leader>rn'] = 'Param rename',
+		['<leader>l'] = 'Format',
 	}, { buffer = bufnr, silent = true })
 end
 

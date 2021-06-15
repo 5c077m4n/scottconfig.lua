@@ -1,13 +1,13 @@
-vim.g.tokyonight_style = 'night'
-vim.g.tokyonight_sidebars = {'qf', 'vista_kind', 'terminal', 'packer'}
+vim.g.neon_style = 'dark'
 vim.cmd [[
 try
-	colorscheme tokyonight
+	colorscheme neon
 catch /^Vim\%((\a\+)\)\=:E185/
 	colorscheme default
 	set background=dark
 endtry
 ]]
+
 vim.cmd [[
 augroup no_tabline_in_dashboard
 	autocmd!

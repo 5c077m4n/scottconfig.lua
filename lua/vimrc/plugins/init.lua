@@ -20,7 +20,7 @@ local function init_packer()
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			-- Theme
-			use 'folke/tokyonight.nvim'
+			use 'rafamadriz/neon'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'folke/todo-comments.nvim'
 			use {

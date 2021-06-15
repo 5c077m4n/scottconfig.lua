@@ -1,4 +1,11 @@
-vim.cmd [[colorscheme monokai]]
+vim.cmd [[
+try
+	colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+	colorscheme default
+	set background=dark
+endtry
+]]
 vim.cmd [[
 augroup no_tabline_in_dashboard
 	autocmd!

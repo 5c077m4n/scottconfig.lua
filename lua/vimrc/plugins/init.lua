@@ -20,9 +20,8 @@ local function init_packer()
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			-- Theme
-			use 'navarasu/onedark.nvim'
+			use 'tanvirtin/monokai.nvim'
 			use 'norcalli/nvim-colorizer.lua'
-			use 'yamatsum/nvim-cursorline'
 			use 'folke/todo-comments.nvim'
 			use {
 				'glepnir/galaxyline.nvim',

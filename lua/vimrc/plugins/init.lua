@@ -75,6 +75,7 @@ local function init_packer()
 			-- Debugging
 			use {'mfussenegger/nvim-dap', opt = true}
 			use {'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap', opt = true}
+			use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}, opt = true}
 			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

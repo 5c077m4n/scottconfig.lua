@@ -1,7 +1,4 @@
-local g = vim.g
-
-g.onedark_style = 'warmer'
-
+vim.cmd [[colorscheme monokai]]
 vim.cmd [[
 augroup no_tabline_in_dashboard
 	autocmd!
@@ -10,12 +7,10 @@ augroup no_tabline_in_dashboard
 augroup END
 ]]
 
-require'onedark'.setup()
 require'colorizer'.setup()
 require'bufferline'.setup {
 	options = {
 		numbers = 'both',
-		separator_style = 'slant',
 		mappings = false,
 		offsets = {{filetype = 'NvimTree', text = 'File Explorer', highlight = 'Directory', text_align = 'left'}},
 		diagnostics = 'nvim_lsp',

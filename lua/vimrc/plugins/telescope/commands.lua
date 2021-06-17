@@ -11,6 +11,7 @@ vimp.nnoremap('<leader>fc', telescope_builtin.git_commits)
 vimp.nnoremap('<leader>fS', session_lens.search_session)
 vimp.nnoremap('<leader>ffc', telescope_builtin.git_bcommits)
 vimp.nnoremap('<leader>ffs', telescope_builtin.current_buffer_fuzzy_find)
+vimp.nnoremap('<leader>ffS', telescope_builtin.grep_string)
 vimp.nnoremap('<leader>fft', telescope_builtin.filetypes)
 
 require'which-key'.register {

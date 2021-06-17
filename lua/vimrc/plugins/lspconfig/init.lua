@@ -47,8 +47,10 @@ local function on_attach(client, bufnr)
 	}
 
 	vimp.add_buffer_maps(bufnr, function()
-		vimp.nnoremap({'silent', 'override'}, 'gD', lsp.buf.declaration)
 		vimp.nnoremap({'silent', 'override'}, 'gd', telescope_builtin.lsp_definitions)
+		vimp.nnoremap({'silent', 'override'}, 'gD', telescope_builtin.lsp_dynamic_workspace_symbols)
+		vimp.nnoremap({'silent', 'override'}, 'gs', telescope_builtin.lsp_document_symbols)
+		vimp.nnoremap({'silent', 'override'}, 'gS', telescope_builtin.lsp_workspace_symbols)
 		vimp.nnoremap({'silent', 'override'}, 'gh', require'lspsaga.provider'.lsp_finder)
 		vimp.nnoremap({'silent', 'override'}, 'K', require'lspsaga.hover'.render_hover_doc)
 		vimp.nnoremap({'silent', 'override'}, '<C-f>', function()

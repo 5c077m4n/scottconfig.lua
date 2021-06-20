@@ -68,8 +68,8 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.code_action)
 		vimp.vnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.range_code_action)
 
-		vimp.nnoremap({'silent', 'override'}, '<leader>l', ':Neoformat | :e!<CR>')
-		vimp.vnoremap({'silent', 'override'}, '<leader>l', ':Neoformat! ' .. vim.bo.filetype .. ' | :e!<CR>')
+		vimp.nnoremap({'silent', 'override'}, '<leader>l', ':Neoformat | :w | :e<CR>')
+		vimp.vnoremap({'silent', 'override'}, '<leader>l', ':Neoformat! ' .. vim.bo.filetype .. ' | :w | :e<CR>')
 	end)
 
 	which_key.register({

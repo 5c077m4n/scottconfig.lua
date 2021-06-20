@@ -22,6 +22,7 @@ require'which-key'.register {
 			c = '+commit list',
 			s = '+fuzzy find',
 			t = '+filetypes',
+			S = '+string under cursor',
 		},
 		ls = 'File list',
 		gs = 'Git file list',

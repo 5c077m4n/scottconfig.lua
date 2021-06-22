@@ -32,6 +32,13 @@ saga.init_lsp_saga {
 	},
 }
 lsp_status.register_progress()
+lsp_status.config {
+	indicator_errors = 'E',
+	indicator_warnings = 'W',
+	indicator_info = 'i',
+	indicator_hint = '?',
+	indicator_ok = 'Ok',
+}
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp

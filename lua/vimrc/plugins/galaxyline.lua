@@ -1,7 +1,6 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
-local lsp_status = require'lsp-status'.status
-local lsp_progress = require'lsp-status'.status_progress
+local get_lsp_status = require'lsp-status'.status
 local trim = require'vimrc.utils'.trim
 
 local gls = gl.section
@@ -107,38 +106,10 @@ gls.left[6] = {
 }
 
 gls.right[1] = {
-    DiagnosticError = {
-		provider = 'DiagnosticError',
-		icon = '  ',
-		highlight = {colors.error_red, colors.bg},
-	},
-}
-gls.right[2] = {
-	DiagnosticWarn = {
-		provider = 'DiagnosticWarn',
-		icon = '  ',
-		highlight = {colors.orange, colors.bg},
-	},
-}
-gls.right[3] = {
-    DiagnosticHint = {
-		provider = 'DiagnosticHint',
-		icon = '  ',
-		highlight = {colors.vivid_blue, colors.bg},
-	},
-}
-gls.right[4] = {
-	DiagnosticInfo = {
-		provider = 'DiagnosticInfo',
-		icon = '  ',
-		highlight = {colors.info_yellow, colors.bg},
-	},
-}
-gls.right[5] = {
     ShowLspClient = {
         provider = function()
-			local progress = lsp_progress()
-			return trim(progress)
+			local status_display = get_lsp_status()
+			return trim(status_display)
 		end,
         condition = function()
 			return not ({
@@ -149,10 +120,10 @@ gls.right[5] = {
         end,
         separator = '  ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg},
+		highlight = {colors.vivid_blue, colors.bg},
     }
 }
-gls.right[6] = {
+gls.right[2] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = '  ',
@@ -160,7 +131,7 @@ gls.right[6] = {
         highlight = {colors.grey, colors.bg}
     }
 }
-gls.right[7] = {
+gls.right[3] = {
     PerCent = {
         provider = 'LinePercent',
         separator = ' ',
@@ -168,7 +139,7 @@ gls.right[7] = {
         highlight = {colors.grey, colors.bg}
     }
 }
-gls.right[8] = {
+gls.right[4] = {
     Tabstop = {
         provider = function()
             return 'Spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth') .. ' '
@@ -179,7 +150,7 @@ gls.right[8] = {
         highlight = {colors.grey, colors.bg}
     }
 }
-gls.right[9] = {
+gls.right[5] = {
     BufferType = {
         provider = 'FileTypeName',
         condition = condition.hide_in_width,
@@ -188,7 +159,7 @@ gls.right[9] = {
         highlight = {colors.grey, colors.bg}
     }
 }
-gls.right[10] = {
+gls.right[6] = {
     FileEncode = {
         provider = 'FileEncode',
         condition = condition.hide_in_width,
@@ -197,7 +168,7 @@ gls.right[10] = {
         highlight = {colors.grey, colors.bg}
     }
 }
-gls.right[11] = {
+gls.right[7] = {
     Space = {
         provider = function() return ' ' end,
         separator = ' ',
@@ -214,6 +185,15 @@ gls.short_line_left[1] = {
     }
 }
 gls.short_line_left[2] = {
-    SFileName = {provider = 'SFileName', condition = condition.buffer_not_empty, highlight = {colors.grey, colors.bg}}
+    SFileName = {
+		provider = 'SFileName',
+		condition = condition.buffer_not_empty,
+		highlight = {colors.grey, colors.bg},
+	},
 }
-gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}
+gls.short_line_right[1] = {
+	BufferIcon = {
+		provider = 'BufferIcon',
+		highlight = {colors.grey, colors.bg},
+	},
+}

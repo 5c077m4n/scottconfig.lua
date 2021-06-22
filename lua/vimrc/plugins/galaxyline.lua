@@ -1,7 +1,7 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
 local lsp_status = require'lsp-status'.status
-local utils = require'vimrc.utils'.trim
+local trim = require'vimrc.utils'.trim
 
 local gls = gl.section
 

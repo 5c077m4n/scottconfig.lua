@@ -1,7 +1,7 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
-local lspclient = require'galaxyline.provider_lsp'
-local lspstatus = require'vimrc.utils.lsp'.lsp_progress
+local lsp_client = require'galaxyline.provider_lsp'.get_lsp_client
+local lsp_progress = require'vimrc.utils.lsp'.lsp_progress
 
 local gls = gl.section
 
@@ -116,7 +116,7 @@ gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', h
 gls.right[5] = {
     ShowLspClient = {
         provider = function()
-			return lspstatus() .. ' ' .. lspclient.get_lsp_client()
+			return lsp_progress() .. ' ' .. lsp_client()
 		end,
         condition = function()
 			return not ({

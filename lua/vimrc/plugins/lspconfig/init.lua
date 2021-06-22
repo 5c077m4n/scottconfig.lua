@@ -3,6 +3,7 @@ local lspinstall = require'lspinstall'
 local lsp_sig = require'lsp_signature'
 local telescope_builtin = require'telescope.builtin'
 local saga = require'lspsaga'
+local lsp_status = require'lsp-status'
 local which_key = require'which-key'
 
 saga.init_lsp_saga {
@@ -30,13 +31,10 @@ saga.init_lsp_saga {
 		virtual_text = true,
 	},
 }
+lsp_status.register_progress()
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
-
-	if client.config.flags then
-		client.config.flags.allow_incremental_sync = true
-	end
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	lsp_sig.on_attach {
@@ -72,6 +70,8 @@ local function on_attach(client, bufnr)
 		vimp.vnoremap({'silent', 'override'}, '<leader>l', ':Neoformat! ' .. vim.bo.filetype .. ' | :w | :e<CR>')
 	end)
 
+	lsp_status.on_attach(client, bufnr)
+
 	which_key.register({
 		['gD'] = 'Declaration',
 		['gd'] = 'Definition',
@@ -92,7 +92,10 @@ local function setup_servers()
 	end
 
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup { on_attach = on_attach }
+		nvim_lsp[server].setup {
+			on_attach = on_attach,
+			capabilities = lsp_status.capabilities,
+		}
 	end
 end
 

@@ -33,6 +33,7 @@ saga.init_lsp_saga {
 }
 lsp_status.register_progress()
 lsp_status.config {
+	status_symbol = '',
 	indicator_errors = 'E',
 	indicator_warnings = 'W',
 	indicator_info = 'i',

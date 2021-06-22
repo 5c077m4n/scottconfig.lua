@@ -105,15 +105,35 @@ gls.left[6] = {
 }
 
 gls.right[1] = {
-    DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.error_red, colors.bg}}
+    DiagnosticError = {
+		provider = 'DiagnosticError',
+		icon = '  ',
+		highlight = {colors.error_red, colors.bg},
+	},
 }
-gls.right[2] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+gls.right[2] = {
+	DiagnosticWarn = {
+		provider = 'DiagnosticWarn',
+		icon = '  ',
+		highlight = {colors.orange, colors.bg},
+	},
+}
 gls.right[3] = {
-    DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.vivid_blue, colors.bg}}
+    DiagnosticHint = {
+		provider = 'DiagnosticHint',
+		icon = '  ',
+		highlight = {colors.vivid_blue, colors.bg},
+	},
 }
-gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+gls.right[4] = {
+	DiagnosticInfo = {
+		provider = 'DiagnosticInfo',
+		icon = '  ',
+		highlight = {colors.info_yellow, colors.bg},
+	},
+}
 gls.right[5] = {
-    LeftEnd = {
+    ShowLspClient = {
         provider = lsp_status,
         condition = function()
 			return not ({
@@ -122,8 +142,7 @@ gls.right[5] = {
 				[' '] = true,
 			})[vim.bo.filetype]
         end,
-        icon = '  ',
-        -- highlight = {colors.grey, colors.bg}
+        highlight = {colors.grey, colors.bg},
     }
 }
 gls.right[6] = {

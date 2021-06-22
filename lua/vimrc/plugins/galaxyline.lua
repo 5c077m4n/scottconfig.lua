@@ -1,5 +1,8 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
+local lspclient = require'galaxyline.provider_lsp'
+local lspstatus = require'vimrc.utils.lsp'.lsp_progress
+
 local gls = gl.section
 
 local colors = {
@@ -112,7 +115,9 @@ gls.right[3] = {
 gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
 gls.right[5] = {
     ShowLspClient = {
-        provider = 'GetLspClient',
+        provider = function()
+			return lspstatus() .. ' ' .. lspclient.get_lsp_client()
+		end,
         condition = function()
 			return not ({
 				['dashboard'] = true,

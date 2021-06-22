@@ -116,7 +116,13 @@ gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', h
 gls.right[5] = {
     ShowLspClient = {
         provider = function()
-			return lsp_progress() .. ' ' .. lsp_client()
+			local progress_sign = lsp_progress()
+			local client_data = lsp_client()
+
+			if progress_sign then
+				return progress_sign .. ' ' .. client_data
+			end
+			return client_data
 		end,
         condition = function()
 			return not ({

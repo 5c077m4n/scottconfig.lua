@@ -1,6 +1,7 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
 local lsp_status = require'lsp-status'.status
+local lsp_progress = require'lsp-status'.get_lsp_progress
 local trim = require'vimrc.utils'.trim
 
 local gls = gl.section
@@ -136,7 +137,8 @@ gls.right[4] = {
 gls.right[5] = {
     ShowLspClient = {
         provider = function()
-			return trim(lsp_status())
+			local progress = lsp_progress()
+			return trim(progress)
 		end,
         condition = function()
 			return not ({

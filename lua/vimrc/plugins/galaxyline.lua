@@ -113,7 +113,7 @@ gls.right[3] = {
 }
 gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
 gls.right[5] = {
-    ShowLspClient = {
+    LeftEnd = {
         provider = lsp_status,
         condition = function()
 			return not ({
@@ -123,7 +123,7 @@ gls.right[5] = {
 			})[vim.bo.filetype]
         end,
         icon = '  ',
-        highlight = {colors.grey, colors.bg}
+        -- highlight = {colors.grey, colors.bg}
     }
 }
 gls.right[6] = {

@@ -23,7 +23,7 @@ local colors = {
     light_blue = '#9CDCFE',
     red = '#D16969',
     error_red = '#F44747',
-    info_yellow = '#FFCC66'
+    info_yellow = '#FFCC66',
 }
 local mode_color = {
 	n = colors.blue,
@@ -44,7 +44,7 @@ local mode_color = {
 	rm = colors.cyan,
 	['r?'] = colors.cyan,
 	['!'] = colors.blue,
-	t = colors.blue
+	t = colors.blue,
 }
 gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
 
@@ -59,8 +59,8 @@ gls.left[1] = {
 			end
             return '▊ '
         end,
-        highlight = {colors.red, colors.bg}
-    }
+        highlight = {colors.red, colors.bg},
+    },
 }
 gls.left[2] = {
     GitIcon = {
@@ -68,8 +68,8 @@ gls.left[2] = {
         condition = condition.check_git_workspace,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.orange, colors.bg}
-    }
+        highlight = {colors.orange, colors.bg},
+    },
 }
 gls.left[3] = {
     GitBranch = {
@@ -77,32 +77,32 @@ gls.left[3] = {
         condition = condition.check_git_workspace,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.left[4] = {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = condition.hide_in_width,
         icon = '  ',
-        highlight = {colors.green, colors.bg}
-    }
+        highlight = {colors.green, colors.bg},
+    },
 }
 gls.left[5] = {
     DiffModified = {
         provider = 'DiffModified',
         condition = condition.hide_in_width,
         icon = ' 柳',
-        highlight = {colors.blue, colors.bg}
-    }
+        highlight = {colors.blue, colors.bg},
+    },
 }
 gls.left[6] = {
     DiffRemove = {
         provider = 'DiffRemove',
         condition = condition.hide_in_width,
         icon = '  ',
-        highlight = {colors.red, colors.bg}
-    }
+        highlight = {colors.red, colors.bg},
+    },
 }
 
 gls.right[1] = {
@@ -121,34 +121,34 @@ gls.right[1] = {
         separator = '  ',
         separator_highlight = {'NONE', colors.bg},
 		highlight = {colors.vivid_blue, colors.bg},
-    }
+    },
 }
 gls.right[2] = {
     LineInfo = {
         provider = 'LineColumn',
         separator = '  ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.right[3] = {
     PerCent = {
         provider = 'LinePercent',
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.right[4] = {
     Tabstop = {
         provider = function()
-            return 'Spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth') .. ' '
+            return 'Spaces: ' .. tostring(vim.bo.shiftwidth) .. ' '
         end,
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.right[5] = {
     BufferType = {
@@ -156,8 +156,8 @@ gls.right[5] = {
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.right[6] = {
     FileEncode = {
@@ -165,8 +165,8 @@ gls.right[6] = {
         condition = condition.hide_in_width,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
-    }
+        highlight = {colors.grey, colors.bg},
+    },
 }
 gls.right[7] = {
     Space = {
@@ -176,6 +176,7 @@ gls.right[7] = {
         highlight = {colors.orange, colors.bg}
     }
 }
+
 gls.short_line_left[1] = {
     BufferType = {
         provider = 'FileTypeName',

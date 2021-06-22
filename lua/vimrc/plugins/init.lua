@@ -39,6 +39,7 @@ local function init_packer()
 			use 'ray-x/lsp_signature.nvim'
 			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 			use 'glepnir/lspsaga.nvim'
+			use 'nvim-lua/lsp-status.nvim'
 			-- Code snippets
 			use {
 				'hrsh7th/nvim-compe',

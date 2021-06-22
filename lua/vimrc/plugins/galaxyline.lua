@@ -1,6 +1,7 @@
 local gl = require'galaxyline'
 local condition = require'galaxyline.condition'
 local lsp_status = require'lsp-status'.status
+local utils = require'vimrc.utils'.trim
 
 local gls = gl.section
 
@@ -134,7 +135,9 @@ gls.right[4] = {
 }
 gls.right[5] = {
     ShowLspClient = {
-        provider = lsp_status,
+        provider = function()
+			return trim(lsp_status())
+		end,
         condition = function()
 			return not ({
 				['dashboard'] = true,
@@ -142,6 +145,8 @@ gls.right[5] = {
 				[' '] = true,
 			})[vim.bo.filetype]
         end,
+        separator = '  ',
+        separator_highlight = {'NONE', colors.bg},
         highlight = {colors.grey, colors.bg},
     }
 }

@@ -48,10 +48,3 @@ vimp.inoremap('<C-l>', '<C-o>l')
 vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
 
 vimp.nnoremap('U', '<C-r>')
-
--- Git mergetool
-vimp.nnoremap('<leader>gm', [[:G mergetool<CR>]])
-vimp.nnoremap('<leader>gdd', [[:Gvdiffsplit!<CR>]])
-vimp.nnoremap('<leader>gdh', [[:diffget //2<CR>]])
-vimp.nnoremap('<leader>gdl', [[:diffget //3<CR>]])
-vimp.nnoremap('<leader>gdD', [[:diffoff<CR>]])

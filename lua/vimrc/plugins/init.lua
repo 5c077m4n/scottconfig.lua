@@ -48,6 +48,7 @@ local function init_packer()
 			}
 			-- Git
 			use 'tpope/vim-fugitive'
+			use 'kdheepak/lazygit.nvim'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'

@@ -20,3 +20,6 @@ tags
 
 # Packer.nvim build file
 packer_compiled.vim
+
+# Lua modules
+lua_modules/

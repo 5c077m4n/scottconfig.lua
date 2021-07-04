@@ -6,7 +6,7 @@ vimp.nnoremap({'silent'}, '<leader>ts', ':NvimTreeFindFile<CR>')
 
 vim.g.nvim_tree_bindings = {
 	{ key = {'<CR>', 'o', '<2-LeftMouse>', '<Right>'}, cb = tree_cb('edit') },
-	{ key = {'<C-]>','cd', '<2-RightMouse>'}, cb = tree_cb('cd') },
+	{ key = {'<C-]>', 'cd', '<2-RightMouse>'}, cb = tree_cb('cd') },
 	{ key = {'<C-v>'}, cb = tree_cb('vsplit') },
 	{ key = {'<C-h>'}, cb = tree_cb('split') },
 	{ key = {'<C-t>'}, cb = tree_cb('tabnew') },

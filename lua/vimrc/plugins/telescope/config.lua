@@ -1,6 +1,6 @@
-local telescope = require'telescope'
-local _actions = require'telescope.actions'
-local trouble = require'trouble.providers.telescope'
+local telescope = require 'telescope'
+local _actions = require 'telescope.actions'
+local trouble = require 'trouble.providers.telescope'
 
 telescope.setup {
 	defaults = {
@@ -13,13 +13,7 @@ telescope.setup {
 			'--column',
 			'--smart-case',
 		},
-		mappings = {
-			i = { ['<C-t>'] = trouble.open_with_trouble },
-			n = { ['<C-t>'] = trouble.open_with_trouble },
-		},
+		mappings = {i = {['<C-t>'] = trouble.open_with_trouble}, n = {['<C-t>'] = trouble.open_with_trouble}},
 	},
 }
-require'session-lens'.setup {
-	shorten_path = true,
-	theme_conf = { border = true },
-}
+require'session-lens'.setup {shorten_path = true, theme_conf = {border = true}}

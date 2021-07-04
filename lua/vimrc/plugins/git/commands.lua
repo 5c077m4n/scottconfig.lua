@@ -1,4 +1,4 @@
-local gitsigns = require'gitsigns'
+local gitsigns = require 'gitsigns'
 
 vimp.nnoremap('<leader>hr', gitsigns.reset_hunk)
 vimp.nnoremap('<leader>hR', gitsigns.reset_buffer)

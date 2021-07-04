@@ -1,5 +1,5 @@
-local telescope_builtin = require'telescope.builtin'
-local session_lens = require'session-lens'
+local telescope_builtin = require 'telescope.builtin'
+local session_lens = require 'session-lens'
 
 vimp.nnoremap('<leader>fls', telescope_builtin.find_files)
 vimp.nnoremap('<leader>fgs', telescope_builtin.git_files)

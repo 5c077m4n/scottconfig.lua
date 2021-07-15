@@ -61,11 +61,12 @@ local function init_packer()
 			}
 			use {'rmagatti/session-lens', requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'}}
 			use {'nvim-telescope/telescope-media-files.nvim', requires = 'nvim-telescope/telescope.nvim'}
-			use 'nvim-telescope/telescope-dap.nvim'
+			--use 'nvim-telescope/telescope-dap.nvim'
 			-- Debugging
 			use {'mfussenegger/nvim-dap', opt = true}
 			use {'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap', opt = true}
 			use {'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', opt = true}
+			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap', opt = true}
 			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

@@ -18,7 +18,12 @@ saga.init_lsp_saga {
 		scroll_up = '<C-b>',
 		quit = {'q', '<Esc>'},
 	},
-	code_action_prompt = {enable = true, sign = false, sign_priority = 20, virtual_text = true},
+	code_action_prompt = {
+		enable = true,
+		sign = false,
+		sign_priority = 20,
+		virtual_text = true,
+	},
 }
 lsp_status.register_progress()
 lsp_status.config {
@@ -38,22 +43,59 @@ local function on_attach(client, bufnr)
 
 	vimp.add_buffer_maps(
 					bufnr, function()
-						vimp.nnoremap({'silent', 'override'}, 'gd', telescope_builtin.lsp_definitions)
-						vimp.nnoremap({'silent', 'override'}, 'gD', telescope_builtin.lsp_dynamic_workspace_symbols)
-						vimp.nnoremap({'silent', 'override'}, 'gs', telescope_builtin.lsp_document_symbols)
-						vimp.nnoremap({'silent', 'override'}, 'gS', telescope_builtin.lsp_workspace_symbols)
-						vimp.nnoremap({'silent', 'override'}, 'gh', require'lspsaga.provider'.lsp_finder)
-						vimp.nnoremap({'silent', 'override'}, 'K', require'lspsaga.hover'.render_hover_doc)
-						vimp.nnoremap({'silent', 'override'}, '<C-f>', function() require'lspsaga.action'.smart_scroll_with_saga(1) end)
-						vimp.nnoremap({'silent', 'override'}, '<C-b>', function() require'lspsaga.action'.smart_scroll_with_saga(-1) end)
-						vimp.nnoremap({'silent', 'override'}, 'gi', telescope_builtin.lsp_implementations)
-						vimp.nnoremap({'silent', 'override'}, '<leader>gD', lsp.buf.type_definition)
-						vimp.nnoremap({'silent', 'override'}, '<leader>rn', require'lspsaga.rename'.rename)
-						vimp.nnoremap({'silent', 'override'}, 'gr', telescope_builtin.lsp_references)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gd', telescope_builtin.lsp_definitions
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gD',
+														telescope_builtin.lsp_dynamic_workspace_symbols
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gs', telescope_builtin.lsp_document_symbols
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gS', telescope_builtin.lsp_workspace_symbols
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gh', require'lspsaga.provider'.lsp_finder
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'K', require'lspsaga.hover'.render_hover_doc
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, '<C-f>',
+														function()
+															require'lspsaga.action'.smart_scroll_with_saga(1)
+														end
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, '<C-b>',
+														function()
+															require'lspsaga.action'.smart_scroll_with_saga(-1)
+														end
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gi', telescope_builtin.lsp_implementations
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, '<leader>gD', lsp.buf.type_definition
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, '<leader>rn', require'lspsaga.rename'.rename
+						)
+						vimp.nnoremap(
+										{'silent', 'override'}, 'gr', telescope_builtin.lsp_references
+						)
 						vimp.nnoremap({'silent', 'override'}, 'g[', lsp.diagnostic.goto_prev)
 						vimp.nnoremap({'silent', 'override'}, 'g]', lsp.diagnostic.goto_next)
-						vimp.nnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.code_action)
-						vimp.vnoremap({'silent', 'override'}, '<leader>ca', require'lspsaga.codeaction'.range_code_action)
+						vimp.nnoremap(
+										{'silent', 'override'}, '<leader>ca',
+														require'lspsaga.codeaction'.code_action
+						)
+						vimp.vnoremap(
+										{'silent', 'override'}, '<leader>ca',
+														require'lspsaga.codeaction'.range_code_action
+						)
 					end
 	)
 
@@ -77,11 +119,25 @@ local function setup_servers()
 	lspinstall.setup()
 	local servers = lspinstall.installed_servers()
 	if #servers == 0 then
-		servers = {'bash', 'css', 'graphql', 'html', 'lua', 'rust', 'tailwindcss', 'typescript', 'vim', 'yaml'}
+		servers = {
+			'bash',
+			'css',
+			'graphql',
+			'html',
+			'lua',
+			'rust',
+			'tailwindcss',
+			'typescript',
+			'vim',
+			'yaml',
+		}
 	end
 
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
+		nvim_lsp[server].setup {
+			on_attach = on_attach,
+			capabilities = lsp_status.capabilities,
+		}
 	end
 end
 

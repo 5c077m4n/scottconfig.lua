@@ -1,4 +1,4 @@
 #!/bin/sh
 
 luacheck .
-lua-format -iv **/*.lua
+lua-format -i **/*.lua

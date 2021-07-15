@@ -1,1 +1,1 @@
-vimp.nnoremap({'silent', 'override'}, '<leader>l', ':FormatWrite<CR>')
+vimp.nnoremap({'silent'}, '<leader>l', ':Format<CR>')

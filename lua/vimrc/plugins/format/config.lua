@@ -3,7 +3,7 @@ local function prettierFmt()
 end
 
 require'formatter'.setup {
-	logging = true,
+	logging = false,
 	filetype = {
 		javascript = {prettierFmt],
 		javascriptreact = {prettierFmt},

@@ -159,10 +159,7 @@ gls.right[6] = {
 		condition = condition.hide_in_width,
 		separator = ' ',
 		separator_highlight = {'NONE', colors.bg},
-		highlight = {colors.grey,
-
-
-		colors.bg},
+		highlight = {colors.grey, colors.bg},
 	},
 }
 gls.right[7] = {

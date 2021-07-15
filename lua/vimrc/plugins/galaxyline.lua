@@ -162,6 +162,7 @@ gls.right[6] = {
 		highlight = {colors.grey, colors.bg},
 	}
 
+
 	,
 }
 gls.right[7] = {

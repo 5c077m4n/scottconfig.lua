@@ -38,6 +38,15 @@ local function init_packer()
 			use 'nvim-lua/lsp-status.nvim'
 			-- Code snippets
 			use {'hrsh7th/nvim-compe', requires = {'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets'}, opt = true}
+			-- Terminal
+			use 'voldikss/vim-floaterm'
+			-- Code workflow
+			use {'phaazon/hop.nvim', as = 'hop'}
+			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
+			use 'folke/which-key.nvim'
+			use 'blackCauldron7/surround.nvim'
+			use 'terrortylor/nvim-comment'
+			use 'lukas-reineke/format.nvim'
 			-- Git
 			use 'tpope/vim-fugitive'
 			use {'sindrets/diffview.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
@@ -45,20 +54,14 @@ local function init_packer()
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
-
-			use 'folke/which-key.nvim'
+			-- Telescope
 			use {
 				'nvim-telescope/telescope.nvim',
 				requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'sharkdp/fd', 'BurntSushi/ripgrep'},
 			}
 			use {'rmagatti/session-lens', requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'}}
 			use {'nvim-telescope/telescope-media-files.nvim', requires = 'nvim-telescope/telescope.nvim'}
-			use {'phaazon/hop.nvim', as = 'hop'}
-			use 'voldikss/vim-floaterm'
-			use 'mbbill/undotree'
-			use 'sbdchd/neoformat'
-			use 'terrortylor/nvim-comment'
-			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
+			use 'nvim-telescope/telescope-dap.nvim'
 			-- Debugging
 			use {'mfussenegger/nvim-dap', opt = true}
 			use {'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap', opt = true}
@@ -89,6 +92,7 @@ local function init_packages()
 	require 'vimrc.plugins.hop'
 	require 'vimrc.plugins.which-key'
 	require 'vimrc.plugins.session'
+	require 'vimrc.plugins.format'
 end
 
 function M.setup()

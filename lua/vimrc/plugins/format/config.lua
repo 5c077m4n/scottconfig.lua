@@ -1,14 +1,15 @@
-require'format'.setup {
-	['*'] = {
-		{cmd = {'sed -i \'s/[ \t]*$//\''}}, -- remove trailing whitespaces
-	},
-	vim = {{cmd = {'lua-format'}, start_pattern = '^lua << EOF$', end_pattern = '^EOF$'}},
-	vimwiki = {{cmd = {'prettier -w --parser babel'}, start_pattern = '^{{{javascript$', end_pattern = '^}}}$'}},
-	lua = {{cmd = {function(file) return string.format('lua-format', file) end}}},
-	go = {{cmd = {'gofmt -w', 'goimports -w'}, tempfile_postfix = '.tmp'}},
-	javascript = {{cmd = {'yarn prettier --write', 'yarn eslint --fix'}}},
-	markdown = {
-		{cmd = {'yarn prettier --write'}},
-		{cmd = {'black'}, start_pattern = '^```python$', end_pattern = '^```$', target = 'current'},
+local function prettierFmt()
+	return {exe = 'prettier', args = {'--stdin-filepath', vim.api.nvim_buf_get_name(0)}, stdin = true}
+end
+
+require'formatter'.setup {
+	logging = true,
+	filetype = {
+		javascript = prettierFmt,
+		javascriptreact = prettierFmt,
+		typescript = prettierFmt,
+		typescriptreact = prettierFmt,
+		rust = {function() return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true} end},
+		lua = {function() return {exe = 'lua-format', stdin = true} end},
 	},
 }

@@ -34,8 +34,10 @@ require'formatter'.setup {
 
 require'surround'.setup {
 	prefix = 's',
+	mappings_style = 'sandwich',
 	pairs = {
 		nestable = {{'(', ')'}, {'[', ']'}, {'{', '}'}, {'<', '>'}},
 		linear = {{[[']], [[']]}, {[["]], [["]]}},
 	},
+	brackets = {"(", "{", "[", '<'},
 }

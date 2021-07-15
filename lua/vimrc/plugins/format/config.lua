@@ -5,10 +5,10 @@ end
 require'formatter'.setup {
 	logging = true,
 	filetype = {
-		javascript = prettierFmt,
-		javascriptreact = prettierFmt,
-		typescript = prettierFmt,
-		typescriptreact = prettierFmt,
+		javascript = {prettierFmt],
+		javascriptreact = {prettierFmt},
+		typescript = {prettierFmt},
+		typescriptreact = {prettierFmt},
 		rust = {function() return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true} end},
 		lua = {function() return {exe = 'lua-format', stdin = true} end},
 	},

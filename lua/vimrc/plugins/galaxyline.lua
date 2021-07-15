@@ -160,7 +160,9 @@ gls.right[6] = {
 		separator = ' ',
 		separator_highlight = {'NONE', colors.bg},
 		highlight = {colors.grey, colors.bg},
-	},
+	}
+
+	,
 }
 gls.right[7] = {
 	Space = {

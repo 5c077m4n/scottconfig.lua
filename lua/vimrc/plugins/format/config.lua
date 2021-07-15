@@ -15,9 +15,27 @@ require'formatter'.setup {
 		typescript = {prettierFmt},
 		typescriptreact = {prettierFmt},
 		rust = {
-			function() return {exe = 'rustfmt', args = {'--emit=stdout'}, stdin = true, tempfile_dir = '/tmp/fmt-file/'} end,
+			function()
+				return {
+					exe = 'rustfmt',
+					args = {'--emit=stdout'},
+					stdin = true,
+					tempfile_dir = '/tmp/fmt-file/',
+				}
+			end,
 		},
-		lua = {function() return {exe = 'lua-format', stdin = true, tempfile_dir = '/tmp/fmt-file/'} end},
+		lua = {
+			function()
+				return {exe = 'lua-format', stdin = true, tempfile_dir = '/tmp/fmt-file/'}
+			end,
+		},
 	},
 }
-require'surround'.setup {}
+
+require'surround'.setup {
+	prefix = 's',
+	pairs = {
+		nestable = {{'(', ')'}, {'[', ']'}, {'{', '}'}, {'<', '>'}},
+		linear = {{[[']], [[']]}, {[["]], [["]]}},
+	},
+}

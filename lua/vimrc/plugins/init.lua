@@ -5,7 +5,12 @@ local function bootstrap()
 	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
-		vim.fn.system {'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path}
+		vim.fn.system {
+			'git',
+			'clone',
+			'https://github.com/wbthomason/packer.nvim',
+			install_path,
+		}
 		vim.cmd [[packadd packer.nvim]]
 	end
 end
@@ -23,7 +28,11 @@ local function init_packer()
 			use 'rafamadriz/neon'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'folke/todo-comments.nvim'
-			use {'glepnir/galaxyline.nvim', branch = 'main', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+			use {
+				'glepnir/galaxyline.nvim',
+				branch = 'main',
+				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			}
 			use 'akinsho/nvim-bufferline.lua'
 			use 'onsails/lspkind-nvim'
 			-- File tree
@@ -37,7 +46,11 @@ local function init_packer()
 			use 'glepnir/lspsaga.nvim'
 			use 'nvim-lua/lsp-status.nvim'
 			-- Code snippets
-			use {'hrsh7th/nvim-compe', requires = {'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets'}, opt = true}
+			use {
+				'hrsh7th/nvim-compe',
+				requires = {'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets'},
+				opt = true,
+			}
 			-- Terminal
 			use 'voldikss/vim-floaterm'
 			-- Code workflow
@@ -49,7 +62,10 @@ local function init_packer()
 			use 'mhartington/formatter.nvim'
 			-- Git
 			use 'tpope/vim-fugitive'
-			use {'sindrets/diffview.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+			use {
+				'sindrets/diffview.nvim',
+				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			}
 			use 'kdheepak/lazygit.nvim'
 			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
 			-- JSON query
@@ -57,16 +73,35 @@ local function init_packer()
 			-- Telescope
 			use {
 				'nvim-telescope/telescope.nvim',
-				requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'sharkdp/fd', 'BurntSushi/ripgrep'},
+				requires = {
+					'nvim-lua/popup.nvim',
+					'nvim-lua/plenary.nvim',
+					'sharkdp/fd',
+					'BurntSushi/ripgrep',
+				},
 			}
-			use {'rmagatti/session-lens', requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'}}
-			use {'nvim-telescope/telescope-media-files.nvim', requires = 'nvim-telescope/telescope.nvim'}
+			use {
+				'rmagatti/session-lens',
+				requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+			}
+			use {
+				'nvim-telescope/telescope-media-files.nvim',
+				requires = 'nvim-telescope/telescope.nvim',
+			}
 			-- use 'nvim-telescope/telescope-dap.nvim'
 			-- Debugging
 			use {'mfussenegger/nvim-dap', opt = true}
-			use {'Pocco81/DAPInstall.nvim', requires = 'mfussenegger/nvim-dap', opt = true}
+			use {
+				'Pocco81/DAPInstall.nvim',
+				requires = 'mfussenegger/nvim-dap',
+				opt = true,
+			}
 			use {'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', opt = true}
-			use {'jbyuki/one-small-step-for-vimkind', requires = 'mfussenegger/nvim-dap', opt = true}
+			use {
+				'jbyuki/one-small-step-for-vimkind',
+				requires = 'mfussenegger/nvim-dap',
+				opt = true,
+			}
 			-- Optional
 			use {'wbthomason/packer.nvim', opt = true}
 			use {'tweekmonster/startuptime.vim', opt = true}

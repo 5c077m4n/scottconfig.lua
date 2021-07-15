@@ -36,7 +36,9 @@ function M.check_back_space()
 	end
 end
 
-function M.get_termcode(str) return vim.api.nvim_replace_termcodes(str, true, true, true) end
+function M.get_termcode(str)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 function M.clean_extra_spaces()
 	local save_cursor = vim.fn.getpos('.')

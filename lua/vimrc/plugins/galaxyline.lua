@@ -109,7 +109,11 @@ gls.right[1] = {
 			local status_display = get_lsp_status()
 			return trim(status_display)
 		end,
-		condition = function() return not ({['dashboard'] = true, ['toggleterm'] = true, [' '] = true})[vim.bo.filetype] end,
+		condition = function()
+			return
+							not ({['dashboard'] = true, ['toggleterm'] = true, [' '] = true})[vim.bo
+											.filetype]
+		end,
 		separator = '  ',
 		separator_highlight = {'NONE', colors.bg},
 		highlight = {colors.vivid_blue, colors.bg},
@@ -176,6 +180,12 @@ gls.short_line_left[1] = {
 	},
 }
 gls.short_line_left[2] = {
-	SFileName = {provider = 'SFileName', condition = condition.buffer_not_empty, highlight = {colors.grey, colors.bg}},
+	SFileName = {
+		provider = 'SFileName',
+		condition = condition.buffer_not_empty,
+		highlight = {colors.grey, colors.bg},
+	},
 }
-gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}
+gls.short_line_right[1] = {
+	BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}},
+}

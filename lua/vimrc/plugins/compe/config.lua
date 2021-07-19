@@ -1,7 +1,7 @@
 vim.cmd [[packadd vim-vsnip]]
 vim.cmd [[packadd friendly-snippets]]
 
-require'compe'.setup {
+require('compe').setup {
 	enabled = true,
 	autocomplete = true,
 	debug = false,

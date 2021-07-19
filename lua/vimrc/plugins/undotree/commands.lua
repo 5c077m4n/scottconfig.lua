@@ -1,1 +1,1 @@
-vimp.nnoremap({'silent'}, '<leader>u', ':UndotreeToggle<CR>')
+vimp.nnoremap({ 'silent' }, '<leader>u', ':UndotreeToggle<CR>')

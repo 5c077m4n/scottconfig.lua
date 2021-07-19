@@ -6,7 +6,7 @@ local utils = require 'vimrc.utils'
 local function tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode '<C-n>'
-	elseif vim.fn.call('vsnip#available', {1}) == 1 then
+	elseif vim.fn.call('vsnip#available', { 1 }) == 1 then
 		return utils.get_termcode '<Plug>(vsnip-expand-or-jump)'
 	elseif utils.check_back_space() then
 		return utils.get_termcode '<Tab>'
@@ -17,14 +17,14 @@ end
 local function reverse_tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode '<C-p>'
-	elseif vim.fn.call('vsnip#jumpable', {-1}) == 1 then
+	elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
 		return utils.get_termcode '<Plug>(vsnip-jump-prev)'
 	else
 		return utils.get_termcode '<S-Tab>'
 	end
 end
 
-vimp.inoremap({'expr'}, '<Tab>', tab_complete)
-vimp.snoremap({'expr'}, '<Tab>', tab_complete)
-vimp.inoremap({'expr'}, '<S-Tab>', reverse_tab_complete)
-vimp.snoremap({'expr'}, '<S-Tab>', reverse_tab_complete)
+vimp.inoremap({ 'expr' }, '<Tab>', tab_complete)
+vimp.snoremap({ 'expr' }, '<Tab>', tab_complete)
+vimp.inoremap({ 'expr' }, '<S-Tab>', reverse_tab_complete)
+vimp.snoremap({ 'expr' }, '<S-Tab>', reverse_tab_complete)

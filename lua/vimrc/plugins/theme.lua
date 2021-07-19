@@ -16,8 +16,8 @@ augroup no_tabline_in_dashboard
 augroup END
 ]]
 
-require'colorizer'.setup()
-require'bufferline'.setup {
+require('colorizer').setup()
+require('bufferline').setup {
 	options = {
 		numbers = 'both',
 		mappings = false,
@@ -35,4 +35,4 @@ require'bufferline'.setup {
 		end,
 	},
 }
-require'todo-comments'.setup()
+require('todo-comments').setup()

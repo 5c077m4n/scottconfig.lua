@@ -14,7 +14,7 @@ vimp.nnoremap('<leader>ffs', telescope_builtin.current_buffer_fuzzy_find)
 vimp.nnoremap('<leader>ffS', telescope_builtin.grep_string)
 vimp.nnoremap('<leader>fft', telescope_builtin.filetypes)
 
-require'which-key'.register {
+require('which-key').register {
 	['<leader>f'] = {
 		name = 'Fuzzy search',
 		f = {

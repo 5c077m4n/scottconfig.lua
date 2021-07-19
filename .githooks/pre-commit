@@ -1,6 +1,6 @@
 #!/bin/sh
 
 luacheck .
-stylua lua/ init.lua
+stylua .
 
 git add --update

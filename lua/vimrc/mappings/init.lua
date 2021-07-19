@@ -36,13 +36,13 @@ vimp.vnoremap('0', '^')
 vimp.nnoremap({'silent'}, '<CR>', ':nohlsearch<CR><CR>')
 
 -- Word traversing
-vimp.inoremap('<C-b>', '<C-o>b')
-vimp.inoremap('<C-e>', '<C-o>e')
-vimp.inoremap('<C-w>', '<C-o>w')
-vimp.inoremap('<C-h>', '<C-o>h')
-vimp.inoremap('<C-j>', '<C-o>j')
-vimp.inoremap('<C-k>', '<C-o>k')
-vimp.inoremap('<C-l>', '<C-o>l')
+vimp.inoremap('<C-b>', function() vim.cmd [[normal! b]] end)
+vimp.inoremap('<C-e>', function() vim.cmd [[normal! e]] end)
+vimp.inoremap('<C-w>', function() vim.cmd [[normal! w]] end)
+vimp.inoremap('<C-h>', function() vim.cmd [[normal! h]] end)
+vimp.inoremap('<C-j>', function() vim.cmd [[normal! j]] end)
+vimp.inoremap('<C-k>', function() vim.cmd [[normal! k]] end)
+vimp.inoremap('<C-l>', function() vim.cmd [[normal! l]] end)
 
 -- Switch CWD to the directory of the open buffer
 vimp.nnoremap('<leader>cd', ':cd %:p:h<CR>:pwd<CR>')

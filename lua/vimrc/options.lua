@@ -5,10 +5,10 @@ local g = vim.g
 
 g.mapleader = ' '
 g.maplocalleader = ' '
-g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
+g.python3_host_prog = utils.trim(vim.fn.system 'which python3')
 
 -- Configure backspace so it acts as it should act
-o.backspace = {'eol', 'start', 'indent'}
+o.backspace = { 'eol', 'start', 'indent' }
 
 o.updatetime = 250
 o.timeoutlen = 500
@@ -25,7 +25,7 @@ o.wrap = true
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
 
-o.completeopt = {'menuone', 'noselect'}
+o.completeopt = { 'menuone', 'noselect' }
 
 -- Incremental live completion
 o.inccommand = 'nosplit'
@@ -36,7 +36,7 @@ o.relativenumber = true
 
 o.langmenu = 'en'
 o.wildmenu = true
-o.wildignore = {'*.o', '*~', '*.pyc'}
+o.wildignore = { '*.o', '*~', '*.pyc' }
 o.encoding = 'utf8'
 o.hidden = true
 
@@ -58,5 +58,5 @@ o.showmatch = true
 -- How many tenths of a second to blink when matching brackets
 o.mat = 2
 
-o.undodir = os.getenv('HOME') .. '/undodir'
+o.undodir = os.getenv 'HOME' .. '/undodir'
 o.undofile = true

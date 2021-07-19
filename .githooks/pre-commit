@@ -1,4 +1,4 @@
 #!/bin/sh
 
 luacheck .
-lua-format -i **/*.lua
+stylua lua/ init.lua

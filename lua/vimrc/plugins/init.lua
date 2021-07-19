@@ -2,7 +2,7 @@ local M = {}
 
 local function bootstrap()
 	local fn = vim.fn
-	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+	local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
 		vim.fn.system {
@@ -18,7 +18,7 @@ end
 local function init_packer()
 	vim.cmd [[packadd packer.nvim]]
 
-	return require'packer'.startup {
+	return require('packer').startup {
 		function(use)
 			-- General
 			use 'tpope/vim-sensible'
@@ -31,7 +31,7 @@ local function init_packer()
 			use {
 				'glepnir/galaxyline.nvim',
 				branch = 'main',
-				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 			}
 			use 'akinsho/nvim-bufferline.lua'
 			use 'onsails/lspkind-nvim'
@@ -39,23 +39,23 @@ local function init_packer()
 			use 'kyazdani42/nvim-tree.lua'
 			-- LSP
 			use 'nvim-treesitter/nvim-treesitter'
-			use {'neovim/nvim-lspconfig', run = ':TSUpdate'}
+			use { 'neovim/nvim-lspconfig', run = ':TSUpdate' }
 			use 'kabouzeid/nvim-lspinstall'
 			use 'ray-x/lsp_signature.nvim'
-			use {'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+			use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 			use 'glepnir/lspsaga.nvim'
 			use 'nvim-lua/lsp-status.nvim'
 			-- Code snippets
 			use {
 				'hrsh7th/nvim-compe',
-				requires = {'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets'},
+				requires = { 'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets' },
 				opt = true,
 			}
 			-- Terminal
 			use 'voldikss/vim-floaterm'
 			-- Code workflow
-			use {'phaazon/hop.nvim', as = 'hop'}
-			use {'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim'}
+			use { 'phaazon/hop.nvim', as = 'hop' }
+			use { 'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim' }
 			use 'folke/which-key.nvim'
 			use 'blackCauldron7/surround.nvim'
 			use 'terrortylor/nvim-comment'
@@ -64,10 +64,10 @@ local function init_packer()
 			use 'tpope/vim-fugitive'
 			use {
 				'sindrets/diffview.nvim',
-				requires = {'kyazdani42/nvim-web-devicons', opt = true},
+				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 			}
 			use 'kdheepak/lazygit.nvim'
-			use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
 			-- JSON query
 			use 'gennaro-tedesco/nvim-jqx'
 			-- Telescope
@@ -82,7 +82,7 @@ local function init_packer()
 			}
 			use {
 				'rmagatti/session-lens',
-				requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+				requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
 			}
 			use {
 				'nvim-telescope/telescope-media-files.nvim',
@@ -90,23 +90,23 @@ local function init_packer()
 			}
 			-- use 'nvim-telescope/telescope-dap.nvim'
 			-- Debugging
-			use {'mfussenegger/nvim-dap', opt = true}
+			use { 'mfussenegger/nvim-dap', opt = true }
 			use {
 				'Pocco81/DAPInstall.nvim',
 				requires = 'mfussenegger/nvim-dap',
 				opt = true,
 			}
-			use {'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', opt = true}
+			use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', opt = true }
 			use {
 				'jbyuki/one-small-step-for-vimkind',
 				requires = 'mfussenegger/nvim-dap',
 				opt = true,
 			}
 			-- Optional
-			use {'wbthomason/packer.nvim', opt = true}
-			use {'tweekmonster/startuptime.vim', opt = true}
+			use { 'wbthomason/packer.nvim', opt = true }
+			use { 'tweekmonster/startuptime.vim', opt = true }
 		end,
-		config = {display = {open_fn = require'packer.util'.float}},
+		config = { display = { open_fn = require('packer.util').float } },
 	}
 end
 
@@ -136,7 +136,9 @@ function M.setup()
 
 	init_packer()
 	local status, err = pcall(init_packages)
-	if not status then print(err) end
+	if not status then
+		print(err)
+	end
 end
 
 return M

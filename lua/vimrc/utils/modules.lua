@@ -18,7 +18,7 @@ end
 
 function M.update_vimrc()
 	vim.fn.system [[git -C ~/.config/nvim pull --force]]
-	print('Neovim config updated successfully!')
+	print 'Neovim config updated successfully!'
 end
 
 return M

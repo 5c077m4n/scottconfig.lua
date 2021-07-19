@@ -2,20 +2,6 @@ local M = {}
 
 function M.trim(s) return s:match '^%s*(.-)%s*$' end
 
-function M.run_in_modifiable_only(to_run)
-	return function()
-		if vim.bo.modifiable then
-			if type(to_run) == 'function' then
-				to_run()
-			elseif type(to_run) == 'string' then
-				vim.cmd(to_run)
-			end
-		else
-			print('Please try again in a modifiable buffer')
-		end
-	end
-end
-
 function M.system_name()
 	if vim.fn.has('mac') == 1 then
 		return 'macOS'
@@ -52,7 +38,15 @@ end
 function M.jump_to_last_visited()
 	local line = vim.fn.line
 
-	if line [['"]] > 1 and line [['"]] < line '$' then vim.cmd [[normal! g'"]] end
+	if line [['"]] > 1 and line [['"]] < line '$' then
+		vim.cmd [[normal! g'"]]
+	end
+end
+
+function _G.dump(...)
+    local objects = vim.tbl_map(vim.inspect, {...})
+    print(unpack(objects))
+    return ...
 end
 
 return M

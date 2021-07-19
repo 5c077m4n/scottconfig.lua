@@ -3,7 +3,7 @@ local utils = require 'vimrc.utils'
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
-function _G.tab_complete()
+local function tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode '<C-n>'
 	elseif vim.fn.call('vsnip#available', {1}) == 1 then
@@ -14,7 +14,7 @@ function _G.tab_complete()
 		return vim.fn['compe#complete']()
 	end
 end
-function _G.s_tab_complete()
+local function reverse_tab_complete()
 	if vim.fn.pumvisible() == 1 then
 		return utils.get_termcode '<C-p>'
 	elseif vim.fn.call('vsnip#jumpable', {-1}) == 1 then
@@ -24,7 +24,7 @@ function _G.s_tab_complete()
 	end
 end
 
-vimp.inoremap({'expr'}, '<Tab>', [[v:lua._G.tab_complete()]])
-vimp.snoremap({'expr'}, '<Tab>', [[v:lua._G.tab_complete()]])
-vimp.inoremap({'expr'}, '<S-Tab>', [[v:lua._G.s_tab_complete()]])
-vimp.snoremap({'expr'}, '<S-Tab>', [[v:lua._G.s_tab_complete()]])
+vimp.inoremap({'expr'}, '<Tab>', tab_complete)
+vimp.snoremap({'expr'}, '<Tab>', tab_complete)
+vimp.inoremap({'expr'}, '<S-Tab>', reverse_tab_complete)
+vimp.snoremap({'expr'}, '<S-Tab>', reverse_tab_complete)

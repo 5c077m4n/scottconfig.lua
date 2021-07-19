@@ -135,10 +135,8 @@ function M.setup()
 	bootstrap()
 
 	init_packer()
-	local status, err = pcall(init_packages)
-	if not status then
-		print(err)
-	end
+	local success, err = pcall(init_packages)
+	if not success then print(err) end
 end
 
 return M

@@ -41,7 +41,7 @@ pcall(function()
 	cmd [[
 	augroup recompile_on_init_change
 		autocmd!
-		autocmd BufWritePost init.lua,vimrc.lua PackerCompile
+		autocmd BufWritePost lua/vimrc/plugins/init.lua PackerCompile
 	augroup END
 	]]
 end)

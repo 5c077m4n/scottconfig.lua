@@ -2,3 +2,5 @@
 
 luacheck .
 stylua lua/ init.lua
+
+git add --update

@@ -1,10 +1,10 @@
 -- Rerun tests only if their modification time changed.
 cache = true
 
-std = luajit
+std = "luajit"
 codes = true
 
-read_globals = {"vim", "vimp"}
+read_globals = { "vim", "vimp" }
 
 -- Glorious list of warnings: https://luacheck.readthedocs.io/en/stable/warnings.html
 ignore = {

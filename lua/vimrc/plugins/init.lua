@@ -136,7 +136,9 @@ function M.setup()
 
 	init_packer()
 	local success, err = pcall(init_packages)
-	if not success then print(err) end
+	if not success then
+		print(err)
+	end
 end
 
 return M

@@ -7,7 +7,7 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 g.python3_host_prog = utils.trim(vim.fn.system 'which python3')
 
--- Configure backspace so it acts as it should act
+-- Configure backspace so it acts as it should
 o.backspace = { 'eol', 'start', 'indent' }
 
 o.updatetime = 250

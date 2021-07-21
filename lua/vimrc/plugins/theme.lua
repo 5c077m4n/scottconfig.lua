@@ -1,7 +1,6 @@
 require('github-theme').setup {
 	themeStyle = 'dimmed',
-	functionStyle = 'italic',
-	sidebars = { 'LazyGit', 'terminal', 'packer' },
+	sidebars = { 'NvimTree', 'lazygit', 'terminal', 'packer' },
 	colors = { hint = 'orange', error = '#ff0000' },
 }
 require('colorizer').setup()

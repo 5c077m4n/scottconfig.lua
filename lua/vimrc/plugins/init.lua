@@ -58,6 +58,7 @@ local function init_packer()
 			use { 'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim' }
 			use 'folke/which-key.nvim'
 			use 'blackCauldron7/surround.nvim'
+			use 'windwp/nvim-autopairs'
 			use 'terrortylor/nvim-comment'
 			use 'mhartington/formatter.nvim'
 			-- Git

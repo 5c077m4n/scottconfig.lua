@@ -24,6 +24,8 @@ o.si = true
 o.wrap = true
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
+-- Show tabs and spaces
+o.list = true
 
 o.completeopt = { 'menuone', 'noselect' }
 

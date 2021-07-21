@@ -22,10 +22,12 @@ o.shiftwidth = 4
 o.ai = true
 o.si = true
 o.wrap = false
+o.showbreak = '+'
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
 -- Show tabs and spaces
 o.list = true
+o.listchars = { tab = '> ', space = '‧', trail = '-' }
 
 o.completeopt = { 'menuone', 'noselect' }
 

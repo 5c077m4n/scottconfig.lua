@@ -21,7 +21,7 @@ o.tabstop = 4
 o.shiftwidth = 4
 o.ai = true
 o.si = true
-o.wrap = true
+o.wrap = false
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
 -- Show tabs and spaces

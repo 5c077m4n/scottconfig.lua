@@ -8,9 +8,9 @@ vimp.nnoremap('<leader>fb', telescope_builtin.buffers)
 vimp.nnoremap('<leader>fm', telescope_builtin.marks)
 vimp.nnoremap('<leader>fo', telescope_builtin.oldfiles)
 vimp.nnoremap('<leader>fc', telescope_builtin.git_commits)
-vimp.nnoremap('<leader>fS', session_lens.search_session)
 vimp.nnoremap('<leader>ffc', telescope_builtin.git_bcommits)
 vimp.nnoremap('<leader>ffs', telescope_builtin.current_buffer_fuzzy_find)
+vimp.nnoremap('<leader>ffy', telescope_builtin.lsp_document_symbols)
 vimp.nnoremap('<leader>ffS', telescope_builtin.grep_string)
 vimp.nnoremap('<leader>fft', telescope_builtin.filetypes)
 
@@ -19,10 +19,11 @@ require('which-key').register {
 		name = 'Fuzzy search',
 		f = {
 			name = '+current file search',
-			c = '+commit list',
-			s = '+fuzzy find',
-			t = '+filetypes',
-			S = '+string under cursor',
+			c = 'Commit list',
+			s = 'Fuzzy find',
+			t = 'Filetypes',
+			S = 'String under cursor',
+			y = 'Symbol search',
 		},
 		ls = 'File list',
 		gs = 'Git file list',
@@ -31,6 +32,5 @@ require('which-key').register {
 		o = 'Old files',
 		c = 'Git commits',
 		m = 'Bookmarks',
-		S = 'Sessions',
 	},
 }

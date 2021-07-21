@@ -26,7 +26,7 @@ require('formatter').setup {
 		},
 		lua = {
 			function()
-				return { exe = 'lua-format', stdin = true, tempfile_dir = '/tmp/fmt-file/' }
+				return { exe = 'stylua -', stdin = true, tempfile_dir = '/tmp/fmt-file/' }
 			end,
 		},
 	},

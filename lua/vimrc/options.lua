@@ -26,6 +26,7 @@ o.wrap = true
 o.pastetoggle = '<F3>'
 -- Show tabs and spaces
 o.list = true
+o.listchars = { tab = '>', space = '‧' }
 
 o.completeopt = { 'menuone', 'noselect' }
 

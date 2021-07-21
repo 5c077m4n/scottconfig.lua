@@ -1,21 +1,11 @@
-vim.g.neon_style = 'dark'
-vim.cmd [[
-try
-	colorscheme neon
-catch /^Vim\%((\a\+)\)\=:E185/
-	colorscheme default
-	set background=dark
-endtry
-]]
+require('github-theme').setup {
+	themeStyle = 'dimmed',
+	functionStyle = 'italic',
+	sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
 
-vim.cmd [[
-augroup no_tabline_in_dashboard
-	autocmd!
-	autocmd FileType dashboard setlocal showtabline=0
-	autocmd WinLeave setlocal showtabline=2
-augroup END
-]]
-
+	-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+	colors = { hint = 'orange', error = '#ff0000' },
+}
 require('colorizer').setup()
 require('bufferline').setup {
 	options = {

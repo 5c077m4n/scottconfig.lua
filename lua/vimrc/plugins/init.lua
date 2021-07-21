@@ -25,7 +25,7 @@ local function init_packer()
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			-- Theme
-			use 'rafamadriz/neon'
+			use 'projekt0n/github-nvim-theme'
 			use 'norcalli/nvim-colorizer.lua'
 			use 'folke/todo-comments.nvim'
 			use {

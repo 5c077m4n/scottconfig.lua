@@ -95,6 +95,20 @@ local function on_attach(client, bufnr)
 end
 
 local function setup_servers()
+	local base_config = require('lspinstall/util').extract_config 'bashls'
+	require('lspinstall/servers').rust = vim.tbl_extend('error', base_config, {
+		install_script = [[
+		cd /tmp
+		git clone https://github.com/rust-analyzer/rust-analyzer.git
+		cd rust-analyzer
+		cargo xtask install --server
+		ln -s "${HOME}/.cargo/bin/rust-analyzer" "${HOME}/.local/share/nvim/lspinstall/rust/"
+		]],
+		uninstall_script = [[
+		rm -rf /tmp/rust-analyzer
+		]],
+	})
+
 	lspinstall.setup()
 
 	local servers = lspinstall.installed_servers()

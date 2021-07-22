@@ -1,5 +1,4 @@
 local telescope_builtin = require 'telescope.builtin'
-local session_lens = require 'session-lens'
 
 vimp.nnoremap('<leader>fls', telescope_builtin.find_files)
 vimp.nnoremap('<leader>fgs', telescope_builtin.git_files)
@@ -18,7 +17,7 @@ require('which-key').register {
 	['<leader>f'] = {
 		name = 'Fuzzy search',
 		f = {
-			name = '+current file search',
+			name = 'Current file search',
 			c = 'Commit list',
 			s = 'Fuzzy find',
 			t = 'Filetypes',

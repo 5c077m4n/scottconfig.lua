@@ -32,7 +32,7 @@ lsp_status.config {
 	indicator_warnings = 'W',
 	indicator_info = 'i',
 	indicator_hint = '?',
-	indicator_ok = '',
+	indicator_ok = '✓',
 }
 
 local function on_attach(client, bufnr)
@@ -66,19 +66,6 @@ local function on_attach(client, bufnr)
 
 	lsp_status.on_attach(client, bufnr)
 
-	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-		    augroup lsp_document_highlight
-			    autocmd! * <buffer>
-			    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-			    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-		    augroup END
-	    ]],
-			false
-		)
-	end
-
 	which_key.register({
 		['gD'] = 'Declaration',
 		['gd'] = 'Definition',
@@ -95,20 +82,6 @@ local function on_attach(client, bufnr)
 end
 
 local function setup_servers()
-	local base_config = require('lspinstall/util').extract_config 'bashls'
-	require('lspinstall/servers').rust = vim.tbl_extend('error', base_config, {
-		install_script = [[
-		cd /tmp
-		git clone https://github.com/rust-analyzer/rust-analyzer.git
-		cd rust-analyzer
-		cargo xtask install --server
-		ln -s "${HOME}/.cargo/bin/rust-analyzer" "${HOME}/.local/share/nvim/lspinstall/rust/"
-		]],
-		uninstall_script = [[
-		rm -rf /tmp/rust-analyzer
-		]],
-	})
-
 	lspinstall.setup()
 
 	local servers = lspinstall.installed_servers()
@@ -132,6 +105,10 @@ local function setup_servers()
 			on_attach = on_attach,
 			capabilities = lsp_status.capabilities,
 		}
+		if server == 'rust_analyzer' then
+			config.cmd = { 'rust-analyzer' }
+		end
+
 		nvim_lsp[server].setup(config)
 	end
 end

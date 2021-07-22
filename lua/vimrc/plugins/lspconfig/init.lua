@@ -66,6 +66,19 @@ local function on_attach(client, bufnr)
 
 	lsp_status.on_attach(client, bufnr)
 
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_exec(
+			[[
+		    augroup lsp_document_highlight
+			    autocmd! * <buffer>
+			    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+			    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+		    augroup END
+	    ]],
+			false
+		)
+	end
+
 	which_key.register({
 		['gD'] = 'Declaration',
 		['gd'] = 'Definition',
@@ -83,6 +96,7 @@ end
 
 local function setup_servers()
 	lspinstall.setup()
+
 	local servers = lspinstall.installed_servers()
 	if #servers == 0 then
 		servers = {
@@ -100,10 +114,11 @@ local function setup_servers()
 	end
 
 	for _, server in pairs(servers) do
-		nvim_lsp[server].setup {
+		local config = {
 			on_attach = on_attach,
 			capabilities = lsp_status.capabilities,
 		}
+		nvim_lsp[server].setup(config)
 	end
 end
 

@@ -22,7 +22,9 @@ o.shiftwidth = o.tabstop:get()
 o.ai = true
 o.si = true
 o.wrap = false
-o.showbreak = '+'
+if o.wrap then
+	o.showbreak = '+ '
+end
 -- Toggle paste mode
 o.pastetoggle = '<F3>'
 -- Show tabs and spaces

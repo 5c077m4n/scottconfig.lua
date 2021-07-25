@@ -34,21 +34,18 @@ local function init_packer()
 						colors = { hint = 'orange', error = '#ff0000' },
 					})
 				end,
-				event = 'ColorSchemePre',
 			})
 			use({
 				'norcalli/nvim-colorizer.lua',
 				config = function()
 					require('colorizer').setup()
 				end,
-				event = 'ColorScheme',
 			})
 			use({
 				'folke/todo-comments.nvim',
 				config = function()
 					require('todo-comments').setup()
 				end,
-				event = 'ColorScheme',
 			})
 			use({
 				'glepnir/galaxyline.nvim',
@@ -57,7 +54,6 @@ local function init_packer()
 				config = function()
 					require('vimrc.plugins.galaxyline')
 				end,
-				event = 'ColorScheme',
 			})
 			use({
 				'akinsho/nvim-bufferline.lua',
@@ -81,7 +77,6 @@ local function init_packer()
 						},
 					})
 				end,
-				event = 'ColorScheme',
 			})
 			use({
 				'onsails/lspkind-nvim',

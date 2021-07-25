@@ -1,4 +1,4 @@
-local telescope_builtin = require 'telescope.builtin'
+local telescope_builtin = require('telescope.builtin')
 
 vimp.nnoremap('<leader>fls', telescope_builtin.find_files)
 vimp.nnoremap('<leader>fgs', telescope_builtin.git_files)
@@ -13,7 +13,7 @@ vimp.nnoremap('<leader>ffy', telescope_builtin.lsp_document_symbols)
 vimp.nnoremap('<leader>ffS', telescope_builtin.grep_string)
 vimp.nnoremap('<leader>fft', telescope_builtin.filetypes)
 
-require('which-key').register {
+require('which-key').register({
 	['<leader>f'] = {
 		name = 'Fuzzy search',
 		f = {
@@ -32,4 +32,4 @@ require('which-key').register {
 		c = 'Git commits',
 		m = 'Bookmarks',
 	},
-}
+})

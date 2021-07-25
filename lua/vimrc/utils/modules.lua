@@ -12,13 +12,13 @@ end
 
 function M.reload_vimrc()
 	vimp.unmap_all()
-	M.unload_lua_namespace 'vimrc'
-	require 'vimrc'
+	M.unload_lua_namespace('vimrc')
+	require('vimrc')
 end
 
 function M.update_vimrc()
-	vim.fn.system [[git -C ~/.config/nvim pull --force]]
-	print 'Neovim config updated successfully!'
+	vim.fn.system([[git -C ~/.config/nvim pull --force]])
+	print('Neovim config updated successfully!')
 end
 
 return M

@@ -1,12 +1,12 @@
-local nvim_lsp = require 'lspconfig'
-local lspinstall = require 'lspinstall'
-local lsp_sig = require 'lsp_signature'
-local telescope_builtin = require 'telescope.builtin'
-local saga = require 'lspsaga'
-local lsp_status = require 'lsp-status'
-local which_key = require 'which-key'
+local nvim_lsp = require('lspconfig')
+local lspinstall = require('lspinstall')
+local lsp_sig = require('lsp_signature')
+local telescope_builtin = require('telescope.builtin')
+local saga = require('lspsaga')
+local lsp_status = require('lsp-status')
+local which_key = require('which-key')
 
-saga.init_lsp_saga {
+saga.init_lsp_saga({
 	code_action_keys = { exec = '<CR>', quit = { 'q', '<Esc>' } },
 	rename_action_keys = { exec = '<CR>', quit = { '<C-c>', '<Esc>' } },
 	rename_prompt_prefix = '>',
@@ -24,22 +24,22 @@ saga.init_lsp_saga {
 		sign_priority = 20,
 		virtual_text = true,
 	},
-}
+})
 lsp_status.register_progress()
-lsp_status.config {
+lsp_status.config({
 	status_symbol = '',
 	indicator_errors = 'E',
 	indicator_warnings = 'W',
 	indicator_info = 'i',
 	indicator_hint = '?',
 	indicator_ok = '✓',
-}
+})
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	lsp_sig.on_attach { bind = true, handler_opts = { border = 'single' } }
+	lsp_sig.on_attach({ bind = true, handler_opts = { border = 'single' } })
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)
@@ -116,7 +116,7 @@ end
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 lspinstall.post_install_hook = function()
 	setup_servers() -- reload installed servers
-	vim.cmd [[bufdo e]]
+	vim.cmd([[bufdo e]])
 end
 
 setup_servers()

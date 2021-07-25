@@ -1,1 +1,1 @@
-vim.cmd [[autocmd BufNewFile,BufRead *.toml setlocal filetype=toml]]
+vim.cmd([[autocmd BufNewFile,BufRead *.toml setlocal filetype=toml]])

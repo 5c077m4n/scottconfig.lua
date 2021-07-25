@@ -1,11 +1,11 @@
-local utils = require 'vimrc.utils'
+local utils = require('vimrc.utils')
 
 local o = vim.opt
 local g = vim.g
 
 g.mapleader = ' '
 g.maplocalleader = ' '
-g.python3_host_prog = utils.trim(vim.fn.system 'which python3')
+g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 
 -- Configure backspace so it acts as it should
 o.backspace = { 'eol', 'start', 'indent' }
@@ -64,5 +64,5 @@ o.showmatch = true
 -- How many tenths of a second to blink when matching brackets
 o.mat = 2
 
-o.undodir = os.getenv 'HOME' .. '/undodir'
+o.undodir = os.getenv('HOME') .. '/undodir'
 o.undofile = true

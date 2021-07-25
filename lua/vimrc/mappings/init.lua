@@ -1,4 +1,4 @@
-require 'vimp'
+require('vimp')
 
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', require('vimrc.utils.modules').reload_vimrc)
@@ -39,25 +39,25 @@ vimp.nnoremap({ 'silent' }, '<CR>', ':nohlsearch<CR><CR>')
 
 -- Word traversing
 vimp.inoremap('<C-b>', function()
-	vim.cmd [[normal! b]]
+	vim.cmd([[normal! b]])
 end)
 vimp.inoremap('<C-e>', function()
-	vim.cmd [[normal! e]]
+	vim.cmd([[normal! e]])
 end)
 vimp.inoremap('<C-w>', function()
-	vim.cmd [[normal! w]]
+	vim.cmd([[normal! w]])
 end)
 vimp.inoremap('<C-h>', function()
-	vim.cmd [[normal! h]]
+	vim.cmd([[normal! h]])
 end)
 vimp.inoremap('<C-j>', function()
-	vim.cmd [[normal! j]]
+	vim.cmd([[normal! j]])
 end)
 vimp.inoremap('<C-k>', function()
-	vim.cmd [[normal! k]]
+	vim.cmd([[normal! k]])
 end)
 vimp.inoremap('<C-l>', function()
-	vim.cmd [[normal! l]]
+	vim.cmd([[normal! l]])
 end)
 
 -- Switch CWD to the directory of the open buffer

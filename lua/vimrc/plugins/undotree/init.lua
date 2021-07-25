@@ -1,1 +1,1 @@
-require 'vimrc.plugins.undotree.commands'
+require('vimrc.plugins.undotree.commands')

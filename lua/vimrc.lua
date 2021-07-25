@@ -1,4 +1,4 @@
-require 'vimrc.options'
+require('vimrc.options')
 require('vimrc.plugins').setup()
-require 'vimrc.mappings'
-require 'vimrc.augroups'
+require('vimrc.mappings')
+require('vimrc.augroups')

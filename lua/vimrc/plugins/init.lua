@@ -2,63 +2,67 @@ local M = {}
 
 local function bootstrap()
 	local fn = vim.fn
-	local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
+	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
-		vim.fn.system {
+		vim.fn.system({
 			'git',
 			'clone',
 			'https://github.com/wbthomason/packer.nvim',
 			install_path,
-		}
-		vim.cmd [[packadd packer.nvim]]
+		})
+		vim.cmd([[packadd packer.nvim]])
 	end
 end
 
 local function init_packer()
-	vim.cmd [[packadd packer.nvim]]
+	vim.cmd([[packadd packer.nvim]])
 
-	require('packer').startup {
+	require('packer').startup({
 		function(use)
 			-- General
-			use 'tpope/vim-sensible'
-			use 'svermeulen/vimpeccable'
-			use 'nvim-lua/plenary.nvim'
+			use('tpope/vim-sensible')
+			use('svermeulen/vimpeccable')
+			use('nvim-lua/plenary.nvim')
 			-- Theme
-			use {
+			use({
 				'projekt0n/github-nvim-theme',
 				config = function()
-					require('github-theme').setup {
+					require('github-theme').setup({
 						themeStyle = 'dimmed',
 						sidebars = { 'lazygit', 'terminal', 'packer' },
 						colors = { hint = 'orange', error = '#ff0000' },
-					}
+					})
 				end,
-			}
-			use {
+				event = 'ColorSchemePre',
+			})
+			use({
 				'norcalli/nvim-colorizer.lua',
 				config = function()
 					require('colorizer').setup()
 				end,
-			}
-			use {
+				event = 'ColorScheme',
+			})
+			use({
 				'folke/todo-comments.nvim',
 				config = function()
 					require('todo-comments').setup()
 				end,
-			}
-			use {
+				event = 'ColorScheme',
+			})
+			use({
 				'glepnir/galaxyline.nvim',
 				branch = 'main',
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 				config = function()
-					require 'vimrc.plugins.galaxyline'
+					require('vimrc.plugins.galaxyline')
 				end,
-			}
-			use {
+				event = 'ColorScheme',
+			})
+			use({
 				'akinsho/nvim-bufferline.lua',
 				config = function()
-					require('bufferline').setup {
+					require('bufferline').setup({
 						options = {
 							numbers = 'both',
 							mappings = false,
@@ -75,31 +79,33 @@ local function init_packer()
 								return '(' .. count .. ')'
 							end,
 						},
-					}
+					})
 				end,
-			}
-			use {
+				event = 'ColorScheme',
+			})
+			use({
 				'onsails/lspkind-nvim',
 				config = function()
 					require('lspkind').init() -- Icons in autocomplete popup
 				end,
-			}
+				event = 'BufReadPost',
+			})
 			-- File tree
-			use {
+			use({
 				'kyazdani42/nvim-tree.lua',
 				config = function()
-					require 'vimrc.plugins.nvim-tree'
+					require('vimrc.plugins.nvim-tree')
 				end,
-			}
+			})
 			-- Treesitter
-			use {
+			use({
 				'nvim-treesitter/nvim-treesitter',
 				config = function()
-					require 'vimrc.plugins.nvim-treesitter'
+					require('vimrc.plugins.nvim-treesitter')
 				end,
-			}
+			})
 			-- LSP
-			use {
+			use({
 				'neovim/nvim-lspconfig',
 				requires = {
 					'kabouzeid/nvim-lspinstall',
@@ -109,54 +115,54 @@ local function init_packer()
 				},
 				run = ':TSUpdate',
 				config = function()
-					require 'vimrc.plugins.lspconfig'
+					require('vimrc.plugins.lspconfig')
 				end,
-			}
-			use {
+			})
+			use({
 				'folke/trouble.nvim',
 				requires = 'kyazdani42/nvim-web-devicons',
 				config = function()
-					require 'vimrc.plugins.trouble'
+					require('vimrc.plugins.trouble')
 				end,
-			}
+			})
 			-- Code snippets
-			use {
+			use({
 				'hrsh7th/nvim-compe',
 				requires = { 'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets' },
 				config = function()
-					require 'vimrc.plugins.compe'
+					require('vimrc.plugins.compe')
 				end,
-			}
+			})
 			-- Terminal
-			use {
+			use({
 				'voldikss/vim-floaterm',
 				keys = { '<F9>', '<F10>', '<F11>', '<F12>' },
 				config = function()
-					require 'vimrc.plugins.terminal'
+					require('vimrc.plugins.terminal')
 				end,
-			}
+			})
 			-- Code workflow
-			use {
+			use({
 				'phaazon/hop.nvim',
 				as = 'hop',
 				keys = { 'F' },
 				config = function()
-					require 'vimrc.plugins.hop'
+					require('vimrc.plugins.hop')
 				end,
-			}
-			use {
+			})
+			use({
 				'francoiscabrol/ranger.vim',
 				requires = 'rbgrouleff/bclose.vim',
 				keys = { '<leader>rr' },
 				setup = function()
-					require 'vimrc.plugins.ranger'
+					require('vimrc.plugins.ranger')
 				end,
-			}
-			use 'folke/which-key.nvim'
-			use {
+			})
+			use('folke/which-key.nvim')
+			use({
 				'blackCauldron7/surround.nvim',
 				config = function()
-					require('surround').setup {
+					require('surround').setup({
 						prefix = 'S',
 						mappings_style = 'sandwich',
 						pairs = {
@@ -164,45 +170,46 @@ local function init_packer()
 							linear = { { [[']], [[']] }, { [["]], [["]] } },
 						},
 						brackets = { '(', '{', '[', '<' },
-					}
+					})
 				end,
-			}
-			use {
+			})
+			use({
 				'windwp/nvim-autopairs',
 				event = 'InsertEnter',
 				config = function()
 					require('nvim-autopairs').setup()
-					require('nvim-autopairs.completion.compe').setup {
+					require('nvim-autopairs.completion.compe').setup({
 						map_cr = true, --  map <CR> on insert mode
 						map_complete = true, -- it will auto insert `(` after select function or method item
-					}
+					})
 				end,
-			}
-			use { 'terrortylor/nvim-comment', event = 'InsertEnter' }
-			use {
+			})
+			use({ 'terrortylor/nvim-comment', event = 'InsertEnter' })
+			use({
 				'mhartington/formatter.nvim',
 				config = function()
-					require 'vimrc.plugins.formatter'
+					require('vimrc.plugins.formatter')
 				end,
+				cmd = { 'Format', 'FormatWrite' },
 				keys = { '<leader>l' },
-			}
+			})
 			-- Git
-			use {
+			use({
 				'tpope/vim-fugitive',
 				config = function()
-					require 'vimrc.plugins.git-fugitive'
+					require('vimrc.plugins.git-fugitive')
 				end,
-			}
-			use {
+			})
+			use({
 				'sindrets/diffview.nvim',
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-			}
-			use { 'kdheepak/lazygit.nvim', cmd = 'LazyGit' }
-			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufRead' }
+			})
+			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit' })
+			use({ 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' })
 			-- JSON query
-			use { 'gennaro-tedesco/nvim-jqx', ft = { 'json' } }
+			use({ 'gennaro-tedesco/nvim-jqx', ft = { 'json' } })
 			-- Telescope
-			use {
+			use({
 				'nvim-telescope/telescope.nvim',
 				requires = {
 					'nvim-lua/popup.nvim',
@@ -211,49 +218,50 @@ local function init_packer()
 					'BurntSushi/ripgrep',
 				},
 				config = function()
-					require 'vimrc.plugins.telescope'
+					require('vimrc.plugins.telescope')
 				end,
-			}
+			})
 			-- Session
-			use {
+			use({
 				'rmagatti/auto-session',
 				config = function()
-					require 'vimrc.plugins.auto-session'
+					require('vimrc.plugins.auto-session')
 				end,
-			}
+			})
 			-- Debugging
 			-- use 'nvim-telescope/telescope-dap.nvim'
-			use { 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' } }
-			use {
+			use({ 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' } })
+			use({
 				'Pocco81/DAPInstall.nvim',
 				requires = 'mfussenegger/nvim-dap',
 				ft = { 'javascript', 'lua', 'rust' },
 				config = function()
-					local dap_install = require 'dap-install'
+					local dap_install = require('dap-install')
 
 					dap_install.setup()
 					dap_install.config('ccppr_lldb_dbg', {})
 				end,
-			}
-			use {
+			})
+			use({
 				'rcarriga/nvim-dap-ui',
 				requires = 'mfussenegger/nvim-dap',
 				ft = { 'javascript', 'lua', 'rust' },
 				config = function()
 					require('dapui').setup()
 				end,
-			}
-			use {
+			})
+			use({
 				'jbyuki/one-small-step-for-vimkind',
 				requires = 'mfussenegger/nvim-dap',
 				ft = { 'javascript', 'lua', 'rust' },
-			}
+			})
+
 			-- Optional
-			use { 'wbthomason/packer.nvim', opt = true }
-			use { 'tweekmonster/startuptime.vim', opt = true }
+			use({ 'wbthomason/packer.nvim', opt = true })
+			use({ 'tweekmonster/startuptime.vim', opt = true })
 		end,
 		config = { display = { open_fn = require('packer.util').float } },
-	}
+	})
 end
 
 function M.setup()

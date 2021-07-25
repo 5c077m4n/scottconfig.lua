@@ -1,5 +1,5 @@
-local gl = require 'galaxyline'
-local condition = require 'galaxyline.condition'
+local gl = require('galaxyline')
+local condition = require('galaxyline.condition')
 local get_lsp_status = require('lsp-status').status
 local trim = require('vimrc.utils').trim
 

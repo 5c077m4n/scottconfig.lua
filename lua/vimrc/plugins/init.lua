@@ -18,59 +18,189 @@ end
 local function init_packer()
 	vim.cmd [[packadd packer.nvim]]
 
-	return require('packer').startup {
+	require('packer').startup {
 		function(use)
 			-- General
 			use 'tpope/vim-sensible'
 			use 'svermeulen/vimpeccable'
 			use 'nvim-lua/plenary.nvim'
 			-- Theme
-			use 'projekt0n/github-nvim-theme'
-			use 'norcalli/nvim-colorizer.lua'
-			use 'folke/todo-comments.nvim'
+			use {
+				'projekt0n/github-nvim-theme',
+				config = function()
+					require('github-theme').setup {
+						themeStyle = 'dimmed',
+						sidebars = { 'lazygit', 'terminal', 'packer' },
+						colors = { hint = 'orange', error = '#ff0000' },
+					}
+				end,
+			}
+			use {
+				'norcalli/nvim-colorizer.lua',
+				config = function()
+					require('colorizer').setup()
+				end,
+			}
+			use {
+				'folke/todo-comments.nvim',
+				config = function()
+					require('todo-comments').setup()
+				end,
+			}
 			use {
 				'glepnir/galaxyline.nvim',
 				branch = 'main',
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+				config = function()
+					require 'vimrc.plugins.galaxyline'
+				end,
 			}
-			use 'akinsho/nvim-bufferline.lua'
-			use 'onsails/lspkind-nvim'
+			use {
+				'akinsho/nvim-bufferline.lua',
+				config = function()
+					require('bufferline').setup {
+						options = {
+							numbers = 'both',
+							mappings = false,
+							offsets = {
+								{
+									filetype = 'NvimTree',
+									text = 'File Explorer',
+									highlight = 'Directory',
+									text_align = 'left',
+								},
+							},
+							diagnostics = 'nvim_lsp',
+							diagnostics_indicator = function(count, _level, _diagnostics_dict, _context)
+								return '(' .. count .. ')'
+							end,
+						},
+					}
+				end,
+			}
+			use {
+				'onsails/lspkind-nvim',
+				config = function()
+					require('lspkind').init() -- Icons in autocomplete popup
+				end,
+			}
 			-- File tree
-			use 'kyazdani42/nvim-tree.lua'
+			use {
+				'kyazdani42/nvim-tree.lua',
+				config = function()
+					require 'vimrc.plugins.nvim-tree'
+				end,
+			}
+			-- Treesitter
+			use {
+				'nvim-treesitter/nvim-treesitter',
+				config = function()
+					require 'vimrc.plugins.nvim-treesitter'
+				end,
+			}
 			-- LSP
-			use 'nvim-treesitter/nvim-treesitter'
-			use { 'neovim/nvim-lspconfig', run = ':TSUpdate' }
-			use 'kabouzeid/nvim-lspinstall'
-			use 'ray-x/lsp_signature.nvim'
-			use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-			use 'glepnir/lspsaga.nvim'
-			use 'nvim-lua/lsp-status.nvim'
+			use {
+				'neovim/nvim-lspconfig',
+				requires = {
+					'kabouzeid/nvim-lspinstall',
+					'ray-x/lsp_signature.nvim',
+					'glepnir/lspsaga.nvim',
+					'nvim-lua/lsp-status.nvim',
+				},
+				run = ':TSUpdate',
+				config = function()
+					require 'vimrc.plugins.lspconfig'
+				end,
+			}
+			use {
+				'folke/trouble.nvim',
+				requires = 'kyazdani42/nvim-web-devicons',
+				config = function()
+					require 'vimrc.plugins.trouble'
+				end,
+			}
 			-- Code snippets
 			use {
 				'hrsh7th/nvim-compe',
 				requires = { 'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets' },
-				opt = true,
+				config = function()
+					require 'vimrc.plugins.compe'
+				end,
 			}
 			-- Terminal
-			use 'voldikss/vim-floaterm'
+			use {
+				'voldikss/vim-floaterm',
+				keys = { '<F9>', '<F10>', '<F11>', '<F12>' },
+				config = function()
+					require 'vimrc.plugins.terminal'
+				end,
+			}
 			-- Code workflow
-			use { 'phaazon/hop.nvim', as = 'hop' }
-			use { 'francoiscabrol/ranger.vim', requires = 'rbgrouleff/bclose.vim' }
+			use {
+				'phaazon/hop.nvim',
+				as = 'hop',
+				keys = { 'F' },
+				config = function()
+					require 'vimrc.plugins.hop'
+				end,
+			}
+			use {
+				'francoiscabrol/ranger.vim',
+				requires = 'rbgrouleff/bclose.vim',
+				keys = { '<leader>rr' },
+				setup = function()
+					require 'vimrc.plugins.ranger'
+				end,
+			}
 			use 'folke/which-key.nvim'
-			use 'blackCauldron7/surround.nvim'
-			use 'windwp/nvim-autopairs'
-			use 'terrortylor/nvim-comment'
-			use 'mhartington/formatter.nvim'
+			use {
+				'blackCauldron7/surround.nvim',
+				config = function()
+					require('surround').setup {
+						prefix = 'S',
+						mappings_style = 'sandwich',
+						pairs = {
+							nestable = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '<', '>' } },
+							linear = { { [[']], [[']] }, { [["]], [["]] } },
+						},
+						brackets = { '(', '{', '[', '<' },
+					}
+				end,
+			}
+			use {
+				'windwp/nvim-autopairs',
+				event = 'InsertEnter',
+				config = function()
+					require('nvim-autopairs').setup()
+					require('nvim-autopairs.completion.compe').setup {
+						map_cr = true, --  map <CR> on insert mode
+						map_complete = true, -- it will auto insert `(` after select function or method item
+					}
+				end,
+			}
+			use { 'terrortylor/nvim-comment', event = 'InsertEnter' }
+			use {
+				'mhartington/formatter.nvim',
+				config = function()
+					require 'vimrc.plugins.formatter'
+				end,
+				keys = { '<leader>l' },
+			}
 			-- Git
-			use 'tpope/vim-fugitive'
+			use {
+				'tpope/vim-fugitive',
+				config = function()
+					require 'vimrc.plugins.git-fugitive'
+				end,
+			}
 			use {
 				'sindrets/diffview.nvim',
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 			}
-			use 'kdheepak/lazygit.nvim'
-			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
+			use { 'kdheepak/lazygit.nvim', cmd = 'LazyGit' }
+			use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim', event = 'BufRead' }
 			-- JSON query
-			use 'gennaro-tedesco/nvim-jqx'
+			use { 'gennaro-tedesco/nvim-jqx', ft = { 'json' } }
 			-- Telescope
 			use {
 				'nvim-telescope/telescope.nvim',
@@ -80,28 +210,43 @@ local function init_packer()
 					'sharkdp/fd',
 					'BurntSushi/ripgrep',
 				},
+				config = function()
+					require 'vimrc.plugins.telescope'
+				end,
 			}
+			-- Session
 			use {
-				'rmagatti/session-lens',
-				requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+				'rmagatti/auto-session',
+				config = function()
+					require 'vimrc.plugins.auto-session'
+				end,
 			}
-			use {
-				'nvim-telescope/telescope-media-files.nvim',
-				requires = 'nvim-telescope/telescope.nvim',
-			}
-			-- use 'nvim-telescope/telescope-dap.nvim'
 			-- Debugging
-			use { 'mfussenegger/nvim-dap', opt = true }
+			-- use 'nvim-telescope/telescope-dap.nvim'
+			use { 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' } }
 			use {
 				'Pocco81/DAPInstall.nvim',
 				requires = 'mfussenegger/nvim-dap',
-				opt = true,
+				ft = { 'javascript', 'lua', 'rust' },
+				config = function()
+					local dap_install = require 'dap-install'
+
+					dap_install.setup()
+					dap_install.config('ccppr_lldb_dbg', {})
+				end,
 			}
-			use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap', opt = true }
+			use {
+				'rcarriga/nvim-dap-ui',
+				requires = 'mfussenegger/nvim-dap',
+				ft = { 'javascript', 'lua', 'rust' },
+				config = function()
+					require('dapui').setup()
+				end,
+			}
 			use {
 				'jbyuki/one-small-step-for-vimkind',
 				requires = 'mfussenegger/nvim-dap',
-				opt = true,
+				ft = { 'javascript', 'lua', 'rust' },
 			}
 			-- Optional
 			use { 'wbthomason/packer.nvim', opt = true }
@@ -111,35 +256,9 @@ local function init_packer()
 	}
 end
 
-local function init_packages()
-	require 'vimp'
-
-	require 'vimrc.plugins.git'
-	require 'vimrc.plugins.nvim-treesitter'
-	require 'vimrc.plugins.lspconfig'
-	require 'vimrc.plugins.compe'
-	require 'vimrc.plugins.nvim-tree'
-	require 'vimrc.plugins.terminal'
-	require 'vimrc.plugins.galaxyline'
-	require 'vimrc.plugins.ranger'
-	require 'vimrc.plugins.telescope'
-	require 'vimrc.plugins.nvim-comment'
-	require 'vimrc.plugins.trouble'
-	require 'vimrc.plugins.theme'
-	require 'vimrc.plugins.hop'
-	require 'vimrc.plugins.which-key'
-	require 'vimrc.plugins.session'
-	require 'vimrc.plugins.format'
-end
-
 function M.setup()
 	bootstrap()
-
 	init_packer()
-	local success, err = pcall(init_packages)
-	if not success then
-		print(err)
-	end
 end
 
 return M

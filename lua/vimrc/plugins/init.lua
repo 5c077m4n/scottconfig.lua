@@ -136,6 +136,7 @@ local function init_packer()
 			-- Terminal
 			use({
 				'voldikss/vim-floaterm',
+				cmd = { 'FloatermNew', 'FloatermToggle' },
 				keys = { '<F9>', '<F10>', '<F11>', '<F12>' },
 				config = function()
 					require('vimrc.plugins.terminal')

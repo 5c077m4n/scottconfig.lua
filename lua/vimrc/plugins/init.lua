@@ -201,7 +201,13 @@ local function init_packer()
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 			})
 			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit' })
-			use({ 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' })
+			use({
+				'lewis6991/gitsigns.nvim',
+				requires = 'nvim-lua/plenary.nvim',
+				config = function()
+					require('vimrc.plugins.gitsigns')
+				end,
+			})
 			-- JSON query
 			use({ 'gennaro-tedesco/nvim-jqx', ft = { 'json' } })
 			-- Telescope

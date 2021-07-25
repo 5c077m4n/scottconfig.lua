@@ -119,5 +119,4 @@ lspinstall.post_install_hook = function()
 	vim.cmd [[bufdo e]]
 end
 
-require('lspkind').init() -- Icons in autocomplete popup
 setup_servers()

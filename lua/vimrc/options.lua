@@ -27,7 +27,9 @@ o.showbreak = '+'
 o.pastetoggle = '<F3>'
 -- Show tabs and spaces
 o.list = true
-o.listchars = { tab = '| ', space = '·', trail = '-' }
+if o.list:get() then
+	o.listchars = { tab = '| ', space = '·', trail = '-' }
+end
 
 o.completeopt = { 'menuone', 'noselect' }
 

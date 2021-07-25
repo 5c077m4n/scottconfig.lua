@@ -199,6 +199,10 @@ local function init_packer()
 			use({
 				'sindrets/diffview.nvim',
 				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+				cmd = 'DiffviewOpen',
+				config = function()
+					require('vimrc.plugins.diffview')
+				end,
 			})
 			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit' })
 			use({

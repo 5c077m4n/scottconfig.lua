@@ -1,2 +1,2 @@
-require 'vimrc.plugins.hop.config'
-require 'vimrc.plugins.hop.commands'
+require('vimrc.plugins.hop.config')
+require('vimrc.plugins.hop.commands')

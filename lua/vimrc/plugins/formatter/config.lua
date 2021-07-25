@@ -7,7 +7,7 @@ local function prettierFmt()
 	}
 end
 
-require('formatter').setup {
+require('formatter').setup({
 	logging = false,
 	filetype = {
 		javascript = { prettierFmt },
@@ -30,4 +30,4 @@ require('formatter').setup {
 			end,
 		},
 	},
-}
+})

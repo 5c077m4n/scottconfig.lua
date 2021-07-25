@@ -1,4 +1,4 @@
-require('surround').setup {
+require('surround').setup({
 	prefix = 'S',
 	mappings_style = 'sandwich',
 	pairs = {
@@ -6,4 +6,4 @@ require('surround').setup {
 		linear = { { [[']], [[']] }, { [["]], [["]] } },
 	},
 	brackets = { '(', '{', '[', '<' },
-}
+})

@@ -1,4 +1,4 @@
-require('gitsigns').setup {
+require('gitsigns').setup({
 	signs = {
 		add = {
 			hl = 'GitSignsAdd',
@@ -33,4 +33,4 @@ require('gitsigns').setup {
 	},
 	watch_index = { interval = 800 },
 	update_debounce = 400,
-}
+})

@@ -95,6 +95,7 @@ local function init_packer()
 			-- Treesitter
 			use({
 				'nvim-treesitter/nvim-treesitter',
+				branch = '0.5-compat',
 				config = function()
 					require('vimrc.plugins.nvim-treesitter')
 				end,
@@ -131,8 +132,6 @@ local function init_packer()
 			-- Terminal
 			use({
 				'voldikss/vim-floaterm',
-				cmd = { 'FloatermNew', 'FloatermToggle' },
-				keys = { '<F9>', '<F10>', '<F11>', '<F12>' },
 				config = function()
 					require('vimrc.plugins.terminal')
 				end,
@@ -149,7 +148,6 @@ local function init_packer()
 			use({
 				'francoiscabrol/ranger.vim',
 				requires = 'rbgrouleff/bclose.vim',
-				keys = { '<leader>rr' },
 				setup = function()
 					require('vimrc.plugins.ranger')
 				end,

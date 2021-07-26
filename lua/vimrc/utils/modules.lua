@@ -11,9 +11,10 @@ function M.unload_lua_namespace(prefix)
 end
 
 function M.reload_vimrc()
-	vimp.unmap_all()
+	require('vimp').unmap_all()
 	M.unload_lua_namespace('vimrc')
 	require('vimrc')
+	require('packer').compile()
 end
 
 function M.update_vimrc()

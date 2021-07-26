@@ -14,6 +14,7 @@ require('formatter').setup({
 		javascriptreact = { prettierFmt },
 		typescript = { prettierFmt },
 		typescriptreact = { prettierFmt },
+		json = { prettierFmt },
 		rust = {
 			function()
 				return {

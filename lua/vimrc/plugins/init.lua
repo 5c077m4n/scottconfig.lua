@@ -180,7 +180,7 @@ local function init_packer()
 			})
 			use({
 				'terrortylor/nvim-comment',
-				config = function ()
+				config = function()
 					require('vimrc.plugins.nvim-comment')
 				end,
 			})
@@ -216,7 +216,7 @@ local function init_packer()
 				end,
 			})
 			-- JSON query
-			use({ 'gennaro-tedesco/nvim-jqx', ft = { 'json' } })
+			use({ 'gennaro-tedesco/nvim-jqx', ft = { 'json', 'yaml' } })
 			-- Telescope
 			use({
 				'nvim-telescope/telescope.nvim',

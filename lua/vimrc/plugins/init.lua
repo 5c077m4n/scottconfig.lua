@@ -161,7 +161,7 @@ local function init_packer()
 						mappings_style = 'sandwich',
 						pairs = {
 							nestable = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '<', '>' } },
-							linear = { { [[']], [[']] }, { [["]], [["]] } },
+							linear = { { [[']], [[']] }, { [["]], [["]] }, { [[`]], [[`]] } },
 						},
 						brackets = { '(', '{', '[', '<' },
 					})

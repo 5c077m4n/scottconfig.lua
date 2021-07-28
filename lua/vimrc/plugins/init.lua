@@ -178,7 +178,12 @@ local function init_packer()
 					})
 				end,
 			})
-			use({ 'terrortylor/nvim-comment', event = 'InsertEnter' })
+			use({
+				'terrortylor/nvim-comment',
+				config = function ()
+					require('vimrc.plugins.nvim-comment')
+				end,
+			})
 			use({
 				'mhartington/formatter.nvim',
 				config = function()

@@ -1,15 +1,15 @@
 local function eslint_fmt()
 	return {
-		exe = 'yarn',
-		args = { 'eslint', '--stdin-filename', vim.api.nvim_buf_get_name(0) },
+		exe = 'eslint',
+		args = { '--stdin-filename', vim.api.nvim_buf_get_name(0) },
 		stdin = true,
 		tempfile_dir = '/tmp/fmt-file/',
 	}
 end
 local function prettier_fmt()
 	return {
-		exe = 'yarn',
-		args = { 'prettier', '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+		exe = 'pretter',
+		args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
 		stdin = true,
 		tempfile_dir = '/tmp/fmt-file/',
 	}

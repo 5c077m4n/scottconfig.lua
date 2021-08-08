@@ -116,8 +116,13 @@ local function setup_servers()
 	end
 
 	if not vim.fn.executable('eslint_d') then
-		vim.fn.system({ 'yarn', 'global', 'add', 'eslint_d' })
-		print('Successfully installed `eslint_d`')
+		local handle
+		handle = vim.loop.spawn('yarn', { args = { 'global', 'install', 'eslint_d' } }, function()
+			if handle and not handle:is_closing() then
+				handle:close()
+			end
+			print('Successfully installed `eslint_d`')
+		end)
 	end
 	nvim_lsp.diagnosticls.setup({
 		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },

@@ -35,6 +35,25 @@ lsp_status.config({
 	indicator_ok = '✓',
 })
 
+local function sumneko_lua_config()
+	local USER = vim.fn.expand('$USER')
+	local sumneko_root_path = ''
+	local sumneko_binary = ''
+
+	if vim.fn.has('mac') == 1 then
+		sumneko_root_path = '/Users/' .. USER .. '/.config/nvim/lua-language-server'
+		sumneko_binary = '/Users/' .. USER .. '/.config/nvim/lua-language-server/bin/macOS/lua-language-server'
+	elseif vim.fn.has('unix') == 1 then
+		sumneko_root_path = '/home/' .. USER .. '/.config/nvim/lua-language-server'
+		sumneko_binary = '/home/' .. USER .. '/.config/nvim/lua-language-server/bin/Linux/lua-language-server'
+	else
+		print('Unsupported system for sumneko')
+		return {}
+	end
+
+	return { sumneko_root_path = sumneko_root_path, sumneko_binary = sumneko_binary }
+end
+
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 
@@ -104,6 +123,9 @@ local function setup_servers()
 		local config = {
 			on_attach = on_attach,
 			capabilities = lsp_status.capabilities,
+			flags = {
+				debounce_text_changes = 150,
+			},
 		}
 		if server == 'rust_analyzer' then
 			config.cmd = { 'rust-analyzer' }
@@ -111,6 +133,35 @@ local function setup_servers()
 
 		nvim_lsp[server].setup(config)
 	end
+
+	local lua_config = sumneko_lua_config()
+	local luadev = require('lua-dev').setup({
+		library = { vimruntime = true, types = true, plugins = true },
+		lspconfig = {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { lua_config.sumneko_binary, '-E', lua_config.sumneko_root_path .. '/main.lua' },
+			settings = {
+				Lua = {
+					runtime = {
+						version = 'LuaJIT',
+						path = vim.split(package.path, ';'),
+					},
+					diagnostics = {
+						globals = { 'vim' },
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = {
+							[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+							[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+						},
+					},
+				},
+			},
+		},
+	})
+	nvim_lsp.sumneko_lua.setup(luadev)
 end
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim

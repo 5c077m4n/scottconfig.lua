@@ -18,11 +18,11 @@ end
 require('formatter').setup({
 	logging = false,
 	filetype = {
-		javascript = { eslint_fmt, prettier_fmt },
-		javascriptreact = { eslint_fmt, prettier_fmt },
-		typescript = { eslint_fmt, prettier_fmt },
-		typescriptreact = { eslint_fmt, prettier_fmt },
-		json = { eslint_fmt, prettier_fmt },
+		javascript = { prettier_fmt },
+		javascriptreact = { prettier_fmt },
+		typescript = { prettier_fmt },
+		typescriptreact = { prettier_fmt },
+		json = { prettier_fmt },
 		rust = {
 			function()
 				return {

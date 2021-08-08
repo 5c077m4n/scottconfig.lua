@@ -1,7 +1,15 @@
-local function prettierFmt()
+local function eslint_fmt()
 	return {
-		exe = 'prettier',
-		args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+		exe = 'yarn',
+		args = { 'eslint', '--stdin-filename', vim.api.nvim_buf_get_name(0) },
+		stdin = true,
+		tempfile_dir = '/tmp/fmt-file/',
+	}
+end
+local function prettier_fmt()
+	return {
+		exe = 'yarn',
+		args = { 'prettier', '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
 		stdin = true,
 		tempfile_dir = '/tmp/fmt-file/',
 	}
@@ -10,11 +18,11 @@ end
 require('formatter').setup({
 	logging = false,
 	filetype = {
-		javascript = { prettierFmt },
-		javascriptreact = { prettierFmt },
-		typescript = { prettierFmt },
-		typescriptreact = { prettierFmt },
-		json = { prettierFmt },
+		javascript = { eslint_fmt, prettier_fmt },
+		javascriptreact = { eslint_fmt, prettier_fmt },
+		typescript = { eslint_fmt, prettier_fmt },
+		typescriptreact = { eslint_fmt, prettier_fmt },
+		json = { eslint_fmt, prettier_fmt },
 		rust = {
 			function()
 				return {

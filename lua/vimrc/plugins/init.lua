@@ -121,6 +121,7 @@ local function init_packer()
 					require('vimrc.plugins.trouble')
 				end,
 			})
+			use('folke/lua-dev.nvim')
 			-- Code snippets
 			use({
 				'hrsh7th/nvim-compe',

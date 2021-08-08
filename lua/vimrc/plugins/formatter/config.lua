@@ -8,7 +8,7 @@ local function eslint_fmt()
 end
 local function prettier_fmt()
 	return {
-		exe = 'pretter',
+		exe = 'prettier',
 		args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
 		stdin = true,
 		tempfile_dir = '/tmp/fmt-file/',

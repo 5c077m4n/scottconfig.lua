@@ -127,7 +127,7 @@ local function setup_servers()
 			linters = {
 				eslint = {
 					sourceName = 'eslint',
-					command = './node_modules/.bin/eslint',
+					command = 'eslint_d',
 					rootPatterns = {
 						'.eslitrc.js',
 						'.eslitrc.json',

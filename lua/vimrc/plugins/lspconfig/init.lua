@@ -114,6 +114,51 @@ local function setup_servers()
 
 		nvim_lsp[server].setup(config)
 	end
+
+	nvim_lsp.diagnosticls.setup({
+		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },
+		init_options = {
+			filetypes = {
+				javascript = 'eslint',
+				typescript = 'eslint',
+				javascriptreact = 'eslint',
+				typescriptreact = 'eslint',
+			},
+			linters = {
+				eslint = {
+					sourceName = 'eslint',
+					command = './node_modules/.bin/eslint',
+					rootPatterns = {
+						'.eslitrc.js',
+						'.eslitrc.json',
+						'package.json',
+					},
+					debounce = 100,
+					args = {
+						'--cache',
+						'--stdin',
+						'--stdin-filename',
+						'%filepath',
+						'--format',
+						'json',
+					},
+					parseJson = {
+						errorsRoot = '[0].messages',
+						line = 'line',
+						column = 'column',
+						endLine = 'endLine',
+						endColumn = 'endColumn',
+						message = '${message} [${ruleId}]',
+						security = 'severity',
+					},
+					securities = {
+						[2] = 'error',
+						[1] = 'warning',
+					},
+				},
+			},
+		},
+	})
 end
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim

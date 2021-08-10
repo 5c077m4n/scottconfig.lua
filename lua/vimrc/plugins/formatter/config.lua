@@ -1,9 +1,11 @@
+local tempfile_dir = '/tmp/fmt-file'
+
 local function prettier_fmt()
 	return {
 		exe = 'prettier',
 		args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
 		stdin = true,
-		tempfile_dir = '/tmp/fmt-file/',
+		tempfile_dir = tempfile_dir,
 	}
 end
 
@@ -22,13 +24,13 @@ require('formatter').setup({
 					exe = 'rustfmt',
 					args = { '--emit=stdout' },
 					stdin = true,
-					tempfile_dir = '/tmp/fmt-file/',
+					tempfile_dir = tempfile_dir,
 				}
 			end,
 		},
 		lua = {
 			function()
-				return { exe = 'stylua -', stdin = true, tempfile_dir = '/tmp/fmt-file/' }
+				return { exe = 'stylua -', stdin = true, tempfile_dir = tempfile_dir }
 			end,
 		},
 	},

@@ -1,11 +1,3 @@
-local function eslint_fmt()
-	return {
-		exe = 'eslint',
-		args = { '--stdin-filename', vim.api.nvim_buf_get_name(0) },
-		stdin = true,
-		tempfile_dir = '/tmp/fmt-file/',
-	}
-end
 local function prettier_fmt()
 	return {
 		exe = 'prettier',
@@ -23,6 +15,7 @@ require('formatter').setup({
 		typescript = { prettier_fmt },
 		typescriptreact = { prettier_fmt },
 		json = { prettier_fmt },
+		yaml = { prettier_fmt },
 		rust = {
 			function()
 				return {

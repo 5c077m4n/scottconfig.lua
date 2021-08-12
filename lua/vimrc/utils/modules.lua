@@ -19,7 +19,7 @@ end
 
 function M.update_vimrc()
 	local handle
-	handle = vim.loop.spawn('git', { args = { '-C ~/.config/nvim', 'pull', '--force' } }, function()
+	handle = vim.loop.spawn('git', { args = { [[-C="~/.config/nvim"]], 'pull', '--force' } }, function()
 		if handle and not handle:is_closing() then
 			handle:close()
 		end

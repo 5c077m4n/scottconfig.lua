@@ -14,7 +14,7 @@ pcall(function()
 	cmd([[
 	augroup last_read_point_on_file_open
 		autocmd!
-		autocmd BufReadPost * lua require'vimrc.utils'.jump_to_last_visited()
+		autocmd BufReadPost * silent! lua require('vimrc.utils').jump_to_last_visited()
 	augroup END
 	]])
 end)
@@ -23,7 +23,7 @@ pcall(function()
 	cmd([[
 	augroup highlight_yank
 		autocmd!
-		autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+		autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 500 })
 	augroup END
 	]])
 end)
@@ -32,7 +32,7 @@ pcall(function()
 	cmd([[
 	augroup delete_trailing_spaces_on_save
 		autocmd!
-		autocmd BufWritePre * silent! lua require'vimrc.utils'.clean_extra_spaces()
+		autocmd BufWritePre * silent! lua require('vimrc.utils').clean_extra_spaces()
 	augroup END
 	]])
 end)

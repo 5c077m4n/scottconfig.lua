@@ -45,6 +45,18 @@ function M.jump_to_last_visited()
 	end
 end
 
+function M.yarn_install_if_missing(pkg_name)
+	if not vim.fn.executable(pkg_name) then
+		local handle
+		handle = vim.loop.spawn('yarn', { args = { 'global', 'install', pkg_name } }, function()
+			if handle and not handle:is_closing() then
+				handle:close()
+			end
+			print('Successfully installed `' .. pkg_name .. '`')
+		end)
+	end
+end
+
 function _G.dump(...)
 	local objects = vim.tbl_map(vim.inspect, { ... })
 	print(unpack(objects))

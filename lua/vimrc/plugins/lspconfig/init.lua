@@ -6,6 +6,8 @@ local saga = require('lspsaga')
 local lsp_status = require('lsp-status')
 local which_key = require('which-key')
 
+local utils = require('vimrc.utils')
+
 saga.init_lsp_saga({
 	code_action_keys = { exec = '<CR>', quit = { 'q', '<Esc>' } },
 	rename_action_keys = { exec = '<CR>', quit = { '<C-c>', '<Esc>' } },
@@ -115,15 +117,10 @@ local function setup_servers()
 		nvim_lsp[server].setup(config)
 	end
 
-	if not vim.fn.executable('eslint_d') then
-		local handle
-		handle = vim.loop.spawn('yarn', { args = { 'global', 'install', 'eslint_d' } }, function()
-			if handle and not handle:is_closing() then
-				handle:close()
-			end
-			print('Successfully installed `eslint_d`')
-		end)
-	end
+	utils.yarn_install_if_missing('prettier')
+	utils.yarn_install_if_missing('eslint_d')
+	utils.yarn_install_if_missing('diagnostic-languageserver')
+
 	nvim_lsp.diagnosticls.setup({
 		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },
 		init_options = {

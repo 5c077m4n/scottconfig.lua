@@ -1,3 +1,5 @@
+local utils = require('vimrc.utils')
+
 local M = {}
 
 function M.unload_lua_namespace(prefix)
@@ -18,15 +20,11 @@ function M.reload_vimrc()
 end
 
 function M.update_vimrc()
-	vim.fn.jobstart({ 'git', [[-C="~/.config/nvim"]], 'pull', '--force' }, {
-		on_exit = function(job_id, exit_code, event_type)
-			if exit_code == 0 then
-				print('Neovim config updated successfully!')
-			else
-				print('There was an error in updating the vimrc')
-			end
-		end,
-	})
+	utils.async_cmd('git', { '-C', vim.env.HOME .. '/.config/nvim', 'pull', '--force' })
+end
+
+function M.yarn_global_install(pkg_name_list)
+	utils.async_cmd('yarn', { 'global', 'add', unpack(pkg_name_list) })
 end
 
 return M

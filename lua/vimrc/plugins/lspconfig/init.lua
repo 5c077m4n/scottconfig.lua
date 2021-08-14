@@ -6,7 +6,7 @@ local saga = require('lspsaga')
 local lsp_status = require('lsp-status')
 local which_key = require('which-key')
 
-local utils = require('vimrc.utils')
+local mod_utils = require('vimrc.utils.modules')
 
 saga.init_lsp_saga({
 	code_action_keys = { exec = '<CR>', quit = { 'q', '<Esc>' } },
@@ -117,9 +117,7 @@ local function setup_servers()
 		nvim_lsp[server].setup(config)
 	end
 
-	utils.yarn_install_if_missing('prettier')
-	utils.yarn_install_if_missing('eslint_d')
-	utils.yarn_install_if_missing('diagnostic-languageserver')
+	mod_utils.yarn_global_install({ 'prettier', 'eslint_d', 'diagnostic-languageserver' })
 
 	nvim_lsp.diagnosticls.setup({
 		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },

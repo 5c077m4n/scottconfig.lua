@@ -19,8 +19,12 @@ end
 
 function M.update_vimrc()
 	vim.fn.jobstart({ 'git', [[-C="~/.config/nvim"]], 'pull', '--force' }, {
-		on_exit = function()
-			print('Neovim config updated successfully!')
+		on_exit = function(job_id, exit_code, event_type)
+			if exit_code == 0 then
+				print('Neovim config updated successfully!')
+			else
+				print('There was an error in updating the vimrc')
+			end
 		end,
 	})
 end

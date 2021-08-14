@@ -18,13 +18,11 @@ function M.reload_vimrc()
 end
 
 function M.update_vimrc()
-	local handle
-	handle = vim.loop.spawn('git', { args = { [[-C="~/.config/nvim"]], 'pull', '--force' } }, function()
-		if handle and not handle:is_closing() then
-			handle:close()
-		end
-		print('Neovim config updated successfully!')
-	end)
+	vim.fn.jobstart({ 'git', [[-C="~/.config/nvim"]], 'pull', '--force' }, {
+		on_exit = function()
+			print('Neovim config updated successfully!')
+		end,
+	})
 end
 
 return M

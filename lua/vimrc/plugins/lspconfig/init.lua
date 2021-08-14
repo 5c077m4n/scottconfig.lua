@@ -117,7 +117,15 @@ local function setup_servers()
 		nvim_lsp[server].setup(config)
 	end
 
-	mod_utils.yarn_global_install({ 'prettier', 'eslint_d', 'diagnostic-languageserver' })
+	if
+		not (
+			vim.fn.executable('prettier')
+			and vim.fn.executable('eslint_d')
+			and vim.fn.executable('diagnostic-languageserver')
+		)
+	then
+		mod_utils.yarn_global_install({ 'prettier', 'eslint_d', 'diagnostic-languageserver' })
+	end
 
 	nvim_lsp.diagnosticls.setup({
 		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },

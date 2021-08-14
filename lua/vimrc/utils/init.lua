@@ -45,14 +45,47 @@ function M.jump_to_last_visited()
 	end
 end
 
-function M.yarn_install_if_missing(pkg_name)
-	if not vim.fn.executable(pkg_name) then
-		vim.fn.jobstart({ 'yarn', 'global', 'install', pkg_name }, {
-			on_exit = function()
-				print('[Yarn install] ' .. pkg_name .. 'installed successfully')
-			end,
-		})
+function M.async_cmd(cmd, args)
+	local uv = vim.loop
+
+	local results = {}
+	local stdout = uv.new_pipe(false)
+	local stderr = uv.new_pipe(false)
+
+	local function onread(_err, data)
+		if data then
+			table.insert(results, data)
+		end
 	end
+
+	local handle
+	handle = uv.spawn(
+		cmd,
+		{
+			args = args,
+			stdio = { nil, stdout, stderr },
+		},
+		vim.schedule_wrap(function()
+			stdout:read_stop()
+			stderr:read_stop()
+			stdout:close()
+			stderr:close()
+
+			if handle and not handle:is_closing() then
+				handle:close()
+			end
+
+			print(table.concat(results, '\n'))
+
+			local count = #results
+			for i = 0, count do
+				results[i] = nil -- clear the table for the next search
+			end
+		end)
+	)
+
+	uv.read_start(stdout, onread)
+	uv.read_start(stderr, onread)
 end
 
 function _G.dump(...)

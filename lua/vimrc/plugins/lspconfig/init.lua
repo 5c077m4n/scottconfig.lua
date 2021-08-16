@@ -134,15 +134,23 @@ local function setup_servers()
 	end
 
 	nvim_lsp.diagnosticls.setup({
-		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css' },
+		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css', 'lua' },
 		init_options = {
 			filetypes = {
 				javascript = 'eslint',
 				typescript = 'eslint',
 				javascriptreact = 'eslint',
 				typescriptreact = 'eslint',
+				lua = 'luacheck',
 			},
 			linters = {
+				luacheck = {
+					sourceName = 'luacheck',
+					command = 'luacheck',
+					rootPatterns = { '.luacheckrc1', '.stylua.toml' },
+					debounce = 100,
+					args = { '-' },
+				},
 				eslint = {
 					sourceName = 'eslint',
 					command = 'eslint_d',

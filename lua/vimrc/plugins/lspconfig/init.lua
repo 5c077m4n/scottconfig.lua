@@ -84,18 +84,20 @@ local function on_attach(client, bufnr)
 	})
 end
 
-local function setup_servers()
-	local config = {
+local function make_config()
+	return {
 		on_attach = on_attach,
 		capabilities = lsp_status.capabilities,
 		flags = { debounce_text_changes = 150 },
 	}
+end
 
+local function setup_servers()
 	lspinstall.setup()
 
 	local servers = lspinstall.installed_servers()
 	for _, server in pairs(servers) do
-		local server_config = { unpack(config) }
+		local server_config = make_config()
 
 		if server == 'rust_analyzer' then
 			server_config.cmd = { 'rust-analyzer' }
@@ -105,7 +107,7 @@ local function setup_servers()
 	end
 
 	local lua_config = {
-		unpack(config),
+		unpack(make_config()),
 		cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
 		settings = {
 			Lua = {

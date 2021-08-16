@@ -112,16 +112,18 @@ local function setup_servers()
 		nvim_lsp[server].setup(server_config)
 	end
 
-	local lua_config = make_config({
-		cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
-		settings = {
-			Lua = {
-				telemetry = { enable = false },
+	if vim.opt.filetype:get() == 'lua' then
+		local lua_config = make_config({
+			cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
+			settings = {
+				Lua = {
+					telemetry = { enable = false },
+				},
 			},
-		},
-	})
-	local luadev_config = lua_dev.setup({ lspconfig = lua_config })
-	nvim_lsp.sumneko_lua.setup(luadev_config)
+		})
+		local luadev_config = lua_dev.setup({ lspconfig = lua_config })
+		nvim_lsp.sumneko_lua.setup(luadev_config)
+	end
 
 	if
 		not (

@@ -84,12 +84,18 @@ local function on_attach(client, bufnr)
 	})
 end
 
-local function make_config()
-	return {
+local function make_config(options)
+	local base_config = {
 		on_attach = on_attach,
 		capabilities = lsp_status.capabilities,
 		flags = { debounce_text_changes = 150 },
 	}
+	if type(options) == 'table' then
+		for key, value in pairs(options) do
+			base_config[key] = value
+		end
+	end
+	return base_config
 end
 
 local function setup_servers()
@@ -106,15 +112,14 @@ local function setup_servers()
 		nvim_lsp[server].setup(server_config)
 	end
 
-	local lua_config = {
-		unpack(make_config()),
+	local lua_config = make_config({
 		cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
 		settings = {
 			Lua = {
 				telemetry = { enable = false },
 			},
 		},
-	}
+	})
 	local luadev_config = lua_dev.setup({ lspconfig = lua_config })
 	nvim_lsp.sumneko_lua.setup(luadev_config)
 

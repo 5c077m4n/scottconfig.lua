@@ -1,6 +1,7 @@
 local nvim_lsp = require('lspconfig')
 local lspinstall = require('lspinstall')
 local lsp_sig = require('lsp_signature')
+local lua_dev = require('lua-dev')
 local telescope_builtin = require('telescope.builtin')
 local saga = require('lspsaga')
 local lsp_status = require('lsp-status')
@@ -103,8 +104,17 @@ local function setup_servers()
 		nvim_lsp[server].setup(server_config)
 	end
 
-	local luadev = require('lua-dev').setup({ lspconfig = config })
-	nvim_lsp.sumneko_lua.setup(luadev)
+	local lua_config = {
+		unpack(config),
+		cmd = { '~/code/lua-language-server/bin/Linux/lua-language-server' },
+		settings = {
+			Lua = {
+				telemetry = { enable = false },
+			},
+		},
+	}
+	local luadev_config = lua_dev.setup({ lspconfig = lua_config })
+	nvim_lsp.sumneko_lua.setup(luadev_config)
 
 	if
 		not (

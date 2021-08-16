@@ -84,38 +84,27 @@ local function on_attach(client, bufnr)
 end
 
 local function setup_servers()
+	local config = {
+		on_attach = on_attach,
+		capabilities = lsp_status.capabilities,
+		flags = { debounce_text_changes = 150 },
+	}
+
 	lspinstall.setup()
 
 	local servers = lspinstall.installed_servers()
-	if #servers == 0 then
-		servers = {
-			'bash',
-			'css',
-			'graphql',
-			'html',
-			'lua',
-			'rust',
-			'tailwindcss',
-			'typescript',
-			'vim',
-			'yaml',
-		}
-	end
-
 	for _, server in pairs(servers) do
-		local config = {
-			on_attach = on_attach,
-			capabilities = lsp_status.capabilities,
-			flags = {
-				debounce_text_changes = 150,
-			},
-		}
+		local server_config = { unpack(config) }
+
 		if server == 'rust_analyzer' then
-			config.cmd = { 'rust-analyzer' }
+			server_config.cmd = { 'rust-analyzer' }
 		end
 
-		nvim_lsp[server].setup(config)
+		nvim_lsp[server].setup(server_config)
 	end
+
+	local luadev = require('lua-dev').setup({ lspconfig = config })
+	nvim_lsp.sumneko_lua.setup(luadev)
 
 	if
 		not (

@@ -1,3 +1,4 @@
+require('vimrc.globals')
 require('vimrc.options')
 require('vimrc.plugins').setup()
 require('vimrc.mappings')

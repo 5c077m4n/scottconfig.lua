@@ -106,7 +106,7 @@ local function setup_servers()
 
 	local lua_config = {
 		unpack(config),
-		cmd = { '~/code/lua-language-server/bin/Linux/lua-language-server' },
+		cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
 		settings = {
 			Lua = {
 				telemetry = { enable = false },

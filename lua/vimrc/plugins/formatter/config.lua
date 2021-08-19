@@ -8,6 +8,13 @@ local function prettier_fmt()
 		tempfile_dir = tempfile_dir,
 	}
 end
+local function shell_fmt()
+	return {
+		exe = 'shellcheck',
+		stdin = true,
+		tempfile_dir = tempfile_dir,
+	}
+end
 
 require('formatter').setup({
 	logging = false,
@@ -33,5 +40,6 @@ require('formatter').setup({
 				return { exe = 'stylua -', stdin = true, tempfile_dir = tempfile_dir }
 			end,
 		},
+		sh = { shell_fmt },
 	},
 })

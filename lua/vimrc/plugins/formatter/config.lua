@@ -10,7 +10,7 @@ local function prettier_fmt()
 end
 local function shell_fmt()
 	return {
-		exe = 'shellcheck -',
+		exe = 'shfmt',
 		stdin = true,
 		tempfile_dir = tempfile_dir,
 	}

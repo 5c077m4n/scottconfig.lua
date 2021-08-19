@@ -231,6 +231,7 @@ local function init_packer()
 					require('vimrc.plugins.telescope')
 				end,
 			})
+			use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 			-- Session
 			use({
 				'rmagatti/auto-session',

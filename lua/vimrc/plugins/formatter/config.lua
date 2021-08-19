@@ -41,5 +41,7 @@ require('formatter').setup({
 			end,
 		},
 		sh = { shell_fmt },
+		bash = { shell_fmt },
+		zsh = { shell_fmt },
 	},
 })

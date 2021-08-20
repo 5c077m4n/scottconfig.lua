@@ -122,6 +122,17 @@ local function init_packer()
 				end,
 			})
 			use('folke/lua-dev.nvim')
+			use({
+				'simrat39/rust-tools.nvim',
+				requires = {
+					'neovim/nvim-lspconfig',
+					'nvim-lua/popup.nvim',
+					'nvim-lua/plenary.nvim',
+					'nvim-telescope/telescope.nvim',
+					'mfussenegger/nvim-dap',
+				},
+				ft = { 'rust' },
+			})
 			-- Code snippets
 			use({
 				'hrsh7th/nvim-compe',

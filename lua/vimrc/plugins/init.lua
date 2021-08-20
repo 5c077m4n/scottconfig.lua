@@ -132,6 +132,9 @@ local function init_packer()
 					'mfussenegger/nvim-dap',
 				},
 				ft = { 'rust' },
+				config = function()
+					require('rust-tools').setup({})
+				end,
 			})
 			-- Code snippets
 			use({

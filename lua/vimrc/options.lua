@@ -68,3 +68,5 @@ o.mat = 2
 
 o.undodir = os.getenv('HOME') .. '/undodir'
 o.undofile = true
+
+o.swapfile = false

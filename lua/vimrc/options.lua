@@ -22,7 +22,7 @@ o.shiftwidth = o.tabstop:get()
 o.ai = true
 o.si = true
 o.wrap = false
-if o.wrap then
+if o.wrap:get() then
 	o.showbreak = '+ '
 end
 -- Toggle paste mode
@@ -30,7 +30,7 @@ o.pastetoggle = '<F3>'
 -- Show tabs and spaces
 o.list = true
 if o.list:get() then
-	o.listchars = { tab = '| ', space = '·', trail = '-' }
+	o.listchars = { tab = '| ', space = ' ', trail = '·' }
 end
 
 o.completeopt = { 'menuone', 'noselect' }

@@ -105,11 +105,9 @@ local function setup_servers()
 	for _, server in pairs(servers) do
 		local server_config = make_config()
 
-		if server == 'rust_analyzer' then
-			server_config.cmd = { 'rust-analyzer' }
+		if server ~= 'rust' or server ~= 'rust_analyzer' then
+			nvim_lsp[server].setup(server_config)
 		end
-
-		nvim_lsp[server].setup(server_config)
 	end
 
 	if vim.opt.filetype:get() == 'lua' then

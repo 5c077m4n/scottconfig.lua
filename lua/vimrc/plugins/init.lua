@@ -133,7 +133,24 @@ local function init_packer()
 				},
 				ft = { 'rust' },
 				config = function()
-					require('rust-tools').setup({})
+					require('rust-tools').setup({
+						server = {
+							settings = {
+								['rust-analyzer'] = {
+									assist = {
+										importGranularity = 'module',
+										importPrefix = 'by_self',
+									},
+									cargo = {
+										loadOutDirsFromCheck = true,
+									},
+									procMacro = {
+										enable = true,
+									},
+								},
+							},
+						},
+					})
 				end,
 			})
 			-- Code snippets

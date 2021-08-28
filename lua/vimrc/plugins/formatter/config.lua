@@ -35,6 +35,11 @@ require('formatter').setup({
 				}
 			end,
 		},
+		python = {
+			function()
+				return { exe = 'autopep8 -', stdin = true, tempfile_dir = tempfile_dir }
+			end,
+		},
 		lua = {
 			function()
 				return { exe = 'stylua -', stdin = true, tempfile_dir = tempfile_dir }

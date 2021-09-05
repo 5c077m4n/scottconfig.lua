@@ -60,6 +60,11 @@ vimp.inoremap('<C-l>', function()
 	vim.cmd([[normal! l]])
 end)
 
+-- Select currect word
+vimp.nnoremap('<leader>S', 'viw')
+-- Delete current word
+vimp.nnoremap('<leader>D', 'daw')
+
 -- Switch CWD to the directory of the open buffer
 vimp.nnoremap('<leader>cd', [[:cd %:p:h<CR>:pwd<CR>]])
 

@@ -66,10 +66,11 @@ o.showmatch = true
 -- How many tenths of a second to blink when matching brackets
 o.mat = 2
 
-o.undodir = os.getenv('HOME') .. '/undodir'
 o.undofile = true
+o.undodir = vim.fn.stdpath('data') .. '/undo_dir/'
 
 o.swapfile = false
+o.title = true
 
 if g.neovide then
 	o.guifont = 'Ubuntu Nerd Font Complete:15'

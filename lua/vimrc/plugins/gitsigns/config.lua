@@ -33,4 +33,5 @@ require('gitsigns').setup({
 	},
 	watch_index = { interval = 800 },
 	update_debounce = 400,
+	keymaps = { noremap = false },
 })

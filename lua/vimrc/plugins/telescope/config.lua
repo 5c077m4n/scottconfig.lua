@@ -1,12 +1,20 @@
 local telescope = require('telescope')
-local _actions = require('telescope.actions')
+local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
 
 telescope.setup({
 	defaults = {
 		mappings = {
-			i = { ['<C-t>'] = trouble.open_with_trouble },
-			n = { ['<C-t>'] = trouble.open_with_trouble },
+			i = {
+				['<C-t>'] = trouble.open_with_trouble,
+				['<C-k>'] = actions.cycle_history_next,
+				['<C-j>'] = actions.cycle_history_prev,
+			},
+			n = {
+				['<C-t>'] = trouble.open_with_trouble,
+				['<C-k>'] = actions.cycle_history_next,
+				['<C-j>'] = actions.cycle_history_prev,
+			},
 		},
 	},
 	extensions = {

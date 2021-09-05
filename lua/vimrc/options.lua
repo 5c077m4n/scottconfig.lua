@@ -72,7 +72,7 @@ o.undofile = true
 o.swapfile = false
 
 if g.neovide then
-	o.guifont = 'MesloLGF NF'
+	o.guifont = 'Ubuntu Nerd Font Complete:15'
 	g.neovide_refresh_rate = 60
 	g.neovide_transparency = 0.8
 	g.neovide_cursor_vfx_mode = 'railgun'

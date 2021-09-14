@@ -60,8 +60,10 @@ vimp.inoremap('<C-l>', function()
 	vim.cmd([[normal! l]])
 end)
 
--- Select currect word
-vimp.nnoremap('<leader>S', 'viw')
+-- Yank currect word
+vimp.nnoremap('<leader>Y', 'viwy')
+-- Switch currect word
+vimp.nnoremap('<leader>S', 'viws')
 -- Delete current word
 vimp.nnoremap('<leader>D', 'daw')
 

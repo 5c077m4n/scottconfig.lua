@@ -5,14 +5,14 @@ vimp.nnoremap({ 'silent' }, '<leader>tr', ':NvimTreeRefresh<CR>')
 vimp.nnoremap({ 'silent' }, '<leader>ts', ':NvimTreeFindFile<CR>')
 
 vim.g.nvim_tree_bindings = {
-	{ key = { '<CR>', 'o', '<2-LeftMouse>', '<Right>' }, cb = tree_cb('edit') },
+	{ key = { '<CR>', 'o', '<2-LeftMouse>', '<Right>', 'l' }, cb = tree_cb('edit') },
 	{ key = { '<C-]>', 'cd', '<2-RightMouse>' }, cb = tree_cb('cd') },
 	{ key = { '<C-v>' }, cb = tree_cb('vsplit') },
 	{ key = { '<C-h>' }, cb = tree_cb('split') },
 	{ key = { '<C-t>' }, cb = tree_cb('tabnew') },
 	{ key = { '<' }, cb = tree_cb('prev_sibling') },
 	{ key = { '>' }, cb = tree_cb('next_sibling') },
-	{ key = { '<BS>', '<Left>' }, cb = tree_cb('close_node') },
+	{ key = { '<BS>', '<Left>', 'h' }, cb = tree_cb('close_node') },
 	{ key = { '<Tab>' }, cb = tree_cb('preview') },
 	{ key = { 'I' }, cb = tree_cb('toggle_ignored') },
 	{ key = { 'H' }, cb = tree_cb('toggle_dotfiles') },

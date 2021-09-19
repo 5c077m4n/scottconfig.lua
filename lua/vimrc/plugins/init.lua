@@ -29,7 +29,7 @@ local function init_packer()
 				'projekt0n/github-nvim-theme',
 				config = function()
 					require('github-theme').setup({
-						themeStyle = 'dimmed',
+						theme_style = 'dark_default',
 						sidebars = { 'lazygit', 'terminal', 'packer' },
 						colors = { hint = 'orange', error = '#ff0000' },
 					})

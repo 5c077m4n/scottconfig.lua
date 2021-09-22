@@ -61,7 +61,6 @@ local function init_packer()
 					require('bufferline').setup({
 						options = {
 							numbers = 'both',
-							mappings = false,
 							offsets = {
 								{
 									filetype = 'NvimTree',

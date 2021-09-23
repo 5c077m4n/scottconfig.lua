@@ -18,7 +18,7 @@ vim.g.nvim_tree_bindings = {
 	{ key = { 'H' }, cb = tree_cb('toggle_dotfiles') },
 	{ key = { 'R' }, cb = tree_cb('refresh') },
 	{ key = { 'a' }, cb = tree_cb('create') },
-	{ key = { '<Del>' }, cb = tree_cb('remove') },
+	{ key = { '<Del>', 'D' }, cb = tree_cb('remove') },
 	{ key = { 'r' }, cb = tree_cb('rename') },
 	{ key = { '<C-r>' }, cb = tree_cb('full_rename') },
 	{ key = { 'dd' }, cb = tree_cb('cut') },

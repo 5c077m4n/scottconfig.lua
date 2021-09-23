@@ -20,7 +20,7 @@ function M.reload_vimrc()
 end
 
 function M.update_vimrc()
-	utils.async_cmd('git', { '-C', vim.env.HOME .. '/.config/nvim', 'pull', '--force' })
+	utils.async_cmd('git', { '-C', vim.env.HOME .. '/.config/nvim', 'pull', '--force', 'origin', 'master' })
 end
 
 function M.yarn_global_install(pkg_name_list)

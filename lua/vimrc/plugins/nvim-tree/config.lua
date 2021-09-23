@@ -1,5 +1,8 @@
 local g = vim.g
 
+g.nvim_tree_disable_default_keybindings = 1
+
+g.nvim_tree_special_files = { ['README.md'] = 1, ['package.json'] = 1, ['.editorconfig'] = 1 }
 g.nvim_tree_side = 'left'
 g.nvim_tree_width = 40
 g.nvim_tree_auto_open = 1

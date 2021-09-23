@@ -28,5 +28,6 @@ vim.g.nvim_tree_bindings = {
 	{ key = { ']c' }, cb = tree_cb('next_git_item') },
 	{ key = { 'u' }, cb = tree_cb('dir_up') },
 	{ key = { 'q' }, cb = tree_cb('close') },
+	{ key = { 'o' }, cd = tree_cb('system_open') },
 	{ key = { '?' }, cb = tree_cb('toggle_help') },
 }

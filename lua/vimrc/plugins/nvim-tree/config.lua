@@ -1,5 +1,9 @@
 local g = vim.g
 
+<<<<<<< HEAD
+g.nvim_tree_disable_keybindings = 1
+=======
+>>>>>>> 9fbf87a (Revert)
 g.nvim_tree_side = 'left'
 g.nvim_tree_width = 40
 g.nvim_tree_auto_open = 1

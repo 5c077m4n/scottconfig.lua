@@ -89,12 +89,6 @@ local function init_packer()
 				'kyazdani42/nvim-tree.lua',
 				config = function()
 					require('vimrc.plugins.nvim-tree')
-					require('nvim-tree').setup({
-						auto_open = true,
-						auto_close = true,
-						tab_open = true,
-						tree_follow = true,
-					})
 				end,
 			})
 			-- Treesitter

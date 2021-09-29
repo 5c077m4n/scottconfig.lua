@@ -5,6 +5,9 @@ std = "luajit"
 codes = true
 
 read_globals = { "vim", "vimp" }
+files["lua/vimrc/globals.lua"] = {
+	globals = { "table" },
+}
 
 -- Glorious list of warnings: https://luacheck.readthedocs.io/en/stable/warnings.html
 ignore = {

@@ -18,10 +18,11 @@ function table.copy(orig)
 	return copy
 end
 
-function table.deepCopy(orig, copies)
+function table.deep_copy(orig, copies)
 	copies = copies or {}
 	local orig_type = type(orig)
 	local copy
+
 	if orig_type == 'table' then
 		if copies[orig] then
 			copy = copies[orig]
@@ -29,9 +30,9 @@ function table.deepCopy(orig, copies)
 			copy = {}
 			copies[orig] = copy
 			for orig_key, orig_value in next, orig, nil do
-				copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
+				copy[table.deep_copy(orig_key, copies)] = table.deep_copy(orig_value, copies)
 			end
-			setmetatable(copy, deepcopy(getmetatable(orig), copies))
+			setmetatable(copy, table.deep_copy(getmetatable(orig), copies))
 		end
 	else -- number, string, boolean, etc
 		copy = orig

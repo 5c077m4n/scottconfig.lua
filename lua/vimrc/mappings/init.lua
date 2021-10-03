@@ -28,6 +28,8 @@ vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 vimp.nnoremap('<C-a>', 'gg0vG$')
 -- Ctrl+y copys to clipboard
 vimp.vnoremap('<C-y>', [["+y]])
+-- Y copies to line end
+vimp.vnoremap('Y', 'y$')
 -- Join line does not go one down
 vimp.nnoremap('J', [[mzJ`z]])
 -- Remap VIM 0 to first non-blank character

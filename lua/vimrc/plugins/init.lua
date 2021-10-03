@@ -105,7 +105,6 @@ local function init_packer()
 				requires = {
 					'kabouzeid/nvim-lspinstall',
 					'ray-x/lsp_signature.nvim',
-					'glepnir/lspsaga.nvim',
 					'nvim-lua/lsp-status.nvim',
 				},
 				run = ':TSUpdate',

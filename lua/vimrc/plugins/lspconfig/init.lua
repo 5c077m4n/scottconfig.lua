@@ -8,25 +8,6 @@ local which_key = require('which-key')
 
 local mod_utils = require('vimrc.utils.modules')
 
-saga.init_lsp_saga({
-	code_action_keys = { exec = '<CR>', quit = { 'q', '<Esc>' } },
-	rename_action_keys = { exec = '<CR>', quit = { '<C-c>', '<Esc>' } },
-	rename_prompt_prefix = '>',
-	finder_action_keys = {
-		open = '<CR>',
-		vsplit = '<C-v>',
-		split = '<C-h>',
-		scroll_down = '<C-f>',
-		scroll_up = '<C-b>',
-		quit = { 'q', '<Esc>' },
-	},
-	code_action_prompt = {
-		enable = true,
-		sign = false,
-		sign_priority = 20,
-		virtual_text = true,
-	},
-})
 lsp_status.register_progress()
 lsp_status.config({
 	status_symbol = '',

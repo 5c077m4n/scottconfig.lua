@@ -17,12 +17,12 @@ lsp_status.config({
 	indicator_hint = '?',
 	indicator_ok = '✓',
 })
+lsp_sig.setup({ bind = true, auto_close_after = 30, handler_opts = { border = 'single' } })
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	lsp_sig.on_attach({ bind = true, handler_opts = { border = 'single' } })
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)

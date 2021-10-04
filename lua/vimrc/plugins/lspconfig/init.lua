@@ -8,17 +8,6 @@ local which_key = require('which-key')
 
 local mod_utils = require('vimrc.utils.modules')
 
-local border = {
-	{ '', 'FloatBorder' },
-	{ '▔', 'FloatBorder' },
-	{ '', 'FloatBorder' },
-	{ '▕', 'FloatBorder' },
-	{ '', 'FloatBorder' },
-	{ '▁', 'FloatBorder' },
-	{ '', 'FloatBorder' },
-	{ '▏', 'FloatBorder' },
-}
-
 lsp_status.register_progress()
 lsp_status.config({
 	status_symbol = '',
@@ -36,8 +25,8 @@ local function on_attach(client, bufnr)
 
 	api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = border })
-	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = border })
+	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'single' })
+	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)
@@ -45,12 +34,17 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({ 'silent', 'override' }, 'gs', telescope_builtin.lsp_document_symbols)
 		vimp.nnoremap({ 'silent', 'override' }, 'gS', telescope_builtin.lsp_workspace_symbols)
 		vimp.nnoremap({ 'silent', 'override' }, 'K', lsp.buf.hover)
+		vimp.nnoremap({ 'silent', 'override' }, '<C-x>', lsp.buf.signature_help)
 		vimp.nnoremap({ 'silent', 'override' }, 'gi', telescope_builtin.lsp_implementations)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>gD', lsp.buf.type_definition)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>rn', lsp.buf.rename)
 		vimp.nnoremap({ 'silent', 'override' }, 'gr', telescope_builtin.lsp_references)
-		vimp.nnoremap({ 'silent', 'override' }, 'g[', lsp.diagnostic.goto_prev)
-		vimp.nnoremap({ 'silent', 'override' }, 'g]', lsp.diagnostic.goto_next)
+		vimp.nnoremap({ 'silent', 'override' }, 'g[', function()
+			lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' } })
+		end)
+		vimp.nnoremap({ 'silent', 'override' }, 'g]', function()
+			lsp.diagnostic.goto_next({ popup_opts = { border = 'single' } })
+		end)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
 	end)
@@ -76,7 +70,7 @@ local function make_config(options)
 	local base_config = {
 		on_attach = on_attach,
 		capabilities = lsp_status.capabilities,
-		flags = { debounce_text_changes = 150 },
+		flags = { debounce_text_changes = 100 },
 	}
 	if type(options) == 'table' then
 		for key, value in pairs(options) do
@@ -166,8 +160,8 @@ local function setup_servers()
 						security = 'severity',
 					},
 					securities = {
-						[2] = 'error',
 						[1] = 'warning',
+						[2] = 'error',
 					},
 				},
 			},

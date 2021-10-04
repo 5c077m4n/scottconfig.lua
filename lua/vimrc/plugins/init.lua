@@ -104,7 +104,6 @@ local function init_packer()
 				'neovim/nvim-lspconfig',
 				requires = {
 					'kabouzeid/nvim-lspinstall',
-					'ray-x/lsp_signature.nvim',
 					'nvim-lua/lsp-status.nvim',
 				},
 				run = ':TSUpdate',

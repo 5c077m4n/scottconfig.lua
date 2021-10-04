@@ -1,6 +1,5 @@
 local nvim_lsp = require('lspconfig')
 local lspinstall = require('lspinstall')
-local lsp_sig = require('lsp_signature')
 local lua_dev = require('lua-dev')
 local telescope_builtin = require('telescope.builtin')
 local lsp_status = require('lsp-status')
@@ -17,7 +16,6 @@ lsp_status.config({
 	indicator_hint = '?',
 	indicator_ok = '✓',
 })
-lsp_sig.setup({ bind = true, auto_close_after = 30, handler_opts = { border = 'single' } })
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp

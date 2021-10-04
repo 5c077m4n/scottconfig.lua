@@ -12,6 +12,7 @@ vimp.nnoremap('<leader>ffs', telescope_builtin.current_buffer_fuzzy_find)
 vimp.nnoremap('<leader>ffy', telescope_builtin.lsp_document_symbols)
 vimp.nnoremap('<leader>ffS', telescope_builtin.grep_string)
 vimp.nnoremap('<leader>fft', telescope_builtin.filetypes)
+vimp.nnoremap('<leader>f?', telescope_builtin.commands)
 
 require('which-key').register({
 	['<leader>f'] = {
@@ -31,5 +32,6 @@ require('which-key').register({
 		o = 'Old files',
 		c = 'Git commits',
 		m = 'Bookmarks',
+		['?'] = 'Commands',
 	},
 })

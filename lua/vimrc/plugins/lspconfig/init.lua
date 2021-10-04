@@ -8,6 +8,17 @@ local which_key = require('which-key')
 
 local mod_utils = require('vimrc.utils.modules')
 
+local border = {
+	{ '●', 'FloatBorder' },
+	{ '▔', 'FloatBorder' },
+	{ '●', 'FloatBorder' },
+	{ '▕', 'FloatBorder' },
+	{ '●', 'FloatBorder' },
+	{ '▁', 'FloatBorder' },
+	{ '●', 'FloatBorder' },
+	{ '▏', 'FloatBorder' },
+}
+
 lsp_status.register_progress()
 lsp_status.config({
 	status_symbol = '',
@@ -21,8 +32,12 @@ lsp_sig.setup({ bind = true, auto_close_after = 30, handler_opts = { border = 's
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
+	local api = vim.api
 
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = border })
+	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = border })
 
 	vimp.add_buffer_maps(bufnr, function()
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)

@@ -9,13 +9,13 @@ local which_key = require('which-key')
 local mod_utils = require('vimrc.utils.modules')
 
 local border = {
-	{ '●', 'FloatBorder' },
+	{ '', 'FloatBorder' },
 	{ '▔', 'FloatBorder' },
-	{ '●', 'FloatBorder' },
+	{ '', 'FloatBorder' },
 	{ '▕', 'FloatBorder' },
-	{ '●', 'FloatBorder' },
+	{ '', 'FloatBorder' },
 	{ '▁', 'FloatBorder' },
-	{ '●', 'FloatBorder' },
+	{ '', 'FloatBorder' },
 	{ '▏', 'FloatBorder' },
 }
 

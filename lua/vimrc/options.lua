@@ -10,11 +10,7 @@ g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
 -- Configure backspace so it acts as it should
 o.backspace = { 'eol', 'start', 'indent' }
 
--- When a file has been detected to have been changed outside of Vim and it has not been changed inside of Vim,
--- automatically read it again
-o.autoread = true
-
-o.updatetime = 250
+o.updatetime = 200
 o.timeoutlen = 500
 o.termguicolors = true
 o.ignorecase = true

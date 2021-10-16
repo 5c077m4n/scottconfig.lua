@@ -12,7 +12,6 @@ o.backspace = { 'eol', 'start', 'indent' }
 
 o.updatetime = 200
 o.timeoutlen = 500
-o.termguicolors = true
 o.ignorecase = true
 o.smartcase = true
 o.incsearch = true
@@ -32,6 +31,10 @@ o.list = true
 if o.list:get() then
 	o.listchars = { tab = '| ', space = ' ', trail = '·' }
 end
+
+o.termguicolors = true
+-- Add transparancy to floating windows
+o.winblend = 30
 
 o.completeopt = { 'menuone', 'noselect' }
 

@@ -15,7 +15,9 @@ nvim_tree.setup({
 	open_on_tab = true,
 	hijack_cursor = false,
 	update_cwd = false,
-	lsp_diagnostics = true,
+	diagnostics = {
+		enable = false,
+	},
 	update_focused_file = {
 		enable = true,
 		update_cwd = false,

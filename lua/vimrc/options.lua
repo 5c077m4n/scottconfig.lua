@@ -5,7 +5,7 @@ local g = vim.g
 
 g.mapleader = ' '
 g.maplocalleader = ' '
-g.python3_host_prog = utils.trim(vim.fn.system('which python3'))
+g.python3_host_prog = vim.trim(vim.fn.system('which python3'))
 
 -- Configure backspace so it acts as it should
 o.backspace = { 'eol', 'start', 'indent' }

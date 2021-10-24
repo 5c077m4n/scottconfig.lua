@@ -114,7 +114,11 @@ gls.right[1] = {
 			return trim(status_display)
 		end,
 		condition = function()
-			return not ({ ['dashboard'] = true, ['toggleterm'] = true, [' '] = true })[vim.bo.filetype]
+			return not ({
+				dashboard = true,
+				toggleterm = true,
+				[' '] = true,
+			})[vim.opt.filetype:get()]
 		end,
 		separator = '  ',
 		separator_highlight = { 'NONE', colors.bg },

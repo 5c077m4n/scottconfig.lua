@@ -103,13 +103,16 @@ local function init_packer()
 			use({
 				'neovim/nvim-lspconfig',
 				requires = {
-					'kabouzeid/nvim-lspinstall',
 					'nvim-lua/lsp-status.nvim',
 				},
 				run = ':TSUpdate',
 				config = function()
 					require('vimrc.plugins.lspconfig')
 				end,
+			})
+			use({
+				'williamboman/nvim-lsp-installer',
+				requires = { 'neovim/nvim-lspconfig' },
 			})
 			use({
 				'folke/trouble.nvim',

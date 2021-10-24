@@ -55,20 +55,6 @@ local function on_attach(client, bufnr)
 		end)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
-		if
-			({
-				typescript = true,
-				typescriptreact = true,
-				javascript = true,
-				javascriptreact = true,
-			})[vim.opt.filetype:get()]
-		then
-			vimp.vnoremap(
-				{ 'silent', 'override' },
-				'<leader>oi',
-				require('nvim-lsp-installer.extras.tsserver').organize_imports
-			)
-		end
 	end)
 
 	lsp_status.on_attach(client, bufnr)

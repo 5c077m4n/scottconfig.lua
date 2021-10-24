@@ -85,9 +85,7 @@ local function make_config(options)
 		flags = { debounce_text_changes = 100 },
 	}
 	if type(options) == 'table' then
-		for key, value in pairs(options) do
-			base_config[key] = value
-		end
+		table.copy(base_config, options)
 	end
 	return base_config
 end

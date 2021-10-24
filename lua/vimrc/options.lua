@@ -1,5 +1,3 @@
-local utils = require('vimrc.utils')
-
 local o = vim.opt
 local g = vim.g
 

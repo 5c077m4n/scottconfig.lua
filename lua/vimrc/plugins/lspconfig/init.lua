@@ -17,6 +17,16 @@ lsp_status.config({
 	indicator_ok = '✓',
 })
 
+lsp_installer.settings({
+	ui = {
+		icons = {
+			server_installed = '✓',
+			server_pending = '➜',
+			server_uninstalled = '✗',
+		},
+	},
+})
+
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 	local api = vim.api
@@ -85,7 +95,9 @@ local function make_config(options)
 		flags = { debounce_text_changes = 100 },
 	}
 	if type(options) == 'table' then
-		table.copy(base_config, options)
+		for key, value in pairs(options) do
+			base_config[key] = value
+		end
 	end
 	return base_config
 end
@@ -99,6 +111,59 @@ local function setup_servers()
 				settings = {
 					Lua = {
 						telemetry = { enable = false },
+					},
+				},
+			})
+		elseif server.name == 'diagnosticls' then
+			opts = make_config({
+				filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css', 'lua' },
+				init_options = {
+					filetypes = {
+						javascript = 'eslint',
+						typescript = 'eslint',
+						javascriptreact = 'eslint',
+						typescriptreact = 'eslint',
+						lua = 'luacheck',
+					},
+					linters = {
+						luacheck = {
+							sourceName = 'luacheck',
+							command = 'luacheck',
+							rootPatterns = { '.luacheckrc', '.stylua.toml' },
+							debounce = 100,
+							args = { '-' },
+						},
+						eslint = {
+							sourceName = 'eslint',
+							command = 'eslint_d',
+							rootPatterns = {
+								'.eslitrc.js',
+								'.eslitrc.json',
+								'package.json',
+							},
+							debounce = 100,
+							args = {
+								'--cache',
+								'--stdin',
+								'--stdin-filename',
+								'%filepath',
+								'--format',
+								'json',
+							},
+							parseJson = {
+								errorsRoot = '[0].messages',
+								line = 'line',
+								column = 'column',
+								endLine = 'endLine',
+								endColumn = 'endColumn',
+								message = '${message} [${ruleId}]',
+								security = 'severity',
+							},
+							securities = {
+								[1] = 'warning',
+								[2] = 'error',
+							},
+						},
 					},
 				},
 			})
@@ -119,59 +184,6 @@ local function setup_servers()
 	then
 		mod_utils.yarn_global_install({ 'prettier', 'eslint_d', 'diagnostic-languageserver' })
 	end
-
-	nvim_lsp.diagnosticls.setup({
-		filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css', 'lua' },
-		init_options = {
-			filetypes = {
-				javascript = 'eslint',
-				typescript = 'eslint',
-				javascriptreact = 'eslint',
-				typescriptreact = 'eslint',
-				lua = 'luacheck',
-			},
-			linters = {
-				luacheck = {
-					sourceName = 'luacheck',
-					command = 'luacheck',
-					rootPatterns = { '.luacheckrc', '.stylua.toml' },
-					debounce = 100,
-					args = { '-' },
-				},
-				eslint = {
-					sourceName = 'eslint',
-					command = 'eslint_d',
-					rootPatterns = {
-						'.eslitrc.js',
-						'.eslitrc.json',
-						'package.json',
-					},
-					debounce = 100,
-					args = {
-						'--cache',
-						'--stdin',
-						'--stdin-filename',
-						'%filepath',
-						'--format',
-						'json',
-					},
-					parseJson = {
-						errorsRoot = '[0].messages',
-						line = 'line',
-						column = 'column',
-						endLine = 'endLine',
-						endColumn = 'endColumn',
-						message = '${message} [${ruleId}]',
-						security = 'severity',
-					},
-					securities = {
-						[1] = 'warning',
-						[2] = 'error',
-					},
-				},
-			},
-		},
-	})
 end
 
 setup_servers()

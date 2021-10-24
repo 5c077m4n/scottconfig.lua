@@ -107,7 +107,6 @@ local function setup_servers()
 		local opts
 		if server.name == 'lua' then
 			opts = make_config({
-				cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
 				settings = {
 					Lua = {
 						telemetry = { enable = false },

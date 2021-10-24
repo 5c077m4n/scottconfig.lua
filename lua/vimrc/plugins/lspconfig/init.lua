@@ -1,5 +1,5 @@
 local nvim_lsp = require('lspconfig')
-local lspinstall = require('lspinstall')
+local lsp_installer = require('nvim-lsp-installer')
 local lua_dev = require('lua-dev')
 local telescope_builtin = require('telescope.builtin')
 local lsp_status = require('lsp-status')
@@ -45,6 +45,20 @@ local function on_attach(client, bufnr)
 		end)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
+		if
+			({
+				typescript = true,
+				typescriptreact = true,
+				javascript = true,
+				javascriptreact = true,
+			})[vim.opt.filetype:get()]
+		then
+			vimp.vnoremap(
+				{ 'silent', 'override' },
+				'<leader>oi',
+				require('nvim-lsp-installer.extras.tsserver').organize_imports
+			)
+		end
 	end)
 
 	lsp_status.on_attach(client, bufnr)
@@ -79,29 +93,24 @@ local function make_config(options)
 end
 
 local function setup_servers()
-	lspinstall.setup()
-
-	local servers = lspinstall.installed_servers()
-	for _, server in pairs(servers) do
-		local server_config = make_config()
-
-		if server ~= 'rust' or server ~= 'rust_analyzer' then
-			nvim_lsp[server].setup(server_config)
-		end
-	end
-
-	if vim.opt.filetype:get() == 'lua' then
-		local lua_config = make_config({
-			cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
-			settings = {
-				Lua = {
-					telemetry = { enable = false },
+	lsp_installer.on_server_ready(function(server)
+		local opts
+		if server.name == 'lua' then
+			opts = make_config({
+				cmd = { vim.env.HOME .. '/code/lua-language-server/bin/Linux/lua-language-server' },
+				settings = {
+					Lua = {
+						telemetry = { enable = false },
+					},
 				},
-			},
-		})
-		local luadev_config = lua_dev.setup({ lspconfig = lua_config })
-		nvim_lsp.sumneko_lua.setup(luadev_config)
-	end
+			})
+		else
+			opts = make_config()
+		end
+
+		server:setup(opts)
+		vim.cmd([[do User LspAttachBuffers]])
+	end)
 
 	if
 		not (
@@ -165,12 +174,6 @@ local function setup_servers()
 			},
 		},
 	})
-end
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function()
-	setup_servers() -- reload installed servers
-	vim.cmd([[bufdo e]])
 end
 
 setup_servers()

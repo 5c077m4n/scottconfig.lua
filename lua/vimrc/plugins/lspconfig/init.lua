@@ -136,7 +136,7 @@ local function setup_servers()
 				luacheck = {
 					sourceName = 'luacheck',
 					command = 'luacheck',
-					rootPatterns = { '.luacheckrc1', '.stylua.toml' },
+					rootPatterns = { '.luacheckrc', '.stylua.toml' },
 					debounce = 100,
 					args = { '-' },
 				},

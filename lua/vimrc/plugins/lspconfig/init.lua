@@ -66,7 +66,7 @@ local function on_attach(client, bufnr)
 		['K'] = 'Show docs',
 		['gi'] = 'Show implementations',
 		['gr'] = 'Show refs',
-		['<leader>rn'] = 'Param rename',
+		['<leader>rn'] = 'Rename',
 		['<leader>l'] = 'Format',
 	}, {
 		buffer = bufnr,

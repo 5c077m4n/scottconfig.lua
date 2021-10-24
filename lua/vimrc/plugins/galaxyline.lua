@@ -1,7 +1,6 @@
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local get_lsp_status = require('lsp-status').status
-local trim = require('vimrc.utils').trim
 
 local gls = gl.section
 
@@ -111,7 +110,7 @@ gls.right[1] = {
 	ShowLspClient = {
 		provider = function()
 			local status_display = get_lsp_status()
-			return trim(status_display)
+			return vim.trim(status_display)
 		end,
 		condition = function()
 			return not ({

@@ -1,9 +1,5 @@
 local M = {}
 
-function M.trim(s)
-	return s:match('^%s*(.-)%s*$')
-end
-
 function M.system_name()
 	if vim.fn.has('mac') == 1 then
 		return 'macOS'

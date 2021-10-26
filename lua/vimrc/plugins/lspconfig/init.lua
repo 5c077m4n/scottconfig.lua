@@ -53,6 +53,7 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({ 'silent', 'override' }, 'g]', function()
 			lsp.diagnostic.goto_next({ popup_opts = { border = 'single' } })
 		end)
+		vimp.nnoremap({ 'silent', 'override' }, 'g?', lsp.diagnostic.show_line_diagnostics)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
 	end)
@@ -60,12 +61,15 @@ local function on_attach(client, bufnr)
 	lsp_status.on_attach(client, bufnr)
 
 	which_key.register({
-		['gD'] = 'Declaration',
-		['gd'] = 'Definition',
-		['gh'] = 'LSP Finder',
-		['K'] = 'Show docs',
-		['gi'] = 'Show implementations',
-		['gr'] = 'Show refs',
+		gD = 'Declaration',
+		gd = 'Definition',
+		gh = 'LSP Finder',
+		K = 'Show docs',
+		gi = 'Show implementations',
+		gr = 'Show refs',
+		['g]'] = 'Next diagnostics result',
+		['g['] = 'Previous diagnostics result',
+		['g?'] = 'Show diagnostics result in popup',
 		['<leader>rn'] = 'Rename',
 		['<leader>l'] = 'Format',
 	}, {

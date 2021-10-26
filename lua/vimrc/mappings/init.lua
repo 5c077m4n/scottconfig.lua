@@ -72,4 +72,15 @@ vimp.nnoremap('<leader>D', 'daw')
 -- Switch CWD to the directory of the open buffer
 vimp.nnoremap('<leader>cd', [[:cd %:p:h<CR>:pwd<CR>]])
 
+-- Undo
 vimp.nnoremap('U', '<C-r>')
+
+vimp.map_command('CopyCursorLocation', function()
+	local cursor_location = vim.fn.expand('%') .. ':' .. vim.fn.line('.') .. ':' .. vim.fn.col('.')
+
+	if vim.fn.has('clipboard') then
+		vim.fn.setreg('+', cursor_location)
+	else
+		vim.fn.setreg('1', cursor_location)
+	end
+end)

@@ -247,8 +247,6 @@ local function init_packer()
 					require('vimrc.plugins.gitsigns')
 				end,
 			})
-			-- JSON query
-			use({ 'gennaro-tedesco/nvim-jqx', ft = { 'json', 'yaml' } })
 			-- Telescope
 			use({
 				'nvim-telescope/telescope.nvim',

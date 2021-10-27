@@ -8,6 +8,11 @@ g.python3_host_prog = vim.trim(vim.fn.system('which python3'))
 -- Configure backspace so it acts as it should
 o.backspace = { 'eol', 'start', 'indent' }
 
+-- Fold config
+o.foldmethod = 'indent'
+o.foldlevelstart = 1
+o.foldnestmax = 2
+
 o.updatetime = 200
 o.timeoutlen = 500
 o.ignorecase = true

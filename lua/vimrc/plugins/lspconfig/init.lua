@@ -125,6 +125,7 @@ local function setup_servers()
 						eslint = {
 							sourceName = 'eslint',
 							command = 'eslint_d',
+							ignore = { '.git', 'dist/', 'node_modules/' },
 							rootPatterns = {
 								'.eslitrc.js',
 								'.eslitrc.json',

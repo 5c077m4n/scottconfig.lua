@@ -17,6 +17,8 @@ function M.reload_vimrc()
 	M.unload_lua_namespace('vimrc')
 	require('vimrc')
 	require('packer').compile()
+
+	vim.notify('The vimrc has been reloaded successfully', vim.lsp.log_levels.TRACE)
 end
 
 function M.update_vimrc()

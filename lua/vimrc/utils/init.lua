@@ -71,7 +71,7 @@ function M.async_cmd(cmd, args)
 				handle:close()
 			end
 
-			print(table.concat(results, '\n'))
+			vim.notify(table.concat(results, '\n'), vim.lsp.log_levels.INFO)
 
 			local count = #results
 			for i = 0, count do

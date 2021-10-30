@@ -24,6 +24,12 @@ local function init_packer()
 			use('tpope/vim-sensible')
 			use('svermeulen/vimpeccable')
 			use('nvim-lua/plenary.nvim')
+			use({
+				'rcarriga/nvim-notify',
+				config = function()
+					vim.notify = require('notify')
+				end,
+			})
 			-- Theme
 			use({
 				'projekt0n/github-nvim-theme',

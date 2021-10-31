@@ -44,13 +44,27 @@ end
 function M.async_cmd(cmd, args)
 	local uv = vim.loop
 
-	local results = {}
+	local results_stdout = {}
+	local results_stderr = {}
 	local stdout = uv.new_pipe(false)
 	local stderr = uv.new_pipe(false)
 
-	local function onread(_err, data)
+	local function on_read(_err, data)
 		if data then
-			table.insert(results, data)
+			if type(data) == 'string' then
+				vim.list_extend(results_stdout, vim.split(data, '\n', true, true))
+			else
+				table.insert(results_stdout, data)
+			end
+		end
+	end
+	local function on_error(_err, data)
+		if data then
+			if type(data) == 'string' then
+				vim.list_extend(results_stderr, vim.split(data, '\n', true, true))
+			else
+				table.insert(results_stderr, data)
+			end
 		end
 	end
 
@@ -71,17 +85,26 @@ function M.async_cmd(cmd, args)
 				handle:close()
 			end
 
-			vim.notify(table.concat(results, '\n'), vim.lsp.log_levels.INFO)
+			if not vim.tbl_isempty(results_stdout) then
+				vim.notify(results_stdout, vim.lsp.log_levels.INFO)
+			end
+			if not vim.tbl_isempty(results_stderr) then
+				vim.notify(results_stderr, vim.lsp.log_levels.ERROR)
+			end
 
-			local count = #results
-			for i = 0, count do
-				results[i] = nil -- clear the table for the next search
+			-- clear the stdout table for the next search
+			for i = 0, #results_stdout do
+				results_stdout[i] = nil
+			end
+			-- clear the stderr table for the next search
+			for i = 0, #results_stderr do
+				results_stderr[i] = nil
 			end
 		end)
 	)
 
-	uv.read_start(stdout, onread)
-	uv.read_start(stderr, onread)
+	uv.read_start(stdout, on_read)
+	uv.read_start(stderr, on_read) -- on_error
 end
 
 return M

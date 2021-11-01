@@ -3,7 +3,6 @@ local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 local g = vim.g
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 0
 g.nvim_tree_git_hl = 1
 g.nvim_tree_add_trailing = 1
 
@@ -22,6 +21,9 @@ nvim_tree.setup({
 		enable = true,
 		update_cwd = false,
 		ignore_list = {},
+	},
+	filters = {
+		dotfiles = false,
 	},
 	view = {
 		side = 'left',

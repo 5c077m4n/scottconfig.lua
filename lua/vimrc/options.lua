@@ -10,8 +10,8 @@ o.backspace = { 'eol', 'start', 'indent' }
 
 -- Fold config
 o.foldmethod = 'indent'
-o.foldlevelstart = 1
-o.foldnestmax = 2
+o.foldlevelstart = 2
+o.foldnestmax = 3
 
 o.updatetime = 200
 o.timeoutlen = 500

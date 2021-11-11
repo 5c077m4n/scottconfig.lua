@@ -30,6 +30,8 @@ vimp.nnoremap('<C-a>', 'gg0vG$')
 vimp.vnoremap('<C-y>', [["+y]])
 -- Y copies to line end
 vimp.nnoremap('Y', 'y$')
+-- V copies to line end
+vimp.nnoremap('V', 'v$')
 -- Join line does not go one down
 vimp.nnoremap('J', [[mzJ`z]])
 -- Remap VIM 0 to first non-blank character

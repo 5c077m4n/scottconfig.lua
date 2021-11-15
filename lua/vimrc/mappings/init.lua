@@ -64,12 +64,16 @@ vimp.inoremap('<C-l>', function()
 	vim.cmd([[normal! l]])
 end)
 
+-- Select currect word
+vimp.nnoremap('<leader>V', 'viw')
 -- Yank currect word
 vimp.nnoremap('<leader>Y', 'viwy')
 -- Switch currect word
 vimp.nnoremap('<leader>S', 'viws')
 -- Delete current word
 vimp.nnoremap('<leader>D', 'daw')
+-- Uppercase current word
+vimp.nnoremap('<leader>U', 'viwU')
 
 -- Switch CWD to the directory of the open buffer
 vimp.nnoremap('<leader>cd', [[:cd %:p:h<CR>:pwd<CR>]])

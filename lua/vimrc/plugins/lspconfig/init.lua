@@ -1,7 +1,6 @@
 local vimp = require('vimp')
-local _nvim_lsp = require('lspconfig')
 local lsp_installer = require('nvim-lsp-installer')
-local _lua_dev = require('lua-dev')
+local lua_dev = require('lua-dev')
 local telescope_builtin = require('telescope.builtin')
 local lsp_status = require('lsp-status')
 local which_key = require('which-key')
@@ -38,6 +37,8 @@ local function on_attach(client, bufnr)
 	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
 
 	vimp.add_buffer_maps(bufnr, function()
+		local diagnostic = lsp.diagnostic
+
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)
 		vimp.nnoremap({ 'silent', 'override' }, 'gD', telescope_builtin.lsp_dynamic_workspace_symbols)
 		vimp.nnoremap({ 'silent', 'override' }, 'gs', telescope_builtin.lsp_document_symbols)
@@ -49,12 +50,12 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>rn', lsp.buf.rename)
 		vimp.nnoremap({ 'silent', 'override' }, 'gr', telescope_builtin.lsp_references)
 		vimp.nnoremap({ 'silent', 'override' }, 'g[', function()
-			lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' } })
+			diagnostic.goto_prev({ popup_opts = { border = 'single' } })
 		end)
 		vimp.nnoremap({ 'silent', 'override' }, 'g]', function()
-			lsp.diagnostic.goto_next({ popup_opts = { border = 'single' } })
+			diagnostic.goto_next({ popup_opts = { border = 'single' } })
 		end)
-		vimp.nnoremap({ 'silent', 'override' }, 'g?', lsp.diagnostic.show_line_diagnostics)
+		vimp.nnoremap({ 'silent', 'override' }, 'g?', diagnostic.show_line_diagnostics)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
 	end)
@@ -96,15 +97,15 @@ end
 local function setup_servers()
 	lsp_installer.on_server_ready(function(server)
 		local opts
-		if server.name == 'lua' then
-			opts = make_config({
+		if server.name == 'lua' or server.name == 'sumneko_lua' then
+			opts = lua_dev.setup({
 				settings = {
 					Lua = {
 						telemetry = { enable = false },
 					},
 				},
 			})
-		elseif server.name == 'diagnosticls' then
+		elseif server.name == 'diagnosticls' or server.name == 'diagnostic' then
 			opts = make_config({
 				filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css', 'lua' },
 				init_options = {

@@ -34,9 +34,10 @@ vimp.nnoremap('Y', 'y$')
 vimp.nnoremap('V', 'v$')
 -- Join line does not go one down
 vimp.nnoremap('J', [[mzJ`z]])
--- Remap VIM 0 to first non-blank character
-vimp.nnoremap('0', '^')
-vimp.vnoremap('0', '^')
+
+-- Jump to line start/end
+vimp.nnoremap('[[', '^')
+vimp.nnoremap(']]', '$')
 
 -- Unsets the last search pattern register by hitting return
 vimp.nnoremap({ 'silent' }, '<CR>', ':nohlsearch<CR><CR>')

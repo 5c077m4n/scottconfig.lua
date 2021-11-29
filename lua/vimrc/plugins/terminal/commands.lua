@@ -1,3 +1,5 @@
+local vimp = require('vimp')
+
 vimp.nnoremap({ 'silent' }, '<F9>', ':FloatermPrev<CR>')
 vimp.tnoremap({ 'silent' }, '<F9>', [[<C-\><C-n>:FloatermPrev<CR>]])
 vimp.nnoremap({ 'silent' }, '<F10>', ':FloatermNext<CR>')

@@ -1,4 +1,4 @@
-require('vimp')
+local vimp = require('vimp')
 
 vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
 vimp.nnoremap('<leader>2', require('vimrc.utils.modules').reload_vimrc)

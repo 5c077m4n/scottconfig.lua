@@ -1,3 +1,5 @@
+local vimp = require('vimp')
+
 -- Git mergetool
 vimp.nnoremap('<leader>gs', [[:Gstatus<CR>]])
 vimp.nnoremap('<leader>gm', [[:G mergetool<CR>]])

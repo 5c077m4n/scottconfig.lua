@@ -1,5 +1,6 @@
 local gitsigns = require('gitsigns')
 local gitsigns_actions = require('gitsigns.actions')
+local vimp = require('vimp')
 
 vimp.nnoremap('<leader>hr', gitsigns.reset_hunk)
 vimp.vnoremap('<leader>hr', function()

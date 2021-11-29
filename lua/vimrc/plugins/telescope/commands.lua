@@ -1,3 +1,4 @@
+local vimp = require('vimp')
 local telescope_builtin = require('telescope.builtin')
 
 vimp.nnoremap('<leader>fls', telescope_builtin.find_files)

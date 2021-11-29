@@ -1,4 +1,5 @@
 local utils = require('vimrc.utils')
+local vimp = require('vimp')
 
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone

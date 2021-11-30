@@ -99,9 +99,11 @@ local function setup_servers()
 		local opts
 		if server.name == 'lua' or server.name == 'sumneko_lua' then
 			opts = lua_dev.setup({
-				settings = {
-					Lua = {
-						telemetry = { enable = false },
+				lspconfig = {
+					settings = {
+						Lua = {
+							telemetry = { enable = false },
+						},
 					},
 				},
 			})

@@ -37,7 +37,9 @@ vimp.nnoremap('J', [[mzJ`z]])
 
 -- Jump to line start/end
 vimp.nnoremap('[[', '^')
+vimp.vnoremap('[[', '^')
 vimp.nnoremap(']]', '$')
+vimp.vnoremap(']]', '$')
 
 -- Unsets the last search pattern register by hitting return
 vimp.nnoremap({ 'silent' }, '<CR>', ':nohlsearch<CR><CR>')

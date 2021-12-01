@@ -6,10 +6,10 @@ vimp.nnoremap('<leader>3', require('vimrc.utils.modules').update_vimrc)
 vimp.nnoremap('<leader>4', require('packer').sync)
 
 -- Splits
-vimp.nnoremap('<C-h>', '<C-w>h')
-vimp.nnoremap('<C-j>', '<C-w>j')
-vimp.nnoremap('<C-k>', '<C-w>k')
-vimp.nnoremap('<C-l>', '<C-w>l')
+vimp.nnoremap({ 'override' }, '<C-h>', '<C-w>h')
+vimp.nnoremap({ 'override' }, '<C-j>', '<C-w>j')
+vimp.nnoremap({ 'override' }, '<C-k>', '<C-w>k')
+vimp.nnoremap({ 'override' }, '<C-l>', '<C-w>l')
 vimp.nnoremap({ 'silent' }, '<leader>wq', '<C-w>q')
 vimp.nnoremap({ 'silent' }, '<leader>wv', ':vertical split<CR>')
 vimp.nnoremap({ 'silent' }, '<leader>wh', ':split<CR>')
@@ -28,8 +28,6 @@ vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 vimp.nnoremap('<C-a>', 'gg0vG$')
 -- Ctrl+y copys to clipboard
 vimp.vnoremap('<C-y>', [["+y]])
--- Y copies to line end
-vimp.nnoremap('Y', 'y$')
 -- V copies to line end
 vimp.nnoremap('V', 'v$')
 -- Join line does not go one down
@@ -51,7 +49,7 @@ end)
 vimp.inoremap('<C-e>', function()
 	vim.cmd([[normal! e]])
 end)
-vimp.inoremap('<C-w>', function()
+vimp.inoremap({ 'override' }, '<C-w>', function()
 	vim.cmd([[normal! w]])
 end)
 vimp.inoremap('<C-h>', function()

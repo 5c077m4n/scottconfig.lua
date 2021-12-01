@@ -4,4 +4,4 @@ g.floaterm_width = 0.8
 g.floaterm_height = 0.8
 
 g.floaterm_wintype = 'vsplit'
-g.floaterm_position = 'bottomright'
+g.floaterm_position = 'botright'

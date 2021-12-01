@@ -1,6 +1,7 @@
-vim.g.floaterm_autoclose = 1
-vim.g.floaterm_autohide = 2
+local g = vim.g
 
-vim.g.floaterm_width = 0.8
-vim.g.floaterm_height = 0.8
-vim.g.floaterm_position = 'bottomright'
+g.floaterm_width = 0.8
+g.floaterm_height = 0.8
+
+g.floaterm_wintype = 'vsplit'
+g.floaterm_position = 'bottomright'

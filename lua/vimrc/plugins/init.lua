@@ -159,6 +159,7 @@ local function init_packer()
 						},
 					})
 				end,
+				disable = true,
 			})
 			-- Code snippets
 			use({

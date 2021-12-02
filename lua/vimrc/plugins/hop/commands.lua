@@ -1,4 +1,4 @@
 local hop = require('hop')
 local vimp = require('vimp')
 
-vimp.nnoremap('F', hop.hint_words)
+vimp.nnoremap('f', hop.hint_words)

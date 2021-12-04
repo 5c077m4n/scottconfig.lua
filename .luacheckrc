@@ -8,6 +8,9 @@ read_globals = { "vim", "vimp" }
 files["lua/vimrc/globals.lua"] = {
 	globals = { "table" },
 }
+files["lua/vimrc/utils/modules.lua"] = {
+	globals = { "packer_plugins" },
+}
 
 -- Glorious list of warnings: https://luacheck.readthedocs.io/en/stable/warnings.html
 ignore = {

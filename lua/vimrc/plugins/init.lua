@@ -82,7 +82,7 @@ local function init_packer()
 						},
 					})
 				end,
-				disable = vim.fn.has('gui_vimr'),
+				disable = vim.fn.has('gui_vimr') == 1,
 			})
 			use({
 				'onsails/lspkind-nvim',

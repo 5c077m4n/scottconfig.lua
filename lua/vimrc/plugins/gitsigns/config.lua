@@ -31,7 +31,7 @@ require('gitsigns').setup({
 			linehl = 'GitSignsChangeLn',
 		},
 	},
-	watch_index = { interval = 800 },
+	watch_index = { interval = 800, follow_files = true },
 	update_debounce = 400,
 	keymaps = { noremap = false },
 })

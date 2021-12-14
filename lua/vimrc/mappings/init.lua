@@ -39,6 +39,12 @@ vimp.vnoremap('[[', '^')
 vimp.nnoremap(']]', '$')
 vimp.vnoremap(']]', '$')
 
+-- Move selection up/down
+vimp.vnoremap('<A-k>', [[:m '>-2<CR>gv=gv]])
+vimp.vnoremap('<A-j>', [[:m '>+1<CR>gv=gv]])
+vimp.nnoremap('<A-k>', [[:m .-2<CR>==]])
+vimp.nnoremap('<A-j>', [[:m .+1<CR>==]])
+
 -- Unsets the last search pattern register by hitting return
 vimp.nnoremap({ 'silent' }, '<CR>', ':nohlsearch<CR><CR>')
 

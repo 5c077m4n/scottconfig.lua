@@ -166,25 +166,22 @@ local function init_packer()
 				requires = { 'nvim-lua/plenary.nvim' },
 				config = function()
 					local null_ls = require('null-ls')
+
 					null_ls.setup({
+						diagnostics_format = "[#{c}] #{m} (#{s})",
 						sources = {
-							-- lua
-							null_ls.builtins.formatting.stylua,
-							null_ls.builtins.diagnostics.luacheck,
 							-- python
-							null_ls.builtins.formatting.black,
 							null_ls.builtins.formatting.isort,
+							null_ls.builtins.formatting.black,
 							null_ls.builtins.diagnostics.mypy,
 							-- typescript
 							-- null_ls.builtins.formatting.deno_fmt,
 							null_ls.builtins.formatting.eslint_d,
 							null_ls.builtins.diagnostics.eslint_d,
-							null_ls.builtins.formatting.prettier,
 							null_ls.builtins.code_actions.eslint_d,
+							null_ls.builtins.formatting.prettier,
 							-- css
 							null_ls.builtins.formatting.stylelint,
-							-- rust
-							null_ls.builtins.formatting.rustfmt,
 							-- shell
 							null_ls.builtins.formatting.shellharden,
 							null_ls.builtins.formatting.shfmt,
@@ -201,6 +198,9 @@ local function init_packer()
 							null_ls.builtins.diagnostics.editorconfig_checker,
 							null_ls.builtins.code_actions.gitsigns,
 						},
+					})
+					null_ls.disable({
+						filetypes = { 'lua', 'rust' }
 					})
 				end,
 			})

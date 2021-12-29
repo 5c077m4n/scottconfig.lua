@@ -196,7 +196,7 @@ local function init_packer()
 							-- misc
 							null_ls.builtins.completion.spell,
 							null_ls.builtins.diagnostics.editorconfig_checker,
-							null_ls.builtins.code_actions.gitsigns,
+							-- null_ls.builtins.code_actions.gitsigns,
 						},
 					})
 					null_ls.disable({

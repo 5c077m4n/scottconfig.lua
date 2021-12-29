@@ -3,6 +3,10 @@ local null_ls = require('null-ls')
 null_ls.setup({
 	diagnostics_format = "[#{c}] #{m} (#{s})",
 	sources = {
+		-- lua
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.luacheck,
+		null_ls.builtins.diagnostics.selene,
 		-- python
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.black,
@@ -22,6 +26,8 @@ null_ls.setup({
 		null_ls.builtins.code_actions.shellcheck,
 		-- sql
 		null_ls.builtins.formatting.sqlformat,
+		-- rust
+		null_ls.builtins.formatting.rustfmt,
 		-- terraform
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown
@@ -31,7 +37,4 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.editorconfig_checker,
 		-- null_ls.builtins.code_actions.gitsigns,
 	},
-})
-null_ls.disable({
-	filetypes = { 'lua', 'rust' }
 })

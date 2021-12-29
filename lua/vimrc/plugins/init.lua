@@ -161,6 +161,13 @@ local function init_packer()
 				end,
 				disable = true,
 			})
+			use({
+				'jose-elias-alvarez/null-ls.nvim',
+				requires = { 'nvim-lua/plenary.nvim' },
+				config = function()
+					require('vimrc.plugins.null-ls')
+				end,
+			})
 			-- Code snippets
 			use({
 				'hrsh7th/nvim-compe',
@@ -224,14 +231,6 @@ local function init_packer()
 					require('vimrc.plugins.nvim-comment')
 				end,
 			})
-			use({
-				'mhartington/formatter.nvim',
-				config = function()
-					require('vimrc.plugins.formatter')
-				end,
-				cmd = { 'Format', 'FormatWrite' },
-				keys = { '<leader>l' },
-			})
 			-- Git
 			use({
 				'tpope/vim-fugitive',
@@ -277,8 +276,8 @@ local function init_packer()
 				end,
 			})
 			-- Debugging
-			-- use 'nvim-telescope/telescope-dap.nvim'
-			use({ 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' } })
+			use({ 'nvim-telescope/telescope-dap.nvim', disable = true })
+			use({ 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' }, disable = true })
 			use({
 				'Pocco81/DAPInstall.nvim',
 				requires = 'mfussenegger/nvim-dap',
@@ -289,6 +288,7 @@ local function init_packer()
 					dap_install.setup()
 					dap_install.config('ccppr_lldb_dbg', {})
 				end,
+				disable = true,
 			})
 			use({
 				'rcarriga/nvim-dap-ui',
@@ -297,11 +297,13 @@ local function init_packer()
 				config = function()
 					require('dapui').setup()
 				end,
+				disable = true,
 			})
 			use({
 				'jbyuki/one-small-step-for-vimkind',
 				requires = 'mfussenegger/nvim-dap',
 				ft = { 'javascript', 'lua', 'rust' },
+				disable = true,
 			})
 
 			-- Optional

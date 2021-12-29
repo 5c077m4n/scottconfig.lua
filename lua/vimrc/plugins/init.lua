@@ -161,6 +161,49 @@ local function init_packer()
 				end,
 				disable = true,
 			})
+			use({
+				'jose-elias-alvarez/null-ls.nvim',
+				requires = { 'nvim-lua/plenary.nvim' },
+				config = function()
+					local null_ls = require('null-ls')
+					null_ls.setup({
+						sources = {
+							-- lua
+							null_ls.builtins.formatting.stylua,
+							null_ls.builtins.diagnostics.luacheck,
+							-- python
+							null_ls.builtins.formatting.black,
+							null_ls.builtins.formatting.isort,
+							null_ls.builtins.diagnostics.mypy,
+							-- typescript
+							-- null_ls.builtins.formatting.deno_fmt,
+							null_ls.builtins.formatting.eslint_d,
+							null_ls.builtins.diagnostics.eslint_d,
+							null_ls.builtins.formatting.prettier,
+							null_ls.builtins.code_actions.eslint_d,
+							-- css
+							null_ls.builtins.formatting.stylelint,
+							-- rust
+							null_ls.builtins.formatting.rustfmt,
+							-- shell
+							null_ls.builtins.formatting.shellharden,
+							null_ls.builtins.formatting.shfmt,
+							null_ls.builtins.diagnostics.shellcheck,
+							null_ls.builtins.code_actions.shellcheck,
+							-- sql
+							null_ls.builtins.formatting.sqlformat,
+							-- terraform
+							null_ls.builtins.formatting.terraform_fmt,
+							-- markdown
+							null_ls.builtins.diagnostics.write_good,
+							-- misc
+							null_ls.builtins.completion.spell,
+							null_ls.builtins.diagnostics.editorconfig_checker,
+							null_ls.builtins.code_actions.gitsigns,
+						},
+					})
+				end,
+			})
 			-- Code snippets
 			use({
 				'hrsh7th/nvim-compe',
@@ -224,14 +267,6 @@ local function init_packer()
 					require('vimrc.plugins.nvim-comment')
 				end,
 			})
-			use({
-				'mhartington/formatter.nvim',
-				config = function()
-					require('vimrc.plugins.formatter')
-				end,
-				cmd = { 'Format', 'FormatWrite' },
-				keys = { '<leader>l' },
-			})
 			-- Git
 			use({
 				'tpope/vim-fugitive',
@@ -277,8 +312,8 @@ local function init_packer()
 				end,
 			})
 			-- Debugging
-			-- use 'nvim-telescope/telescope-dap.nvim'
-			use({ 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' } })
+			use({ 'nvim-telescope/telescope-dap.nvim', disable = true })
+			use({ 'mfussenegger/nvim-dap', ft = { 'javascript', 'lua', 'rust' }, disable = true })
 			use({
 				'Pocco81/DAPInstall.nvim',
 				requires = 'mfussenegger/nvim-dap',
@@ -289,6 +324,7 @@ local function init_packer()
 					dap_install.setup()
 					dap_install.config('ccppr_lldb_dbg', {})
 				end,
+				disable = true,
 			})
 			use({
 				'rcarriga/nvim-dap-ui',
@@ -297,11 +333,13 @@ local function init_packer()
 				config = function()
 					require('dapui').setup()
 				end,
+				disable = true,
 			})
 			use({
 				'jbyuki/one-small-step-for-vimkind',
 				requires = 'mfussenegger/nvim-dap',
 				ft = { 'javascript', 'lua', 'rust' },
+				disable = true,
 			})
 
 			-- Optional

@@ -58,6 +58,8 @@ local function on_attach(client, bufnr)
 		vimp.nnoremap({ 'silent', 'override' }, 'g?', diagnostic.show_line_diagnostics)
 		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
 		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
+		vimp.nnoremap({ 'silent', 'override' }, '<leader>l', lsp.buf.formatting)
+		vimp.vnoremap({ 'silent', 'override' }, '<leader>l', lsp.buf.range_formatting)
 	end)
 
 	lsp_status.on_attach(client, bufnr)
@@ -103,60 +105,6 @@ local function setup_servers()
 					settings = {
 						Lua = {
 							telemetry = { enable = false },
-						},
-					},
-				},
-			})
-		elseif server.name == 'diagnosticls' or server.name == 'diagnostic' then
-			opts = make_config({
-				filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'scss', 'css', 'lua' },
-				init_options = {
-					filetypes = {
-						javascript = 'eslint',
-						typescript = 'eslint',
-						javascriptreact = 'eslint',
-						typescriptreact = 'eslint',
-						lua = 'luacheck',
-					},
-					linters = {
-						luacheck = {
-							sourceName = 'luacheck',
-							command = 'luacheck',
-							rootPatterns = { '.luacheckrc', '.stylua.toml' },
-							debounce = 100,
-							args = { '-' },
-						},
-						eslint = {
-							sourceName = 'eslint',
-							command = 'eslint_d',
-							ignore = { '.git', 'dist/', 'node_modules/' },
-							rootPatterns = {
-								'.eslitrc.js',
-								'.eslitrc.json',
-								'package.json',
-							},
-							debounce = 100,
-							args = {
-								'--cache',
-								'--stdin',
-								'--stdin-filename',
-								'%filepath',
-								'--format',
-								'json',
-							},
-							parseJson = {
-								errorsRoot = '[0].messages',
-								line = 'line',
-								column = 'column',
-								endLine = 'endLine',
-								endColumn = 'endColumn',
-								message = '${message} [${ruleId}]',
-								security = 'severity',
-							},
-							securities = {
-								[1] = 'warning',
-								[2] = 'error',
-							},
 						},
 					},
 				},

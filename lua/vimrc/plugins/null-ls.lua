@@ -1,7 +1,7 @@
 local null_ls = require('null-ls')
 
 null_ls.setup({
-	diagnostics_format = "[#{c}] #{m} (#{s})",
+	diagnostics_format = '[#{c}] #{m} (#{s})',
 	sources = {
 		-- lua
 		null_ls.builtins.formatting.stylua,
@@ -37,4 +37,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.editorconfig_checker,
 		-- null_ls.builtins.code_actions.gitsigns,
 	},
+	update_in_insert = true,
+	debounce = 200,
 })

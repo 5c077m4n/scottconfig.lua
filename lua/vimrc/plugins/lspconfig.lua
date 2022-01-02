@@ -29,15 +29,14 @@ lsp_installer.settings({
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
-	local api = vim.api
 
-	api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'single' })
 	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
 
 	vimp.add_buffer_maps(bufnr, function()
-		local diagnostic = lsp.diagnostic
+		local diagnostic = vim.diagnostic
 
 		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)
 		vimp.nnoremap({ 'silent', 'override' }, 'gD', telescope_builtin.lsp_dynamic_workspace_symbols)

@@ -12,11 +12,12 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.diagnostics.mypy,
 		-- typescript
-		-- null_ls.builtins.formatting.deno_fmt,
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.code_actions.eslint_d,
 		null_ls.builtins.formatting.prettier,
+		-- deno
+		--null_ls.builtins.formatting.deno_fmt,
 		-- css
 		null_ls.builtins.formatting.stylelint,
 		-- shell
@@ -32,10 +33,12 @@ null_ls.setup({
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown
 		null_ls.builtins.diagnostics.write_good,
+		-- yaml
+		null_ls.builtins.diagnostics.yamllint,
 		-- misc
 		null_ls.builtins.completion.spell,
 		null_ls.builtins.diagnostics.editorconfig_checker,
-		-- null_ls.builtins.code_actions.gitsigns,
+		--null_ls.builtins.code_actions.gitsigns,
 	},
 	update_in_insert = true,
 	debounce = 200,

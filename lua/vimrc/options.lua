@@ -36,8 +36,6 @@ if o.list:get() then
 end
 
 o.termguicolors = true
--- Add transparancy to floating windows
-o.winblend = 30
 
 o.completeopt = { 'menuone', 'noselect' }
 

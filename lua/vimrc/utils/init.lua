@@ -37,69 +37,24 @@ function M.jump_to_last_visited()
 end
 
 function M.async_cmd(cmd, args)
-	local uv = vim.loop
-
-	local results_stdout = {}
-	local results_stderr = {}
-	local stdout = uv.new_pipe(false)
-	local stderr = uv.new_pipe(false)
-
-	local function on_read(_err, data)
-		if data then
-			if type(data) == 'string' then
-				vim.list_extend(results_stdout, vim.split(data, '\n', true))
-			else
-				table.insert(results_stdout, data)
-			end
-		end
-	end
-	local function on_error(_err, data)
-		if data then
-			if type(data) == 'string' then
-				vim.list_extend(results_stderr, vim.split(data, '\n', true))
-			else
-				table.insert(results_stderr, data)
-			end
-		end
-	end
-
-	local handle
-	handle = uv.spawn(
-		cmd,
-		{
+	require('plenary.job')
+		:new({
+			command = cmd,
 			args = args,
-			stdio = { nil, stdout, stderr },
-		},
-		vim.schedule_wrap(function()
-			stdout:read_stop()
-			stderr:read_stop()
-			stdout:close()
-			stderr:close()
+			on_exit = function(j, exit_code)
+				local res = table.concat(j:result(), '\n')
 
-			if handle and not handle:is_closing() then
-				handle:close()
-			end
+				local level
+				if exit_code == 0 then
+					level = vim.log.levels.INFO
+				else
+					level = vim.log.levels.ERROR
+				end
 
-			if not vim.tbl_isempty(results_stdout) then
-				vim.notify(results_stdout, vim.lsp.log_levels.INFO)
-			end
-			if not vim.tbl_isempty(results_stderr) then
-				vim.notify(results_stderr, vim.lsp.log_levels.ERROR)
-			end
-
-			-- clear the stdout table for the next search
-			for i = 0, #results_stdout do
-				results_stdout[i] = nil
-			end
-			-- clear the stderr table for the next search
-			for i = 0, #results_stderr do
-				results_stderr[i] = nil
-			end
-		end)
-	)
-
-	uv.read_start(stdout, on_read)
-	uv.read_start(stderr, on_read) -- on_error
+				vim.notify(res, level)
+			end,
+		})
+		:sync()
 end
 
 return M

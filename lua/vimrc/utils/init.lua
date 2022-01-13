@@ -25,12 +25,7 @@ function M.get_termcode(str)
 end
 
 function M.clean_extra_spaces()
-	local save_cursor = vim.fn.getpos('.')
-	local old_query = vim.fn.getreg('/')
-
-	vim.cmd([[silent! %s/\s\+$//e]])
-	vim.fn.setpos('.', save_cursor)
-	vim.fn.setreg('/', old_query)
+	vim.cmd([[silent! %s/\s\+$//]])
 end
 
 function M.jump_to_last_visited()
@@ -52,7 +47,7 @@ function M.async_cmd(cmd, args)
 	local function on_read(_err, data)
 		if data then
 			if type(data) == 'string' then
-				vim.list_extend(results_stdout, vim.split(data, '\n', true, true))
+				vim.list_extend(results_stdout, vim.split(data, '\n', true))
 			else
 				table.insert(results_stdout, data)
 			end
@@ -61,7 +56,7 @@ function M.async_cmd(cmd, args)
 	local function on_error(_err, data)
 		if data then
 			if type(data) == 'string' then
-				vim.list_extend(results_stderr, vim.split(data, '\n', true, true))
+				vim.list_extend(results_stderr, vim.split(data, '\n', true))
 			else
 				table.insert(results_stderr, data)
 			end

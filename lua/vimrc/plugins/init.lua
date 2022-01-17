@@ -101,7 +101,6 @@ local function init_packer()
 			-- Treesitter
 			use({
 				'nvim-treesitter/nvim-treesitter',
-				branch = '0.5-compat',
 				config = function()
 					require('vimrc.plugins.nvim-treesitter')
 				end,

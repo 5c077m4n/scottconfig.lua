@@ -37,7 +37,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.yamllint,
 		-- misc
 		null_ls.builtins.completion.spell,
-		null_ls.builtins.diagnostics.editorconfig_checker,
+		--null_ls.builtins.diagnostics.editorconfig_checker,
 		--null_ls.builtins.code_actions.gitsigns,
 	},
 	update_in_insert = true,

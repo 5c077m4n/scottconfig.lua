@@ -6,7 +6,7 @@ null_ls.setup({
 		-- lua
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.diagnostics.luacheck,
-		null_ls.builtins.diagnostics.selene,
+		--null_ls.builtins.diagnostics.selene,
 		-- python
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.black,
@@ -40,6 +40,9 @@ null_ls.setup({
 		--null_ls.builtins.diagnostics.editorconfig_checker,
 		--null_ls.builtins.code_actions.gitsigns,
 	},
+	should_attach = function(bufnr)
+        return not vim.api.nvim_buf_get_name(bufnr):match("/node_modules/")
+    end,
 	update_in_insert = true,
 	debounce = 200,
 })

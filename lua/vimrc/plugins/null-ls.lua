@@ -12,10 +12,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.diagnostics.mypy,
 		-- typescript
-		null_ls.builtins.formatting.eslint,
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.code_actions.eslint,
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.code_actions.eslint.with({ prefer_local = 'node_modules/.bin' }),
+		null_ls.builtins.diagnostics.eslint.with({ prefer_local = 'node_modules/.bin' }),
+		null_ls.builtins.formatting.eslint.with({ prefer_local = 'node_modules/.bin' }),
+		null_ls.builtins.formatting.prettier.with({ prefer_local = 'node_modules/.bin' }),
 		-- deno
 		--null_ls.builtins.formatting.deno_fmt,
 		-- css
@@ -41,8 +41,8 @@ null_ls.setup({
 		--null_ls.builtins.code_actions.gitsigns,
 	},
 	should_attach = function(bufnr)
-        return not vim.api.nvim_buf_get_name(bufnr):match("/node_modules/")
-    end,
+		return not vim.api.nvim_buf_get_name(bufnr):match('/node_modules/')
+	end,
 	update_in_insert = true,
 	debounce = 200,
 })

@@ -54,11 +54,10 @@ local function init_packer()
 				end,
 			})
 			use({
-				'glepnir/galaxyline.nvim',
-				branch = 'main',
-				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+				'feline-nvim/feline.nvim',
+				requires = { 'kyazdani42/nvim-web-devicons' },
 				config = function()
-					require('vimrc.plugins.galaxyline')
+					require('feline').setup()
 				end,
 			})
 			use({

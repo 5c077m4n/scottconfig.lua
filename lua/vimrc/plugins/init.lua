@@ -57,7 +57,7 @@ local function init_packer()
 				'feline-nvim/feline.nvim',
 				requires = { 'kyazdani42/nvim-web-devicons' },
 				config = function()
-					require('feline').setup()
+					require('feline').setup({ preset = 'noicon' })
 				end,
 			})
 			use({

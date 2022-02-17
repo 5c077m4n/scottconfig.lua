@@ -199,7 +199,7 @@ local function init_packer()
 			})
 			use('folke/which-key.nvim')
 			use({
-				'blackCauldron7/surround.nvim',
+				'5c077m4n/surround-nvim-mirror',
 				config = function()
 					require('surround').setup({
 						prefix = 'S',

@@ -28,7 +28,9 @@ null_ls.setup({
 		-- sql
 		null_ls.builtins.formatting.sqlformat,
 		-- rust
-		null_ls.builtins.formatting.rustfmt,
+		null_ls.builtins.formatting.rustfmt.with({
+			args = { '+nightly' },
+		}),
 		-- terraform
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown

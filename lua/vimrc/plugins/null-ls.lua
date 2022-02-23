@@ -31,6 +31,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.rustfmt.with({
 			args = { '+nightly' },
 		}),
+		-- nix
+		null_ls.builtins.diagnostics.deadnix,
+		null_ls.builtins.code_actions.statix,
+		null_ls.builtins.formatting.nixfmt,
+		null_ls.builtins.formatting.nixpkgs_fmt,
 		-- terraform
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown

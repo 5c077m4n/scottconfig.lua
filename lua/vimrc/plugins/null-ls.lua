@@ -28,9 +28,7 @@ null_ls.setup({
 		-- sql
 		null_ls.builtins.formatting.sqlformat,
 		-- rust
-		null_ls.builtins.formatting.rustfmt.with({
-			args = { '+nightly' },
-		}),
+		null_ls.builtins.formatting.rustfmt.with({ args = { '+nightly' } }),
 		-- nix
 		null_ls.builtins.diagnostics.deadnix,
 		null_ls.builtins.code_actions.statix,
@@ -39,7 +37,7 @@ null_ls.setup({
 		-- terraform
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown
-		null_ls.builtins.diagnostics.write_good,
+		null_ls.builtins.diagnostics.write_good.with({ prefer_local = 'node_modules/.bin' }),
 		-- yaml
 		null_ls.builtins.diagnostics.yamllint,
 		-- misc

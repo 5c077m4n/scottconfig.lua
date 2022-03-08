@@ -28,7 +28,9 @@ vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 vimp.nnoremap('<C-a>', 'gg0vG$')
 -- Ctrl+y copys to clipboard
 vimp.vnoremap('<C-y>', [["+y]])
--- V copies to line end
+-- Y copies to line end
+vimp.nnoremap({ 'silent', 'override' }, 'Y', 'y$')
+-- V selects to line end
 vimp.nnoremap('V', 'v$')
 -- Join line does not go one down
 vimp.nnoremap('J', [[mzJ`z]])

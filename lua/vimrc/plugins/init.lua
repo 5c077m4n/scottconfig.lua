@@ -244,7 +244,7 @@ local function init_packer()
 					require('vimrc.plugins.diffview')
 				end,
 			})
-			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit' })
+			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit', branch = 'main' })
 			use({
 				'lewis6991/gitsigns.nvim',
 				requires = 'nvim-lua/plenary.nvim',

@@ -21,6 +21,7 @@ local function init_packer()
 	require('packer').startup({
 		function(use)
 			-- General
+			use('lewis6991/impatient.nvim')
 			use('tpope/vim-sensible')
 			use('svermeulen/vimpeccable')
 			use('nvim-lua/plenary.nvim')

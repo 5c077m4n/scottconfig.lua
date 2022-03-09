@@ -1,3 +1,4 @@
+pcall(require, 'impatient')
 require('vimrc.globals')
 require('vimrc.options')
 require('vimrc.plugins').setup()

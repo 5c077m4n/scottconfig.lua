@@ -50,9 +50,10 @@ local function init_packer()
 			-- Theme
 			use({
 				'projekt0n/github-nvim-theme',
+				commit = '715c554',
 				config = function()
 					require('github-theme').setup({
-						theme_style = 'dark_colorblind',
+						theme_style = 'dark_default',
 						sidebars = { 'lazygit', 'terminal', 'packer' },
 					})
 				end,

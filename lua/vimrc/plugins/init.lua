@@ -52,9 +52,8 @@ local function init_packer()
 				'projekt0n/github-nvim-theme',
 				config = function()
 					require('github-theme').setup({
-						theme_style = 'dark_default',
+						theme_style = 'dark_colorblind',
 						sidebars = { 'lazygit', 'terminal', 'packer' },
-						colors = { hint = 'orange', error = '#ff0000' },
 					})
 				end,
 			})

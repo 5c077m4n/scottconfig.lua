@@ -30,6 +30,22 @@ local function init_packer()
 					vim.notify = require('notify')
 				end,
 			})
+			use({
+				'nathom/filetype.nvim',
+				config = function()
+					require('filetype').setup({
+						extensions = {
+							tsx = 'typescriptreact',
+							jsx = 'javascriptreact',
+							toml = 'toml',
+						},
+						literal = {
+							['.babelrc'] = 'json',
+							['.swcrc'] = 'json',
+						},
+					})
+				end,
+			})
 			-- Theme
 			use({
 				'projekt0n/github-nvim-theme',

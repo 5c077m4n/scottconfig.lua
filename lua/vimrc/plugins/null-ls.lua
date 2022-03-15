@@ -1,5 +1,7 @@
 local null_ls = require('null-ls')
 
+local ts_config = { prefer_local = 'node_modules/.bin' }
+
 null_ls.setup({
 	diagnostics_format = '[#{c}] #{m} (#{s})',
 	sources = {
@@ -12,10 +14,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.diagnostics.mypy,
 		-- typescript
-		null_ls.builtins.code_actions.eslint.with({ prefer_local = 'node_modules/.bin' }),
-		null_ls.builtins.diagnostics.eslint.with({ prefer_local = 'node_modules/.bin' }),
-		null_ls.builtins.formatting.eslint.with({ prefer_local = 'node_modules/.bin' }),
-		null_ls.builtins.formatting.prettier.with({ prefer_local = 'node_modules/.bin' }),
+		null_ls.builtins.code_actions.eslint.with(ts_config),
+		null_ls.builtins.diagnostics.eslint.with(ts_config),
+		null_ls.builtins.formatting.eslint.with(ts_config),
+		null_ls.builtins.formatting.prettier.with(ts_config),
 		-- deno
 		--null_ls.builtins.formatting.deno_fmt,
 		-- css
@@ -29,15 +31,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.sqlformat,
 		-- rust
 		null_ls.builtins.formatting.rustfmt.with({ args = { '+nightly' } }),
-		-- nix
-		null_ls.builtins.diagnostics.deadnix,
-		null_ls.builtins.code_actions.statix,
-		null_ls.builtins.formatting.nixfmt,
-		null_ls.builtins.formatting.nixpkgs_fmt,
 		-- terraform
 		null_ls.builtins.formatting.terraform_fmt,
 		-- markdown
-		null_ls.builtins.diagnostics.write_good.with({ prefer_local = 'node_modules/.bin' }),
+		null_ls.builtins.diagnostics.write_good.with(ts_config),
 		-- yaml
 		null_ls.builtins.diagnostics.yamllint,
 		-- misc

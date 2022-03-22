@@ -28,7 +28,7 @@ nvim_tree.setup({
 	view = {
 		side = 'left',
 		width = 40,
-		auto_resize = true,
+		preserve_window_proportions = true,
 		mappings = {
 			custom_only = true,
 			list = {
@@ -59,5 +59,10 @@ nvim_tree.setup({
 				{ key = '?', cb = tree_cb('toggle_help') },
 			},
 		},
+	},
+	git = {
+		enable = true,
+		ignore = true,
+		timeout = 500,
 	},
 })

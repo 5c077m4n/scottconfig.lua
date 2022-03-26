@@ -37,6 +37,8 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.write_good.with(ts_config),
 		-- yaml
 		null_ls.builtins.diagnostics.yamllint,
+		-- toml
+		null_ls.builtins.formatting.taplo,
 		-- misc
 		null_ls.builtins.completion.spell,
 		--null_ls.builtins.diagnostics.editorconfig_checker,

@@ -24,8 +24,9 @@ vimp.nnoremap({ 'silent' }, '<leader>t[', ':tabp<CR>')
 vimp.nnoremap({ 'silent' }, '<leader>tl', ':tabs<CR>')
 vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 
--- Ctrl+a selects all file content
-vimp.nnoremap('<C-a>', 'gg0vG$')
+vimp.map_command('SelectAll', function()
+	vim.cmd('normal! gg0VG$')
+end)
 -- Ctrl+y copys to clipboard
 vimp.vnoremap('<C-y>', [["+y]])
 -- Y copies to line end

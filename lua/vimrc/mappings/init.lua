@@ -25,7 +25,10 @@ vimp.nnoremap({ 'silent' }, '<leader>tl', ':tabs<CR>')
 vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
 
 vimp.map_command('SelectAll', function()
-	vim.cmd('normal! gg0VG$')
+	vim.cmd([[normal! gg0VG$]])
+end)
+vimp.map_command('CopyAll', function()
+	vim.cmd([[normal! gg0VG$"+y]])
 end)
 -- Ctrl+y copys to clipboard
 vimp.vnoremap('<C-y>', [["+y]])

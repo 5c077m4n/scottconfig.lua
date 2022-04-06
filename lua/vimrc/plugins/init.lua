@@ -78,6 +78,7 @@ local function init_packer()
 			})
 			use({
 				'akinsho/nvim-bufferline.lua',
+				branch = 'main',
 				config = function()
 					require('bufferline').setup({
 						options = {

@@ -85,7 +85,7 @@ local function init_packer()
 							numbers = 'both',
 							offsets = {
 								{
-									filetype = 'NvimTree',
+									filetype = 'neo-tree',
 									text = 'File Explorer',
 									highlight = 'Directory',
 									text_align = 'left',
@@ -109,9 +109,15 @@ local function init_packer()
 			})
 			-- File tree
 			use({
-				'kyazdani42/nvim-tree.lua',
+				'nvim-neo-tree/neo-tree.nvim',
+				branch = 'v2.x',
+				requires = {
+					'nvim-lua/plenary.nvim',
+					'kyazdani42/nvim-web-devicons',
+					'MunifTanjim/nui.nvim',
+				},
 				config = function()
-					require('vimrc.plugins.nvim-tree')
+					require('vimrc.plugins.neotree')
 				end,
 			})
 			-- Treesitter
@@ -124,9 +130,7 @@ local function init_packer()
 			-- LSP
 			use({
 				'neovim/nvim-lspconfig',
-				requires = {
-					'nvim-lua/lsp-status.nvim',
-				},
+				requires = { 'nvim-lua/lsp-status.nvim' },
 				run = ':TSUpdate',
 				config = function()
 					require('vimrc.plugins.lspconfig')

@@ -102,5 +102,5 @@ vimp.map_command('CopyCursorLocation', function()
 	else
 		vim.fn.setreg('1', cursor_location)
 	end
-	vim.notify(cursor_location, vim.lsp.log_levels.TRACE)
+	vim.notify(cursor_location, vim.lsp.log_levels.INFO)
 end)

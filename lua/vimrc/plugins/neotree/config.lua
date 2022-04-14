@@ -6,7 +6,7 @@ require('neo-tree').setup({
 		position = 'left',
 		width = 40,
 		mappings = {
-			['<CR>'] = 'toggle_node',
+			['<CR>'] = 'open',
 			['l'] = 'open',
 			['<c-s>'] = 'open_split',
 			['<c-v>'] = 'open_vsplit',

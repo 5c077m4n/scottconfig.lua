@@ -1,5 +1,5 @@
 local utils = require('vimrc.utils')
-local vimp = require('vimp')
+local keymap = require('vimrc.utils.keymapping')
 
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
@@ -25,7 +25,7 @@ local function reverse_tab_complete()
 	end
 end
 
-vimp.inoremap({ 'expr' }, '<Tab>', tab_complete)
-vimp.snoremap({ 'expr' }, '<Tab>', tab_complete)
-vimp.inoremap({ 'expr' }, '<S-Tab>', reverse_tab_complete)
-vimp.snoremap({ 'expr' }, '<S-Tab>', reverse_tab_complete)
+keymap.inoremap('<Tab>', tab_complete, { expr = true })
+keymap.snoremap('<Tab>', tab_complete, { expr = true })
+keymap.inoremap('<S-Tab>', reverse_tab_complete, { expr = true })
+keymap.snoremap('<S-Tab>', reverse_tab_complete, { expr = true })

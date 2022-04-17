@@ -1,4 +1,3 @@
-local vimp = require('vimp')
 local lsp_installer = require('nvim-lsp-installer')
 local lua_dev = require('lua-dev')
 local telescope_builtin = require('telescope.builtin')
@@ -6,6 +5,7 @@ local lsp_status = require('lsp-status')
 local which_key = require('which-key')
 
 local mod_utils = require('vimrc.utils.modules')
+local keymap = require('vimrc.utils.keymapping')
 
 lsp_status.register_progress()
 lsp_status.config({
@@ -29,39 +29,36 @@ lsp_installer.settings({
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
+	local diagnostic = vim.diagnostic
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'single' })
 	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
 
-	vimp.add_buffer_maps(bufnr, function()
-		local diagnostic = vim.diagnostic
+	local map_opts = { buffer = bufnr }
+	keymap.nnoremap('gd', telescope_builtin.lsp_definitions, map_opts)
+	keymap.nnoremap('gD', telescope_builtin.lsp_dynamic_workspace_symbols, map_opts)
+	keymap.nnoremap('gs', telescope_builtin.lsp_document_symbols, map_opts)
+	keymap.nnoremap('gS', telescope_builtin.lsp_workspace_symbols, map_opts)
+	keymap.nnoremap('K', lsp.buf.hover, map_opts)
+	keymap.nnoremap('<C-x>', lsp.buf.signature_help, map_opts)
+	keymap.nnoremap('gi', telescope_builtin.lsp_implementations, map_opts)
+	keymap.nnoremap('<leader>gD', lsp.buf.type_definition, map_opts)
+	keymap.nnoremap('<leader>rn', lsp.buf.rename, map_opts)
+	keymap.nnoremap('gr', telescope_builtin.lsp_references, map_opts)
+	keymap.nnoremap('g[', function()
+		diagnostic.goto_prev({ popup_opts = { border = 'single' } })
+	end, map_opts)
+	keymap.nnoremap('g]', function()
+		diagnostic.goto_next({ popup_opts = { border = 'single' } })
+	end, map_opts)
+	keymap.nnoremap('<leader>ca', lsp.buf.code_action, map_opts)
+	keymap.vnoremap('<leader>ca', lsp.buf.range_code_action, map_opts)
+	keymap.nnoremap('<leader>l', lsp.buf.formatting, map_opts)
+	keymap.vnoremap('<leader>l', lsp.buf.range_formatting, map_opts)
 
-		vimp.nnoremap({ 'silent', 'override' }, 'gd', telescope_builtin.lsp_definitions)
-		vimp.nnoremap({ 'silent', 'override' }, 'gD', telescope_builtin.lsp_dynamic_workspace_symbols)
-		vimp.nnoremap({ 'silent', 'override' }, 'gs', telescope_builtin.lsp_document_symbols)
-		vimp.nnoremap({ 'silent', 'override' }, 'gS', telescope_builtin.lsp_workspace_symbols)
-		vimp.nnoremap({ 'silent', 'override' }, 'K', lsp.buf.hover)
-		vimp.nnoremap({ 'silent', 'override' }, '<C-x>', lsp.buf.signature_help)
-		vimp.nnoremap({ 'silent', 'override' }, 'gi', telescope_builtin.lsp_implementations)
-		vimp.nnoremap({ 'silent', 'override' }, '<leader>gD', lsp.buf.type_definition)
-		vimp.nnoremap({ 'silent', 'override' }, '<leader>rn', lsp.buf.rename)
-		vimp.nnoremap({ 'silent', 'override' }, 'gr', telescope_builtin.lsp_references)
-		vimp.nnoremap({ 'silent', 'override' }, 'g[', function()
-			diagnostic.goto_prev({ popup_opts = { border = 'single' } })
-		end)
-		vimp.nnoremap({ 'silent', 'override' }, 'g]', function()
-			diagnostic.goto_next({ popup_opts = { border = 'single' } })
-		end)
-		vimp.nnoremap({ 'silent', 'override' }, 'g?', diagnostic.show_line_diagnostics)
-		vimp.nnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.code_action)
-		vimp.vnoremap({ 'silent', 'override' }, '<leader>ca', lsp.buf.range_code_action)
-		vimp.nnoremap({ 'silent', 'override' }, '<leader>l', lsp.buf.formatting)
-		vimp.vnoremap({ 'silent', 'override' }, '<leader>l', lsp.buf.range_formatting)
-	end)
-
-	lsp_status.on_attach(client, bufnr)
+	lsp_status.on_attach(client)
 
 	which_key.register({
 		gD = 'Declaration',
@@ -113,6 +110,7 @@ local function setup_servers()
 			opts = make_config()
 		end
 
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 		server:setup(opts)
 		vim.cmd([[do User LspAttachBuffers]])
 	end)

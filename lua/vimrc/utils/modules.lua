@@ -3,7 +3,6 @@ local utils = require('vimrc.utils')
 local M = {}
 
 function M.reload_vimrc()
-	require('vimp').unmap_all()
 	require('plenary.reload').reload_module('vimrc')
 	require('vimrc')
 	require('packer').compile()

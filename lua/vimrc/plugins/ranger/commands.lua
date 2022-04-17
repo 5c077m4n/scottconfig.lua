@@ -1,3 +1,3 @@
-local vimp = require('vimp')
+local keymap = require('vimrc.utils.keymapping')
 
-vimp.nnoremap('<leader>rr', ':Ranger<CR>')
+keymap.nnoremap('<leader>rr', ':Ranger<CR>')

@@ -1,3 +1,3 @@
-local vimp = require('vimp')
+local keymap = require('vimrc.utils.keymapping')
 
-vimp.nnoremap({ 'silent' }, '<leader>u', ':UndotreeToggle<CR>')
+keymap.nnoremap({ 'silent' }, '<leader>u', ':UndotreeToggle<CR>')

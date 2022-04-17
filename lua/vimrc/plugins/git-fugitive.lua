@@ -1,9 +1,9 @@
-local vimp = require('vimp')
+local keymap = require('vimrc.utils.keymapping')
 
 -- Git mergetool
-vimp.nnoremap('<leader>gs', [[:Gstatus<CR>]])
-vimp.nnoremap('<leader>gm', [[:G mergetool<CR>]])
-vimp.nnoremap('<leader>gdd', [[:Gvdiffsplit!<CR>]])
-vimp.nnoremap('<leader>gdh', [[:diffget //2<CR>]])
-vimp.nnoremap('<leader>gdl', [[:diffget //3<CR>]])
-vimp.nnoremap('<leader>gdD', [[:diffoff<CR>]])
+keymap.nnoremap('<leader>gs', [[:Gstatus<CR>]])
+keymap.nnoremap('<leader>gm', [[:G mergetool<CR>]])
+keymap.nnoremap('<leader>gdd', [[:Gvdiffsplit!<CR>]])
+keymap.nnoremap('<leader>gdh', [[:diffget //2<CR>]])
+keymap.nnoremap('<leader>gdl', [[:diffget //3<CR>]])
+keymap.nnoremap('<leader>gdD', [[:diffoff<CR>]])

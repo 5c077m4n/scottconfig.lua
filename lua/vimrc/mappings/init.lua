@@ -1,106 +1,82 @@
-local vimp = require('vimp')
+local packer = require('packer')
 
-vimp.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]])
-vimp.nnoremap('<leader>2', require('vimrc.utils.modules').reload_vimrc)
-vimp.nnoremap('<leader>3', require('vimrc.utils.modules').update_vimrc)
-vimp.nnoremap('<leader>4', require('packer').sync)
+local keymap = require('vimrc.utils.keymapping')
+local module_utils = require('vimrc.utils.modules')
+
+local create_command = vim.api.nvim_create_user_command
+
+keymap.nnoremap('<leader>1', [[:edit ~/.config/nvim/init.lua<CR>]], { desc = 'Edit the main vimrc file' })
+keymap.nnoremap('<leader>2', module_utils.reload_vimrc, { desc = 'Reload the vimrc config' })
+keymap.nnoremap('<leader>3', module_utils.update_vimrc, { desc = 'Git pull latest vimrc' })
+keymap.nnoremap('<leader>4', packer.sync, { desc = 'Packer sync' })
 
 -- Splits
-vimp.nnoremap({ 'override' }, '<C-h>', '<C-w>h')
-vimp.nnoremap({ 'override' }, '<C-j>', '<C-w>j')
-vimp.nnoremap({ 'override' }, '<C-k>', '<C-w>k')
-vimp.nnoremap({ 'override' }, '<C-l>', '<C-w>l')
-vimp.nnoremap({ 'silent' }, '<leader>wq', '<C-w>q')
-vimp.nnoremap({ 'silent' }, '<leader>wv', ':vertical split<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>wh', ':split<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>wt', ':vs#<CR>')
+keymap.nnoremap('<C-h>', '<C-w>h')
+keymap.nnoremap('<C-j>', '<C-w>j')
+keymap.nnoremap('<C-k>', '<C-w>k')
+keymap.nnoremap('<C-l>', '<C-w>l')
+keymap.nnoremap('<leader>wq', '<C-w>q', { desc = 'Close split' })
+keymap.nnoremap('<leader>wv', ':vertical split<CR>')
+keymap.nnoremap('<leader>wh', ':split<CR>')
+keymap.nnoremap('<leader>wt', ':vs#<CR>', { desc = 'Re-open last closed split' })
 
 -- Tabs
-vimp.nnoremap({ 'silent' }, '<leader>tn', ':tab split<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>tq', ':tabclose<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>tQ', ':tabonly<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>t]', ':tabn<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>t[', ':tabp<CR>')
-vimp.nnoremap({ 'silent' }, '<leader>tl', ':tabs<CR>')
-vimp.tnoremap('<C-]>', [[<C-\><C-n>]])
+keymap.nnoremap('<leader>tn', ':tab split<CR>', { desc = 'New tab' })
+keymap.nnoremap('<leader>tq', ':tabclose<CR>')
+keymap.nnoremap('<leader>tQ', ':tabonly<CR>', { desc = 'Close all other tabs' })
+keymap.nnoremap('<leader>t]', ':tabn<CR>')
+keymap.nnoremap('<leader>t[', ':tabp<CR>')
+keymap.nnoremap('<leader>tl', ':tabs<CR>')
 
-vimp.map_command('SelectAll', function()
-	vim.cmd([[normal! gg0VG$]])
-end)
-vimp.map_command('CopyAll', function()
-	vim.cmd([[normal! gg0VG$"+y]])
-end)
--- Ctrl+y copys to clipboard
-vimp.vnoremap('<C-y>', [["+y]])
--- Y copies to line end
-vimp.nnoremap({ 'silent', 'override' }, 'Y', 'y$')
--- V selects to line end
-vimp.nnoremap('V', 'v$')
--- Join line does not go one down
-vimp.nnoremap('J', [[mzJ`z]])
+keymap.tnoremap('<C-]>', [[<C-\><C-n>]], { desc = 'Goto insert mode in terminal' })
+
+create_command('SelectAll', [[:gg0VG$]], { desc = 'Select all buffer content' })
+create_command('CopyAll', [[:gg0VG$"+y]], { desc = 'Copy all buffer content' })
+
+keymap.vnoremap('<C-y>', [["+y]], { desc = 'Ctrl+y copys to clipboard' })
+keymap.nnoremap('V', 'v$', { desc = 'V selects to line end' })
+keymap.nnoremap('J', [[mzJ`z]], { desc = 'Join line does not go one down' })
 
 -- Jump to line start/end
-vimp.nnoremap('[[', '^')
-vimp.vnoremap('[[', '^')
-vimp.nnoremap(']]', '$')
-vimp.vnoremap(']]', '$')
+keymap.nnoremap('[[', '^')
+keymap.vnoremap('[[', '^')
+keymap.nnoremap(']]', '$')
+keymap.vnoremap(']]', '$')
 
 -- Move selection up/down
-vimp.vnoremap('<A-k>', [[:m '>-2<CR>gv=gv]])
-vimp.vnoremap('<A-j>', [[:m '>+1<CR>gv=gv]])
-vimp.nnoremap('<A-k>', [[:m .-2<CR>==]])
-vimp.nnoremap('<A-j>', [[:m .+1<CR>==]])
+keymap.vnoremap('<A-k>', [[:m '>-2<CR>gv=gv]])
+keymap.vnoremap('<A-j>', [[:m '>+1<CR>gv=gv]])
+keymap.nnoremap('<A-k>', [[:m .-2<CR>==]])
+keymap.nnoremap('<A-j>', [[:m .+1<CR>==]])
 
--- Unsets the last search pattern register by hitting return
-vimp.nnoremap({ 'silent' }, '<CR>', ':nohlsearch<CR><CR>')
+keymap.nnoremap('<CR>', ':nohlsearch<CR><CR>', { desc = 'Unsets the last search pattern register by hitting return' })
 
 -- Word traversing
-vimp.inoremap('<C-b>', function()
-	vim.cmd([[normal! b]])
-end)
-vimp.inoremap('<C-e>', function()
-	vim.cmd([[normal! e]])
-end)
-vimp.inoremap({ 'override' }, '<C-w>', function()
-	vim.cmd([[normal! w]])
-end)
-vimp.inoremap('<C-h>', function()
-	vim.cmd([[normal! h]])
-end)
-vimp.inoremap('<C-j>', function()
-	vim.cmd([[normal! j]])
-end)
-vimp.inoremap('<C-k>', function()
-	vim.cmd([[normal! k]])
-end)
-vimp.inoremap('<C-l>', function()
-	vim.cmd([[normal! l]])
-end)
+keymap.inoremap('<C-b>', [[<C-o>b]])
+keymap.inoremap('<C-e>', [[<C-o>e]])
+keymap.inoremap('<C-w>', [[<C-o>w]])
+keymap.inoremap('<C-h>', [[<C-o>h]])
+keymap.inoremap('<C-j>', [[<C-o>j]])
+keymap.inoremap('<C-k>', [[<C-o>k]])
+keymap.inoremap('<C-l>', [[<C-o>l]])
 
--- Select currect word
-vimp.nnoremap('<leader>V', 'viw')
--- Yank currect word
-vimp.nnoremap('<leader>Y', 'viwy')
--- Switch currect word
-vimp.nnoremap('<leader>S', 'viws')
--- Delete current word
-vimp.nnoremap('<leader>D', 'daw')
--- Uppercase current word
-vimp.nnoremap('<leader>U', 'viwU')
+keymap.nnoremap('<leader>V', 'viw', { desc = 'Select currect word' })
+keymap.nnoremap('<leader>Y', 'viwy', { desc = 'Yank currect word' })
+keymap.nnoremap('<leader>S', 'viws', { desc = 'Switch currect word' })
+keymap.nnoremap('<leader>D', 'daw', { desc = 'Delete current word' })
+keymap.nnoremap('<leader>U', 'viwU', { desc = 'Uppercase current word' })
 
--- Switch CWD to the directory of the open buffer
-vimp.nnoremap('<leader>cd', [[:cd %:p:h<CR>:pwd<CR>]])
+keymap.nnoremap('<leader>cd', [[:cd %:p:h<CR>:pwd<CR>]], { desc = 'Switch CWD to the directory of the open buffer' })
 
 -- Undo
-vimp.nnoremap('U', '<C-r>')
+keymap.nnoremap('U', '<C-r>')
 
-vimp.map_command('CopyCursorLocation', function()
+create_command('CopyCursorLocation', function()
 	local cursor_location = vim.fn.expand('%') .. ':' .. vim.fn.line('.') .. ':' .. vim.fn.col('.')
-
 	if vim.fn.has('clipboard') then
 		vim.fn.setreg('+', cursor_location)
 	else
 		vim.fn.setreg('1', cursor_location)
 	end
 	vim.notify(cursor_location, vim.lsp.log_levels.INFO)
-end)
+end, { desc = 'Copy the current cursor location' })

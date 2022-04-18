@@ -7,7 +7,7 @@ function M.reload_vimrc()
 	require('vimrc')
 	require('packer').compile()
 
-	vim.notify('The vimrc has been reloaded successfully', vim.lsp.log_levels.TRACE)
+	vim.notify('The vimrc has been reloaded successfully', vim.lsp.log_levels.INFO)
 end
 
 function M.update_vimrc()

@@ -30,8 +30,8 @@ keymap.nnoremap('<leader>tl', ':tabs<CR>')
 
 keymap.tnoremap('<C-]>', [[<C-\><C-n>]], { desc = 'Goto insert mode in terminal' })
 
-create_command('SelectAll', [[:gg0VG$]], { desc = 'Select all buffer content' })
-create_command('CopyAll', [[:gg0VG$"+y]], { desc = 'Copy all buffer content' })
+create_command('SelectAll', [[normal! gg0VG$]], { desc = 'Select all buffer content' })
+create_command('CopyAll', [[normal! gg0VG$"+y]], { desc = 'Copy all buffer content' })
 
 keymap.vnoremap('<C-y>', [["+y]], { desc = 'Ctrl+y copys to clipboard' })
 keymap.nnoremap('V', 'v$', { desc = 'V selects to line end' })

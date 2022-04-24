@@ -102,7 +102,7 @@ local function init_packer()
 			use({
 				'onsails/lspkind-nvim',
 				config = function()
-					require('lspkind').setup({ mode = 'text' }) -- Icons in autocomplete popup
+					require('lspkind').init({ mode = 'text' }) -- Icons in autocomplete popup
 				end,
 				event = 'BufReadPost',
 			})

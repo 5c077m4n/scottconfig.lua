@@ -35,6 +35,9 @@ if o.list:get() then
 	o.listchars = { tab = '| ', space = ' ', trail = '·' }
 end
 
+-- Global statusline
+o.laststatus = 3
+
 o.termguicolors = true
 
 o.completeopt = { 'menuone', 'noselect' }

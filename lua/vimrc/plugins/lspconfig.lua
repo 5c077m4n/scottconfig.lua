@@ -5,6 +5,7 @@ local which_key = require('which-key')
 
 local mod_utils = require('vimrc.utils.modules')
 local keymap = require('vimrc.utils.keymapping')
+local lsp_fns = require('vimrc.utils.lsp')
 
 lsp_status.register_progress()
 lsp_status.config({
@@ -35,6 +36,7 @@ local function on_attach(client, bufnr)
 
 	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'single' })
 	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
+	vim.lsp.handlers["$/progress"] = lsp_fns.lsp_progress
 
 	keymap.nnoremap('gd', telescope_builtin.lsp_definitions, { buffer = bufnr, desc = 'Go to LSP definition' })
 	keymap.nnoremap(

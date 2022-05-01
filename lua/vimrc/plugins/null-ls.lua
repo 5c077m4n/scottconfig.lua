@@ -49,6 +49,6 @@ null_ls.setup({
 	should_attach = function(bufnr)
 		return not vim.api.nvim_buf_get_name(bufnr):match('/node_modules/')
 	end,
-	update_in_insert = true,
+	update_in_insert = false,
 	debounce = 200,
 })

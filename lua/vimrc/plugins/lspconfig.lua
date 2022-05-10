@@ -1,3 +1,4 @@
+local lspconfig = require('lspconfig')
 local lsp_installer = require('nvim-lsp-installer')
 local telescope_builtin = require('telescope.builtin')
 local lsp_status = require('lsp-status')
@@ -6,6 +7,23 @@ local which_key = require('which-key')
 local mod_utils = require('vimrc.utils.modules')
 local keymap = require('vimrc.utils.keymapping')
 local lsp_fns = require('vimrc.utils.lsp')
+
+local SERVER_LIST = {
+	'taplo',
+	'pylsp',
+	'bashls',
+	'tsserver',
+	'rust_analyzer',
+	'html',
+	'sumneko_lua',
+	'jsonls',
+	'yamlls',
+	'eslint',
+	'cssls',
+	'solang',
+	'tflint',
+	'tailwindcss',
+}
 
 lsp_status.register_progress()
 lsp_status.config({
@@ -17,16 +35,6 @@ lsp_status.config({
 	indicator_ok = '✓',
 })
 
-lsp_installer.settings({
-	ui = {
-		icons = {
-			server_installed = '✓',
-			server_pending = '➜',
-			server_uninstalled = '✗',
-		},
-	},
-})
-
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
 	local diagnostic = vim.diagnostic
@@ -36,7 +44,7 @@ local function on_attach(client, bufnr)
 
 	lsp.handlers['textDocument/hover'] = lsp.with(lsp.handlers.hover, { border = 'single' })
 	lsp.handlers['textDocument/signatureHelp'] = lsp.with(lsp.handlers.signature_help, { border = 'single' })
-	vim.lsp.handlers["$/progress"] = lsp_fns.lsp_progress
+	vim.lsp.handlers['$/progress'] = lsp_fns.lsp_progress
 
 	keymap.nnoremap('gd', telescope_builtin.lsp_definitions, { buffer = bufnr, desc = 'Go to LSP definition' })
 	keymap.nnoremap(
@@ -101,9 +109,21 @@ local function make_config(options)
 end
 
 local function setup_servers()
-	lsp_installer.on_server_ready(function(server)
+	lsp_installer.setup({
+		ensure_installed = SERVER_LIST,
+		automatic_installation = true,
+		ui = {
+			icons = {
+				server_installed = '✓',
+				server_pending = '➜',
+				server_uninstalled = '✗',
+			},
+		},
+	})
+
+	for _, server in ipairs(SERVER_LIST) do
 		local opts
-		if server.name == 'lua' or server.name == 'sumneko_lua' then
+		if server == 'sumneko_lua' then
 			opts = require('lua-dev').setup({
 				lspconfig = {
 					on_attach = on_attach,
@@ -117,12 +137,10 @@ local function setup_servers()
 		else
 			opts = make_config()
 		end
+		lspconfig[server].setup(opts)
 
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-		---@diagnostic disable-next-line: undefined-field
-		server:setup(opts)
 		vim.cmd([[do User LspAttachBuffers]])
-	end)
+	end
 
 	if
 		not (

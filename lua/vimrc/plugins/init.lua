@@ -166,12 +166,8 @@ local function init_packer()
 										importGranularity = 'module',
 										importPrefix = 'by_self',
 									},
-									cargo = {
-										loadOutDirsFromCheck = true,
-									},
-									procMacro = {
-										enable = true,
-									},
+									cargo = { loadOutDirsFromCheck = true },
+									procMacro = { enable = true },
 								},
 							},
 						},

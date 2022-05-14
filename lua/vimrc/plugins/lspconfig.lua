@@ -1,8 +1,8 @@
 local lspconfig = require('lspconfig')
 local lsp_installer = require('nvim-lsp-installer')
 local telescope_builtin = require('telescope.builtin')
-local lsp_status = require('lsp-status')
 local which_key = require('which-key')
+local cmp_lsp = require('cmp_nvim_lsp')
 
 local mod_utils = require('vimrc.utils.modules')
 local keymap = require('vimrc.utils.keymapping')
@@ -24,16 +24,6 @@ local SERVER_LIST = {
 	'tflint',
 	'tailwindcss',
 }
-
-lsp_status.register_progress()
-lsp_status.config({
-	status_symbol = '',
-	indicator_errors = 'E',
-	indicator_warnings = 'W',
-	indicator_info = 'i',
-	indicator_hint = '?',
-	indicator_ok = '✓',
-})
 
 local function on_attach(client, bufnr)
 	local lsp = vim.lsp
@@ -74,8 +64,6 @@ local function on_attach(client, bufnr)
 	create_command('Format', lsp.buf.formatting, { desc = 'Format page' })
 	create_command('FormatRange', lsp.buf.range_formatting, { desc = 'Format range' })
 
-	lsp_status.on_attach(client)
-
 	which_key.register({
 		gD = 'Declaration',
 		gd = 'Definition',
@@ -95,9 +83,11 @@ local function on_attach(client, bufnr)
 end
 
 local function make_config(options)
+	local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 	local base_config = {
 		on_attach = on_attach,
-		capabilities = lsp_status.capabilities,
+		capabilities = capabilities,
 		flags = { debounce_text_changes = 100 },
 	}
 	if type(options) == 'table' then

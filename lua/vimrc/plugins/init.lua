@@ -5,7 +5,7 @@ local function bootstrap()
 	local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 	if fn.empty(fn.glob(install_path)) > 0 then
-		vim.fn.system({
+		fn.system({
 			'git',
 			'clone',
 			'https://github.com/wbthomason/packer.nvim',
@@ -129,7 +129,6 @@ local function init_packer()
 			-- LSP
 			use({
 				'neovim/nvim-lspconfig',
-				requires = { 'nvim-lua/lsp-status.nvim' },
 				run = ':TSUpdate',
 				config = function()
 					require('vimrc.plugins.lspconfig')
@@ -184,10 +183,19 @@ local function init_packer()
 			})
 			-- Code snippets
 			use({
-				'hrsh7th/nvim-compe',
-				requires = { 'hrsh7th/vim-vsnip', 'rafamadriz/friendly-snippets' },
+				'hrsh7th/nvim-cmp',
+				requires = {
+					'hrsh7th/cmp-nvim-lsp',
+					'hrsh7th/cmp-buffer',
+					'hrsh7th/cmp-path',
+					'hrsh7th/cmp-cmdline',
+					'hrsh7th/cmp-vsnip',
+					'hrsh7th/vim-vsnip',
+					'hrsh7th/cmp-calc',
+					'f3fora/cmp-spell',
+				},
 				config = function()
-					require('vimrc.plugins.compe')
+					require('vimrc.plugins.cmp')
 				end,
 			})
 			-- Terminal
@@ -233,10 +241,16 @@ local function init_packer()
 				event = 'InsertEnter',
 				config = function()
 					require('nvim-autopairs').setup()
-					require('nvim-autopairs.completion.compe').setup({
-						map_cr = true, --  map <CR> on insert mode
-						map_complete = true, -- it will auto insert `(` after select function or method item
-					})
+
+					local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+					local cmp = require('cmp')
+
+					cmp.event:on(
+						'confirm_done',
+						cmp_autopairs.on_confirm_done({
+							map_char = { tex = '' },
+						})
+					)
 				end,
 			})
 			use({

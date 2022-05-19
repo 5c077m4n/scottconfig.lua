@@ -268,8 +268,10 @@ local function init_packer()
 			})
 			use({
 				'sindrets/diffview.nvim',
-				requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-				cmd = 'DiffviewOpen',
+				requires = {
+					'nvim-lua/plenary.nvim',
+					{ 'kyazdani42/nvim-web-devicons', opt = true },
+				},
 				config = function()
 					require('vimrc.plugins.diffview')
 				end,

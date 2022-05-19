@@ -3,8 +3,7 @@ local cb = require('diffview.config').diffview_callback
 require('diffview').setup({
 	diff_binaries = false, -- Show diffs for binaries
 	file_panel = {
-		width = 35,
-		use_icons = true, -- Requires nvim-web-devicons
+		win_config = { position = 'left', width = 35 },
 	},
 	key_bindings = {
 		disable_defaults = false, -- Disable the default key bindings

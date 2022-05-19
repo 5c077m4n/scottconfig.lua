@@ -80,3 +80,21 @@ create_command('CopyCursorLocation', function()
 	end
 	vim.notify(cursor_location, vim.lsp.log_levels.INFO)
 end, { desc = 'Copy the current cursor location' })
+
+-- Diagnostics toggle
+--- Only for current buffer
+keymap.nnoremap('<leader>dy', function()
+	vim.diagnostic.enable(0)
+end)
+--- Only for current buffer
+keymap.nnoremap('<leader>dn', function()
+	vim.diagnostic.disable(0)
+end)
+--- For all buffers
+keymap.nnoremap('<leader>dY', function()
+	vim.diagnostic.enable()
+end)
+--- For all buffers
+keymap.nnoremap('<leader>dN', function()
+	vim.diagnostic.disable()
+end)

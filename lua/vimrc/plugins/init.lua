@@ -97,7 +97,9 @@ local function init_packer()
 						},
 					})
 				end,
-				disable = vim.fn.has('gui_vimr') == 1,
+				cond = function()
+					return vim.fn.has('gui_vimr') ~= 1
+				end,
 			})
 			use({
 				'onsails/lspkind-nvim',
@@ -220,6 +222,7 @@ local function init_packer()
 				setup = function()
 					require('vimrc.plugins.ranger')
 				end,
+				cmd = '<leader>rr',
 			})
 			use('folke/which-key.nvim')
 			use({
@@ -275,6 +278,7 @@ local function init_packer()
 				config = function()
 					require('vimrc.plugins.diffview')
 				end,
+				disable = true,
 			})
 			use({ 'kdheepak/lazygit.nvim', cmd = 'LazyGit', branch = 'main' })
 			use({
@@ -304,6 +308,7 @@ local function init_packer()
 				config = function()
 					require('vimrc.plugins.auto-session')
 				end,
+				disable = true,
 			})
 			-- Debugging
 			use({ 'nvim-telescope/telescope-dap.nvim', disable = true })

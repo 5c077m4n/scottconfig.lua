@@ -22,11 +22,11 @@ keymap.nnoremap('<leader>wt', ':vs#<CR>', { desc = 'Re-open last closed split' }
 
 -- Tabs
 keymap.nnoremap('<leader>tn', ':tab split<CR>', { desc = 'New tab' })
-keymap.nnoremap('<leader>tq', ':tabclose<CR>')
+keymap.nnoremap('<leader>tq', ':tabclose<CR>', { desc = 'Close current tab' })
 keymap.nnoremap('<leader>tQ', ':tabonly<CR>', { desc = 'Close all other tabs' })
-keymap.nnoremap('<leader>t]', ':tabn<CR>')
-keymap.nnoremap('<leader>t[', ':tabp<CR>')
-keymap.nnoremap('<leader>tl', ':tabs<CR>')
+keymap.nnoremap('<leader>t]', ':tabn<CR>', { desc = 'Next tab' })
+keymap.nnoremap('<leader>t[', ':tabp<CR>', { desc = 'Previous tab' })
+keymap.nnoremap('<leader>tl', ':tabs<CR>', { desc = 'List tabs' })
 
 keymap.tnoremap('<C-]>', [[<C-\><C-n>]], { desc = 'Goto insert mode in terminal' })
 
@@ -38,10 +38,10 @@ keymap.nnoremap('V', 'v$', { desc = 'V selects to line end' })
 keymap.nnoremap('J', [[mzJ`z]], { desc = 'Join line does not go one down' })
 
 -- Jump to line start/end
-keymap.nnoremap('[[', '^')
-keymap.vnoremap('[[', '^')
-keymap.nnoremap(']]', '$')
-keymap.vnoremap(']]', '$')
+keymap.nnoremap('[[', '^', { desc = 'Jump to line start' })
+keymap.vnoremap('[[', '^', { desc = 'Jump to line start' })
+keymap.nnoremap(']]', '$', { desc = 'Jump to line end' })
+keymap.vnoremap(']]', '$', { desc = 'Jump to line end' })
 
 -- Move selection up/down
 keymap.vnoremap('<A-k>', [[:m '>-2<CR>gv=gv]])
@@ -81,20 +81,15 @@ create_command('CopyCursorLocation', function()
 	vim.notify(cursor_location, vim.lsp.log_levels.INFO)
 end, { desc = 'Copy the current cursor location' })
 
--- Diagnostics toggle
---- Only for current buffer
 keymap.nnoremap('<leader>dy', function()
 	vim.diagnostic.enable(0)
-end)
---- Only for current buffer
+end, { desc = 'Enable diagnostics for current buffer' })
 keymap.nnoremap('<leader>dn', function()
 	vim.diagnostic.disable(0)
-end)
---- For all buffers
+end, { desc = 'Disable diagnostics for current buffer' })
 keymap.nnoremap('<leader>dY', function()
 	vim.diagnostic.enable()
-end)
---- For all buffers
+end, { desc = 'Enable diagnostics for all buffers' })
 keymap.nnoremap('<leader>dN', function()
 	vim.diagnostic.disable()
-end)
+end, { desc = 'Disable diagnostics for all buffers' })

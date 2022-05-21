@@ -72,7 +72,15 @@ local function init_packer()
 				'feline-nvim/feline.nvim',
 				requires = { 'kyazdani42/nvim-web-devicons' },
 				config = function()
-					require('feline').setup({ preset = 'noicon' })
+					local feline = require('feline')
+
+					feline.setup({ preset = 'noicon' })
+					local ok, winbar_support = pcall(function()
+						return vim.fn.getwininfo(vim.api.nvim_get_current_win())[1].winbar
+					end)
+					if ok and winbar_support == 1 then
+						feline.winbar.setup()
+					end
 				end,
 			})
 			use({
